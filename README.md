@@ -11,4 +11,4 @@
 
 <img src="github/calculadora.gif" alt="Demonstração Calculadora">
 
-<p>Entre em contato por <a href="https://www.linkedin.com/in/seileremerson/" target="blank">aqui</a>!</p>
+<p>Entre em contato por <a href="https://www.linkedin.com/in/seileremerson/" target="_blank">aqui</a>!</p>
