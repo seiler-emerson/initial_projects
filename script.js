@@ -15,12 +15,14 @@ function insert(num) {
 
 //FUNÇÃO PARA REALIZAR OS CÁLCULOS
 function calcular() {
+    document.querySelector('.resultado').classList.remove("resultado-decimal");             //Se a class resutado-decimal estiver inserida, será removida antes do calculo.
     if(numero) {                                                                            //Se houver algo em número.
         resultado = eval(numero);                                                           //O resultado será o cálculo das expressões que estiverem em número.
         if(Number.isInteger(resultado) === true) {                                          //Se o número recebido em resultado for um número inteiro.
             document.querySelector('.resultado').innerHTML = resultado;                     //Exibir o resultado no display.
-        } else {                                                                            //Se for um número real.
-            document.querySelector('.resultado').innerHTML = resultado.toFixed(6);          //Exibir o número com no máximo seis casas decimais.
+        } else {                                                                            //Se for um número decimal.
+            document.querySelector('.resultado').classList.add("resultado-decimal");        //Adiciona uma class para reduzir o tamanho da fonte.
+            document.querySelector('.resultado').innerHTML = resultado.toFixed(9);          //Exibir o número com no máximo seis casas decimais.
         }
     } else {                                                                                                                        //Se não houver nada inserido em número.
         document.querySelector('.resultado').innerHTML = "<div class='resultado insiraCalculo'>Insira um cálculo!</div>";           //Exibir texto informando.
