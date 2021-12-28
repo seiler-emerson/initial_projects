@@ -1,4 +1,4 @@
-# CTK485_Arduino_Mega ENGLISH TEXT
+# CTK485_Arduino_Mega
 
 <p>Olá pessoal, após algumas buscas encontrei a solução para ligar meu antigo CASIO CTK 485 ao Arduino Mega 2560.
 
@@ -8,7 +8,7 @@ Resolvi então buscar mais a fundo dentro do fórum do Arduino quando me deparei
 
 O primeiro passo que precisei fazer foi: desmontar, remover a solda do cabo flat que sai das teclas do meu teclado e ia para a placa mãe dele.</p>
  
-<img src="images/img1.jpeg" alt="Imagem 01" width="200px">
+<img src="images/img1.jpeg" alt="Imagem 01" width="200px" style="text-align: center">
 
 <p>Após isso, foi necessário mapear as teclas, as quais eu acreditava estarem mapeadas pelo manual de serviço do meu CASIO. Triste engano, a configuração das teclas estavam todas erradas, então, precisei pegar o multímetro na escala de diodos e testar cada tecla para descobrir qual combinação de fios correspondia as teclas acionadas.
 
