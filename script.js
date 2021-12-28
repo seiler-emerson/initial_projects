@@ -22,7 +22,7 @@ function calcular() {
             document.querySelector('.resultado').innerHTML = resultado;                     //Exibir o resultado no display.
         } else {                                                                            //Se for um número decimal.
             document.querySelector('.resultado').classList.add("resultado-decimal");        //Adiciona uma class para reduzir o tamanho da fonte.
-            document.querySelector('.resultado').innerHTML = resultado.toFixed(9);          //Exibir o número com no máximo seis casas decimais.
+            document.querySelector('.resultado').innerHTML = resultado.toFixed(9);          //Exibir o número com no máximo nove casas decimais.
         }
     } else {                                                                                                                        //Se não houver nada inserido em número.
         document.querySelector('.resultado').innerHTML = "<div class='resultado insiraCalculo'>Insira um cálculo!</div>";           //Exibir texto informando.
