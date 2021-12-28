@@ -1,11 +1,28 @@
 body{
     font-family: Arial, Helvetica, sans-serif;
+    
 }
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1c1e2c;
+}
+.container_calc {
+    width: 309px;
+    background-color: #323650;
+    border-radius: 10px;
+}
+
 .calculo {
     font-size: 20px;
     color: #FFFFFF;
     text-align: end;
     padding: 20px 20px 5px 5px;
+    height: 23px;
 }
 .resultado {
     display: flex;
@@ -14,12 +31,7 @@ body{
     font-size: 60px;
     color: #FFFFFF;
     padding: 0px 20px 10px 0px;
-
-}
-.container {
-    width: 309px;
-    height: 100%;
-    background-color: #323650;
+    height: 79px;
 }
 .container_buttons {
     display: grid;
@@ -36,16 +48,31 @@ body{
     color: #FFFFFF;
     font-weight: bold;
 }
+.button:hover {
+    background-color: #26293f;
+}
+.zero {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    grid-row-start: 5;
+    grid-row-end: 6;
+    width: 153px;
+}
 .igual {
-    background-color: #FF3664;
+    background-color: #c71841;
     height: 153px;
     grid-column-start: 4;
     grid-column-end: 5;
     grid-row-start: 4;
-    grid-row-end: 6;
-    
+    grid-row-end: 6; 
+}
+.igual:hover {
+    background-color: #c9002f;
 }
 .operadores {
     background-color: #4F556F;
     color: #FF3664;
+}
+.insiraCalculo{
+    font-size: 20px;
 }

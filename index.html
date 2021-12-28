@@ -9,28 +9,29 @@
 </head>
 <body>
     <div class="container">
-        <div class="calculo">17+12</div>
-        <div class="resultado">20</div>
-        <div class="container_buttons">
-            <div class="button operadores">C</div>
-            <div class="button operadores">%</div>
-            <div class="button operadores">/</div>
-            <div class="button operadores">x</div>
-            <div class="button">7</div>
-            <div class="button">8</div>
-            <div class="button">9</div>
-            <div class="button operadores">-</div>
-            <div class="button">4</div>
-            <div class="button">5</div>
-            <div class="button">6</div>
-            <div class="button operadores">+</div>
-            <div class="button">1</div>
-            <div class="button">2</div>
-            <div class="button">3</div>
-            <div class="button igual">=</div>
-            <div class="button">0</div>
-            <div class="button">.</div>
-            <div class="button">A</div>
+        <div class="container_calc">
+            <div class="calculo"></div>
+            <div class="resultado"></div>
+            <div class="container_buttons">
+                <div class="button operadores" onclick="eraseAll()">C</div>
+                <div class="button operadores" onclick="eraseLast()">&lt</div>
+                <div class="button operadores" onclick="insert('/')">/</div>
+                <div class="button operadores" onclick="insert('*')">x</div>
+                <div class="button" onclick="insert('7')">7</div>
+                <div class="button" onclick="insert('8')">8</div>
+                <div class="button" onclick="insert('9')">9</div>
+                <div class="button operadores" onclick="insert('-')">-</div>
+                <div class="button" onclick="insert('4')">4</div>
+                <div class="button" onclick="insert('5')">5</div>
+                <div class="button" onclick="insert('6')">6</div>
+                <div class="button operadores" onclick="insert('+')">+</div>
+                <div class="button" onclick="insert('1')">1</div>
+                <div class="button" onclick="insert('2')">2</div>
+                <div class="button" onclick="insert('3')">3</div>
+                <div class="button igual" onclick="calcular()">=</div>
+                <div class="button zero" onclick="insert('0')">0</div>
+                <div class="button" onclick="insert('.')">.</div>
+            </div>
         </div>
     </div>
 
