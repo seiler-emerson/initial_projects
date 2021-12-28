@@ -9,3 +9,6 @@
     <li>DIVISÃO</li>
 </ul>
 
+<img src="github/calculadora.gif" alt="Demonstração Calculadora">
+
+Entre em contato por <a href="linkedin.com/in/seileremerson/">aqui</a>!
