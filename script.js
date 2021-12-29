@@ -8,8 +8,12 @@ function insert(num) {
     if(resultado === '') {                                                         //Se o resultado estiver vazio.    
         numero = document.querySelector('.calculo').innerHTML;                     //Número inicia vazio.
         numero = document.querySelector('.calculo').innerHTML = numero+num;        //Número recebe o número anterior mais o número digitado.
-    } else {             //Se não
-        eraseAll();      //Chama a função limpar tudo
+    } else {                                                                       //Se não
+        //let resultado = document.querySelector('.resultado').innerHTML;               //Recebe o valor de resultado atualizado
+        //console.log(resultado)
+        //numero = document.querySelector('.calculo').innerHTML = resultado+num;       //Numero recebe o valor do resultado mais a expressão a ser calculada, possibilitando usar o número da memória (resultado anterior) no cálculo seguinte.
+        //console.log(numero)
+        eraseAll();
     }     
 }
 
