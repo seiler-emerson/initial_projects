@@ -19,7 +19,7 @@ function press() {
     //DIREITA BAIXO
     let rightBottom = document.querySelector('#right-bottom').value;                                    //Ler valor digitado
     let rightBottomNumber = parseInt(rightBottom)                                                       //Converter para number
-    document.querySelector('.box-radius').style.borderBottomRightRadius = `${rightBottomNumber}px`;     //Alterar CSS para border radius com valor digitado
+    document.querySelector(".box-radius").style.borderBottomRightRadius = `${rightBottomNumber}px`;     //Alterar CSS para border radius com valor digitado
     
     //Captura o tamanho do border-radius diretamente da tela, poderia ser usado o valor digitado também. 
     let sizeTopLeft = window.getComputedStyle(document.querySelector('.box-radius')).borderTopLeftRadius;
@@ -27,7 +27,8 @@ function press() {
     let sizeTopRight = window.getComputedStyle(document.querySelector('.box-radius')).borderTopRightRadius;
     let sizeBottomRight = window.getComputedStyle(document.querySelector('.box-radius')).borderBottomRightRadius;
     
-    document.querySelector('.css-text').innerHTML = `border-top-left-radius: ${sizeTopLeft} </br>border-bottom-left-radius: ${sizeBottomLeft}</br>border-top-right-radius: ${sizeTopRight}</br>border-bottom-right-radius: ${sizeBottomRight}`;              //Texto exibido na página.
+    document.querySelector('.css-text').innerHTML = `border-top-left-radius: ${sizeTopLeft}; </br>border-bottom-left-radius: ${sizeBottomLeft};</br>border-top-right-radius: ${sizeTopRight};</br>border-bottom-right-radius: ${sizeBottomRight};`;              //Texto exibido na página.
     
 };
 
+document.querySelectorAll
