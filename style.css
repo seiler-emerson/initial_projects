@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #272727;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.container-box {
+    width: 500px;
+    height: 400px;
+    background-color: #FFFFFF;
+}
+.pixel {
+    width: 100px;
+    height: 100px;
+    border: 1px solid black;
+}
+.pixel.write{
+    background-color: red;
+}
