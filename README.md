@@ -1,4 +1,4 @@
-# SEILER CALCULADORA
+# SEILER RETRO PAINTING
 
 <p>Esté é um projeto de uma lousa retro, no estilo dos celulares antigos onde era possível desenhar colorindo os pixels. </br>
 Contém as seguintes funcionalidades:</p>
