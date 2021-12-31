@@ -46,6 +46,7 @@ h1 {
     font-size: 15px;
     margin: 15px;
     border-radius: 10px;
+    cursor: pointer;
 }
 .button:hover {
     background-color: #FF3664;
