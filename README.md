@@ -12,3 +12,4 @@ Contém as seguintes funcionalidades:</p>
 <img src="github/retroPainting.gif" alt="Demonstração Calculadora">
 
 <p>Entre em contato por <a href="https://www.linkedin.com/in/seileremerson/" target="_blank">aqui</a>!</p>
+ 
