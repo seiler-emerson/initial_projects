@@ -97,6 +97,7 @@ function selectPomodoro() {
     document.querySelector('.container').style.backgroundColor = "var(--cor1)";      //Define a cor do container
     document.querySelector('.selected').style.backgroundColor = "var(--cor3)";       //Define a cor do menu selecionado
     document.querySelector(".start").style.backgroundColor = "var(--cor3)";          //Define a cor do botão Iniciar
+    document.querySelector(".pause").style.backgroundColor = "var(--cor3)";            //Define a cor do botão Pausar
     document.querySelector(".stop").style.backgroundColor = "var(--cor3)";           //Define a cor do botão Parar
     document.querySelector('.longBreak').style.removeProperty("background-color");   //Remove o fundo do menu Descanso Longo
     document.querySelector('.shortBreak').style.removeProperty("background-color");  //Remove o fundo do menu Descanso curto
@@ -112,9 +113,11 @@ function selectShortBreak() {
     document.querySelector('.container').style.backgroundColor = "var(--cor5)";       //Define a cor do container
     document.querySelector('.selected').style.backgroundColor = "var(--cor6)";        //Define a cor do menu selecionado
     document.querySelector(".start").style.backgroundColor = "var(--cor6)";           //Define a cor do botão Iniciar
+    document.querySelector(".pause").style.backgroundColor = "var(--cor6)";            //Define a cor do botão Pausar
     document.querySelector(".stop").style.backgroundColor = "var(--cor6)";            //Define a cor do botão Parar
     document.querySelector('.pomodoro').style.removeProperty("background-color");     //Remove o fundo do menu Pomodoro
     document.querySelector('.longBreak').style.removeProperty("background-color");    //Remove o fundo do menu Descanso longo
+    stopTimer()
 }
 
 function selectLongBreak() {
@@ -126,9 +129,11 @@ function selectLongBreak() {
     document.querySelector('.container').style.backgroundColor = "var(--cor5)";       //Define a cor do container
     document.querySelector('.selected').style.backgroundColor = "var(--cor6)";        //Define a cor do menu selecionado
     document.querySelector(".start").style.backgroundColor = "var(--cor6)";           //Define a cor do botão Iniciar
+    document.querySelector(".pause").style.backgroundColor = "var(--cor6)";            //Define a cor do botão Pausar
     document.querySelector(".stop").style.backgroundColor = "var(--cor6)";            //Define a cor do botão Parar
     document.querySelector('.pomodoro').style.removeProperty("background-color");     //Remove o fundo do menu Pomodoro
     document.querySelector('.shortBreak').style.removeProperty("background-color");   //Remove o fundo do menu Descanso longo
+    stopTimer()
 }
 
 
@@ -156,9 +161,43 @@ function playAudio() {
     audioElement.play();
 }
 
+//PAUSAR TIMER
+document.querySelector('.pause').addEventListener('click', pauseTimer);
+function pauseTimer() {
+    clearTimeout(timer);
+}
+
 //PARAR TIMER
 document.querySelector('.stop').addEventListener('click', stopTimer);
-
 function stopTimer() {
-    clearTimeout(timer)
+    clearTimeout(timer);
+
+    let pomodoro = document.querySelector('.pomodoro').classList.contains("selected");         //Verifica se o elemento contém uma classe "selected", caso positivo retorna true, caso contrário retorna false.
+    let shortBreak = document.querySelector('.shortBreak').classList.contains("selected");     //Verifica se o elemento contém uma classe "selected", caso positivo retorna true, caso contrário retorna false.
+    let longBreak = document.querySelector('.longBreak').classList.contains("selected");       //Verifica se o elemento contém uma classe "selected", caso positivo retorna true, caso contrário retorna false.
+
+    if(pomodoro === true) {
+        secondPomodoro = 60;                                                                   //Valor de 60 segundos referente a cada minuto. 
+        minuteSPomodoro = 1500;                                                                //Valor dos minutos referente ao total de minutos em segundos.
+        minutePomodoro = minuteSPomodoro/60;                                                   //Valor dos minutosS convertido para minutos
+
+        document.querySelector('#minute').innerHTML = "25";
+        document.querySelector('#second').innerHTML = "00";                         
+    } else if (shortBreak === true) {
+        secondShortBreak = 60;                                                                                  //Valor de 60 segundos referente a cada minuto. 
+        minuteSShortBreak = 300;                                                                                //Valor dos minutos referente ao total de minutos em segundos.
+        minuteShortBreak = minuteSShortBreak/60;                                                                //Valor dos minutosS convertido para minutos
+        
+        document.querySelector('#minute').innerHTML = "05";
+        document.querySelector('#second').innerHTML = "00";                       //Caso o elemento shortbreak contenha a classe selected, a função shortbreak será chamada.
+    } else if (longBreak === true) {
+        secondLongBreak = 60;                                                                                          //Valor de 60 segundos referente a cada minuto. 
+        minuteSLongBreak = 900;                                                                                        //Valor dos minutos referente ao total de minutos em segundos.
+        minuteLongBreak = minuteSLongBreak/60;                                                                         //Valor dos minutosS convertido para minutos
+        
+        document.querySelector('#minute').innerHTML = "15";
+        document.querySelector('#second').innerHTML = "00";                        //Caso o elemento longbreak contenha a classe selected, a função longbreak será chamada.
+    }
+
+    
 }
