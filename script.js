@@ -1,3 +1,5 @@
+var timer;                                                                                                  //Definindo váriavel timer
+
 //POMODORO
 let secondPomodoro = 60;                                                                                    //Valor de 60 segundos referente a cada minuto. 
 let minuteSPomodoro = 1500;                                                                                 //Valor dos minutos referente ao total de minutos em segundos.
@@ -146,58 +148,58 @@ document.querySelector('.start').addEventListener('click', ()=>{
     let longBreak = document.querySelector('.longBreak').classList.contains("selected");       //Verifica se o elemento contém uma classe "selected", caso positivo retorna true, caso contrário retorna false.
 
     if(pomodoro === true) {
+        pauseTimer()                        //Para qualquer timer rodando antes de iniciar a contagem.
         Pomodoro();                         //Caso o elemento pomodoro contenha a classe selected, a função pomodoro será chamada.
     } else if (shortBreak === true) {
+        pauseTimer()                        //Para qualquer timer rodando antes de iniciar a contagem.
         shortbreak();                       //Caso o elemento shortbreak contenha a classe selected, a função shortbreak será chamada.
     } else if (longBreak === true) {
+        pauseTimer()                        //Para qualquer timer rodando antes de iniciar a contagem.
         longbreak();                        //Caso o elemento longbreak contenha a classe selected, a função longbreak será chamada.
     }
 });
 
 //FUNÇÃO PARA TOCAR O AUDIO DE CAMPAINHA
 function playAudio() {
-    let audioElement = document.querySelector('audio');
-    audioElement.currentTime = 0;
-    audioElement.play();
+    let audioElement = document.querySelector('audio');                                     //A variavel audioElement recebe o conteudo do item audio
+    audioElement.currentTime = 0;                                                           //Antes de ser iniciado o player é zerado
+    audioElement.play();                                                                    //O audio é iniciado
 }
 
 //PAUSAR TIMER
-document.querySelector('.pause').addEventListener('click', pauseTimer);
-function pauseTimer() {
-    clearTimeout(timer);
+document.querySelector('.pause').addEventListener('click', pauseTimer);                    //Evento de click adicionado ao botão pause
+function pauseTimer() {                                                                    //Função criada
+    clearTimeout(timer);                                                                   //clearTimeout para pausar o settimeout
 }
 
 //PARAR TIMER
-document.querySelector('.stop').addEventListener('click', stopTimer);
-function stopTimer() {
-    clearTimeout(timer);
+document.querySelector('.stop').addEventListener('click', stopTimer);                      //Evento de click adicionado ao botão pause
+function stopTimer() {                                                                     //Função criada
+    clearTimeout(timer);                                                                   //clearTimeout para pausar o settimeout
 
     let pomodoro = document.querySelector('.pomodoro').classList.contains("selected");         //Verifica se o elemento contém uma classe "selected", caso positivo retorna true, caso contrário retorna false.
     let shortBreak = document.querySelector('.shortBreak').classList.contains("selected");     //Verifica se o elemento contém uma classe "selected", caso positivo retorna true, caso contrário retorna false.
     let longBreak = document.querySelector('.longBreak').classList.contains("selected");       //Verifica se o elemento contém uma classe "selected", caso positivo retorna true, caso contrário retorna false.
 
-    if(pomodoro === true) {
-        secondPomodoro = 60;                                                                   //Valor de 60 segundos referente a cada minuto. 
-        minuteSPomodoro = 1500;                                                                //Valor dos minutos referente ao total de minutos em segundos.
-        minutePomodoro = minuteSPomodoro/60;                                                   //Valor dos minutosS convertido para minutos
+    if(pomodoro === true) {                                                                    //Se o menu pomodoro estiver selecionado
+        secondPomodoro = 60;                                                                   //A variavel recebe o valor de 60 segundos referente a cada minuto. 
+        minuteSPomodoro = 1500;                                                                //A variavel recebe o valor dos minutos referente ao total de minutos em segundos.
+        minutePomodoro = minuteSPomodoro/60;                                                   //A variavel recebe o valor dos minutosS convertido para minutos
+        document.querySelector('#minute').innerHTML = "25";                                    //O minuto visivel é alterado para 25 
+        document.querySelector('#second').innerHTML = "00";                                    //O segundo visivel é alterado para 00   
 
-        document.querySelector('#minute').innerHTML = "25";
-        document.querySelector('#second').innerHTML = "00";                         
-    } else if (shortBreak === true) {
-        secondShortBreak = 60;                                                                                  //Valor de 60 segundos referente a cada minuto. 
-        minuteSShortBreak = 300;                                                                                //Valor dos minutos referente ao total de minutos em segundos.
-        minuteShortBreak = minuteSShortBreak/60;                                                                //Valor dos minutosS convertido para minutos
-        
-        document.querySelector('#minute').innerHTML = "05";
-        document.querySelector('#second').innerHTML = "00";                       //Caso o elemento shortbreak contenha a classe selected, a função shortbreak será chamada.
-    } else if (longBreak === true) {
-        secondLongBreak = 60;                                                                                          //Valor de 60 segundos referente a cada minuto. 
-        minuteSLongBreak = 900;                                                                                        //Valor dos minutos referente ao total de minutos em segundos.
-        minuteLongBreak = minuteSLongBreak/60;                                                                         //Valor dos minutosS convertido para minutos
-        
-        document.querySelector('#minute').innerHTML = "15";
-        document.querySelector('#second').innerHTML = "00";                        //Caso o elemento longbreak contenha a classe selected, a função longbreak será chamada.
-    }
-
+    } else if (shortBreak === true) {                                                          //Se o menu Descanso curto estiver selecionado
+        secondShortBreak = 60;                                                                 //A variavel recebe o valor de 60 segundos referente a cada minuto. 
+        minuteSShortBreak = 300;                                                               //A variavel recebe o valor dos minutos referente ao total de minutos em segundos.
+        minuteShortBreak = minuteSShortBreak/60;                                               //A variavel recebe o valor dos minutosS convertido para minutos
+        document.querySelector('#minute').innerHTML = "05";                                    //O minuto visivel é alterado para 05
+        document.querySelector('#second').innerHTML = "00";                                    //O segundo visivel é alterado para 00             
     
+    } else if (longBreak === true) {                                                          //Se o menu Descanso longo estiver selecionado
+        secondLongBreak = 60;                                                                 //A variavel recebe o valor de 60 segundos referente a cada minuto. 
+        minuteSLongBreak = 900;                                                               //A variavel recebe o valor dos minutos referente ao total de minutos em segundos.
+        minuteLongBreak = minuteSLongBreak/60;                                                //A variavel recebe o valor dos minutosS convertido para minutos   
+        document.querySelector('#minute').innerHTML = "15";                                   //O minuto visivel é alterado para 15
+        document.querySelector('#second').innerHTML = "00";                                   //O segundo visivel é alterado para 00                      
+    }    
 }
