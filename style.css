@@ -9,6 +9,7 @@
     --cor5:#63A6A6;
     --cor6:#8FBFBF;
     --cor7:#3C3C3C;
+    --cor8:#3a3a3a;
   }
 
 * {
@@ -47,6 +48,7 @@ body {
 .menu-item.selected {
     background-color: var(--cor3);
 }
+
 .timer {
     display: flex;
     flex-direction: row;
