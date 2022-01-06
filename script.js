@@ -8,7 +8,7 @@ let minutePomodoro = minuteSPomodoro/60;                                        
 function Pomodoro() {
 
     document.querySelector('#minute').innerHTML = fixZero(Math.floor(minutePomodoro));                      //Exibição do minuto atual na tela com arredondamento para baixo, para quando chegar no 59 ser reduzido 1 minuto
-    timer = setTimeout(()=>{                                                                                        //Timer de 1 segundo
+    timer = setInterval(()=>{                                                                                        //Timer de 1 segundo
         document.querySelector('#second').innerHTML = fixZero(secondPomodoro-1);                            //Exibição do segundo atual na tela -1 segundo, para exibir de 0 a 59 segundos
         secondPomodoro--;                                                                                   //Decremento dos segundos
         minuteSPomodoro--;                                                                                  //Decremento dos segundos da variavel minuteS
@@ -25,24 +25,25 @@ function Pomodoro() {
     }, 1000);
 }
 
+
+
 //Short Break
 let secondShortBreak = 60;                                                                                  //Valor de 60 segundos referente a cada minuto. 
-let minuteSShortBreak = 300;                                                                                //Valor dos minutos referente ao total de minutos em segundos.
+let minuteSShortBreak = 298;                                                                                //Valor dos minutos referente ao total de minutos em segundos.
 let minuteShortBreak = minuteSShortBreak/60;                                                                //Valor dos minutosS convertido para minutos
 
 function shortbreak() {
-
-    document.querySelector('#minute').innerHTML = fixZero(Math.floor(minuteShortBreak));                           //Exibição do minuto atual na tela com arredondamento para baixo, para quando chegar no 59 ser reduzido 1 minuto
-    timer = setTimeout(()=>{                                                                                               //Timer de 1 segundo
-        document.querySelector('#second').innerHTML = fixZero(secondShortBreak-1);                                 //Exibição do segundo atual na tela -1 segundo, para exibir de 0 a 59 segundos
+    
+    
+    timer = setInterval(()=>{                                                                                               //Timer de 1 segundo
+        
+        document.querySelector('#second').innerHTML = fixZero(secondShortBreak);                                 //Exibição do segundo atual na tela -1 segundo, para exibir de 0 a 59 segundos
+        document.querySelector('#minute').innerHTML = fixZero(Math.floor(minuteShortBreak));
         secondShortBreak--;                                                                                        //Decremento dos segundos
         minuteSShortBreak--;                                                                                       //Decremento dos segundos da variavel minuteS
         minuteShortBreak = minuteSShortBreak/60;                                                                   //Conversão da variável minuteS para minutos
-        if(secondShortBreak < 60 && secondShortBreak > 0 && minuteSShortBreak < 1500 && minuteSShortBreak > 0) {   //Se os segundos forem menor que 60 e maior que 0 | E os minutos menores que 120 e maiores que 0
-            shortbreak();                                                                                          //Rodar a função timer novamente
-        } else if(secondShortBreak <= 0 && minuteSShortBreak < 1500 && minuteSShortBreak > 0){                     //Se os segundos forem menor ou igual a 0 | E os minutos menores que 120 e maiores que 0                                 
-            secondShortBreak = 60;                                                                                 //Reiniciar os segundos em 60
-            shortbreak();                                                                                          //E rodar a função timer novamente
+        if(secondShortBreak <= 0 && minuteSShortBreak < 1500 && minuteSShortBreak > 0){                     //Se os segundos forem menor ou igual a 0 | E os minutos menores que 120 e maiores que 0                                 
+            secondShortBreak = 60;                                                                                 //Reiniciar os segundos em 60                                                                                             //E rodar a função timer novamente
         } else if (secondShortBreak <= 0 && minuteSShortBreak <= 0) {                                              //Se os segundos forem menor ou igual a 0 | E o minuto menor ou igual a 0 
             playAudio();                                                                                           //Tocar o audio de campainha
             selectPomodoro()                                                                                       //Finaliza o timer e chama a função para pomodoro
@@ -58,7 +59,7 @@ let minuteLongBreak = minuteSLongBreak/60;                                      
 function longbreak() {
 
     document.querySelector('#minute').innerHTML = fixZero(Math.floor(minuteLongBreak));                            //Exibição do minuto atual na tela com arredondamento para baixo, para quando chegar no 59 ser reduzido 1 minuto
-    timer = setTimeout(()=>{                                                                                               //Timer de 1 segundo
+    timer = setInterval(()=>{                                                                                               //Timer de 1 segundo
         document.querySelector('#second').innerHTML = fixZero(secondLongBreak-1);                                  //Exibição do segundo atual na tela -1 segundo, para exibir de 0 a 59 segundos
         secondLongBreak--;                                                                                         //Decremento dos segundos
         minuteSLongBreak--;                                                                                        //Decremento dos segundos da variavel minuteS
