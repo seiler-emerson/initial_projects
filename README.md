@@ -11,7 +11,7 @@ Possui as seguintes funcionalidades:</p>
     <li>Geração do código CSS para replicação</li>
 </ul>
 
-<h3>TESTE <a href="https://seileremerson.github.io/calculadora/">AQUI</a></h3>
+<h3>TESTE <a href="https://seileremerson.github.io/border_radius_generator/">AQUI</a></h3>
 <img src="github/borderRadiusGenerator.gif" alt="Demonstração Calculadora">
 
 <p>Entre em contato por <a href="https://www.linkedin.com/in/seileremerson/" target="_blank">aqui</a>!</p>
