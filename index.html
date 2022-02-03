@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Gerenciador de Anúncios</title>
+</head>
+<body>
+    <section class="menu-bar">
+        <h1 class="logo">LOGO</h1>
+        <nav>
+            <p class="menu-item" onClick="Display.dashboard()" id="active-menu" >Dashboard</p>
+            <p onClick="Display.client()" >Clientes</p>
+            <p onClick="Display.announcement()" >Anúncios</p>
+            <p onClick="Display.report()" >Relatório</p>
+        </nav>
+    </section>
+
+    <main>
+        <section id="dashboard">
+            <div class="title-page">
+                <h1>DASHBOARD</h1>
+            </div>
+            <div class="box-info">
+                <div class="box-dashboard total">
+                    <h2>Total Geral</h2>
+                    <p>R$ 362.120,00</p>
+                </div>
+                <div class="box-dashboard view">
+                    <h2>Visualizações</h2>
+                    <p>28.254.268</p>
+                </div>
+                <div class="box-dashboard clicks">
+                    <h2>Cliques</h2>
+                    <p>8.254.268</p>
+                </div>
+                <div class="box-dashboard share">
+                    <h2>Total Geral</h2>
+                    <p>510.268</p>
+                </div>
+            </div>
+
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Anúncio</th>
+                        <th>Total Investido</th>
+                        <th>Visualizações</th>
+                        <th>Cliques</th>
+                        <th>Compartilhamentos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                    </tr>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                    </tr>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                    </tr>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                    </tr>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>      
+
+        <section id="client">
+            <div class="title-page">
+                <h1>CLIENTES</h1>
+                <button onclick="Display.clientRegister()" class="positive">Novo Cliente</button>
+            </div>
+
+            <table id="data-client">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Telefone</th>
+                        <th>E-mail</th>
+                        <th>País</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Capgemini</td>
+                        <td>+55 47 2222-5454</td>
+                        <td>capgemini@capgemini.com.br</td>
+                        <td>França</td>
+                        <td><h2>x</h2></td>
+                    </tr>
+                    <tr>
+                        <td>Proway</td>
+                        <td>+55 47 3333-5656</td>
+                        <td>proway@proway.com.br</td>
+                        <td>Brasil</td>
+                        <td><h2>x</h2></td>
+                    </tr>
+                    <tr>
+                        <td>Capgemini</td>
+                        <td>+55 47 2222-5454</td>
+                        <td>capgemini@capgemini.com.br</td>
+                        <td>França</td>
+                        <td><h2>x</h2></td>
+                    </tr>
+                    <tr>
+                        <td>Proway</td>
+                        <td>+55 47 3333-5656</td>
+                        <td>proway@proway.com.br</td>
+                        <td>Brasil</td>
+                        <td><h2>x</h2></td>
+                    </tr>
+                    <tr>
+                        <td>Capgemini</td>
+                        <td>+55 47 2222-5454</td>
+                        <td>capgemini@capgemini.com.br</td>
+                        <td>França</td>
+                        <td><h2>x</h2></td>
+                    </tr>
+                    <tr>
+                        <td>Proway</td>
+                        <td>+55 47 3333-5656</td>
+                        <td>proway@proway.com.br</td>
+                        <td>Brasil</td>
+                        <td><h2>x</h2></td>
+                    </tr>
+                    
+       
+                </tbody>
+            </table>
+        </section>
+
+        <section id="client-register">
+            <div class="title-page">
+                <h1>Cadastrar Cliente</h1>
+            </div>
+            <div class="container-client">
+                <form class="data-form" action="">
+                    <h3>Nome</h3>
+                    <input type="text" name="client-name" id="clent-name" placeholder="Nome do cliente">
+                    <h3>Telefone</h3>
+                    <input type="number" name="client-phone" id="client-phone" placeholder="554712341234">
+                    <span>Digite apenas números.</span>
+                    <h3>E-mail</h3>
+                    <input type="email" name="email" id="email" placeholder="email@email.com">
+                    <h3>País</h3>
+                    <input type="text" name="client-country" id="client-country" placeholder="Brasil">
+                </form>
+                <br>
+                <div class="buttons-div">
+                    <button class="negative">Cancelar</button>
+                    <button class="positive">Salvar</button>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="announcement">
+            <div class="title-page">
+                <h1>ANÚNCIOS</h1>
+                <button onclick="Display.displayAnnouncementRegister()" class="positive">Novo Anúncio</button>
+            </div>
+
+            <table id="data-announcement">
+                <thead>
+                    <tr>
+                        <th>Anúncio</th>
+                        <th>Total Investido</th>
+                        <th>Visualizações</th>
+                        <th>Cliques</th>
+                        <th>Compartilhamentos</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                        <td><h2 onclick="Display.displayAnnouncementView()">x</h2></td>
+                    </tr>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                        <td><h2>x</h2></td>
+                    </tr>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                        <td><h2>x</h2></td>
+                    </tr>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                        <td><h2>x</h2></td>
+                    </tr>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                        <td><h2>x</h2></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="announcement-view">
+            <div class="box-info">
+                <div class="box-dashboard total">
+                    <h2>Investimento</h2>
+                    <p>R$ 362.120,00</p>
+                </div>
+                <div class="box-dashboard view">
+                    <h2>Visualizações</h2>
+                    <p>28.254.268</p>
+                </div>
+                <div class="box-dashboard clicks">
+                    <h2>Cliques</h2>
+                    <p>8.254.268</p>
+                </div>
+                <div class="box-dashboard share">
+                    <h2>Total Geral</h2>
+                    <p>510.268</p>
+                </div>
+            </div>
+
+            <table id="data-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Cliente</th>
+                        <th>Data Início</th>
+                        <th>Data Término</th>
+                        <th>Investimento</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>Capgemini</td>
+                        <td>01/01/2022</td>
+                        <td>20/02/2022</td>
+                        <td>R$ 1530,00</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+
+            <div class="buttons-div">
+                <button class="negative">Excluir</button>
+                <button class="positive">Editar</button>
+            </div>
+            
+            
+        </section> 
+
+        <section id="announcement-register">
+            <div class="title-page">
+                <h1>Cadastrar Anúncio</h1>
+            </div>
+            <div class="container-client">
+                <form class="data-form" action="">
+                    <h3>Nome</h3>
+                    <input type="text" name="client-name" id="announcement-name" placeholder="Nome do anúncio">
+                    <h3>Cliente</h3>
+                    <input type="text" name="client-name" id="clent-announcement" placeholder="Nome do cliente">
+                    <h3>Data de Início</h3>
+                    <input type="date" name="date-start" id="date-start">
+                    <h3>Data de Término</h3>
+                    <input type="date" name="date-end" id="date-end">
+                    <h3>Investimento</h3>
+                    <input type="text" name="client-country" id="client-country" placeholder="500">
+                    <span>Digite apenas números.</span>
+                </form>
+                <br>
+                <div class="buttons-div">
+                    <button class="negative">Cancelar</button>
+                    <button class="positive">Salvar</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="report">
+            <div class="title-page">
+                <h1>ANÚNCIOS</h1>
+                <button class="positive">Imprimir</button>
+            </div>
+
+            <table id="data-report">
+                <thead>
+                    <tr>
+                        <th>Anúncio</th>
+                        <th>Total Investido</th>
+                        <th>Visualizações</th>
+                        <th>Cliques</th>
+                        <th>Compartilhamentos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                    </tr>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                    </tr>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                    </tr>
+                    <tr>
+                        <td>Campanha XYZ</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                    </tr>
+                    <tr class="total-report">
+                        <td>TOTAL</td>
+                        <td>R$ 50.254.548,00</td>
+                        <td>352.524.854</td>
+                        <td>589.542</td>
+                        <td>597.587</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
