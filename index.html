@@ -164,19 +164,19 @@
             <div class="container-client">
                 <form class="data-form" action="">
                     <h3>Nome</h3>
-                    <input type="text" name="client-name" id="clent-name" placeholder="Nome do cliente">
+                    <input type="text" name="client-name" id="client-name" placeholder="Nome do cliente">
                     <h3>Telefone</h3>
                     <input type="number" name="client-phone" id="client-phone" placeholder="554712341234">
                     <span>Digite apenas números.</span>
                     <h3>E-mail</h3>
-                    <input type="email" name="email" id="email" placeholder="email@email.com">
+                    <input type="email" name="email" id="client-email" placeholder="email@email.com">
                     <h3>País</h3>
                     <input type="text" name="client-country" id="client-country" placeholder="Brasil">
                 </form>
                 <br>
                 <div class="buttons-div">
-                    <button class="negative">Cancelar</button>
-                    <button class="positive">Salvar</button>
+                    <button onclick="Display.cancelCreateClient()" class="negative">Cancelar</button>
+                    <button type="submit" class="positive">Salvar</button>
                 </div>
             </div>
 
@@ -314,7 +314,7 @@
                 </form>
                 <br>
                 <div class="buttons-div">
-                    <button class="negative">Cancelar</button>
+                    <button onclick="Display.cancelCreateAnnouncement()" class="negative">Cancelar</button>
                     <button class="positive">Salvar</button>
                 </div>
             </div>
