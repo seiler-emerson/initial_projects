@@ -28,11 +28,11 @@ body {
 
 #dashboard,
 #client,
-#announcement,
+#ads,
 #report,
 #client-register,
-#announcement-register,
-#announcement-view {
+#ads-register,
+#ads-view {
     flex-direction: column;
     align-items: center;
     width: calc(100vw - 220px);
@@ -92,8 +92,6 @@ button.negative:hover {
     background-color: var(--blue);
     display: flex;
     flex-direction: column;
-
-    
 }
 
 .logo {
@@ -102,7 +100,7 @@ button.negative:hover {
     text-align: center;
 }
 
-/* Menu que está clicado */
+/* Menu que está selecionado */
 #active-menu {
     color: var(--blue);
     background-color: var(--white);
@@ -176,30 +174,30 @@ nav p:hover {
 }
 
 #client-register {
-    display: flex;
+    display: none;
 }
 
 
 
 /* ================================= ANÚNCIOS ================================= */
-#announcement {
+#ads {
     display: none;
 }
 
 /* === TELA REGISTRO ANÚNCIO === */
-#announcement-register {
+#ads-register {
     display: none;
 }
 
 /* === TELA VISUALIZAÇÃO DE ANÚNCIO INDIVIDUAL === */
-#announcement-view {
+#ads-view {
     display: none;
 }
 
-#announcement-view .box-info {
+#ads-view .box-info {
     margin-top: 50px;
 }
-#announcement-view .buttons-div {
+#ads-view .buttons-div {
     width: 90%;
     max-width: 840px;
     margin-top: 20px;
@@ -219,9 +217,9 @@ nav p:hover {
 
 /* === GERAL === */
 
-#data-table,
+#data-dashboard,
 #data-client,
-#data-announcement,
+#data-ads,
 #data-report {
     width: 90%;
     max-width: 840px;

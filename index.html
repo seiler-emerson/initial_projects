@@ -11,10 +11,10 @@
     <section class="menu-bar">
         <h1 class="logo">LOGO</h1>
         <nav>
-            <p class="menu-item" onClick="Display.dashboard()" id="active-menu" >Dashboard</p>
-            <p onClick="Display.client()" >Clientes</p>
-            <p onClick="Display.announcement()" >Anúncios</p>
-            <p onClick="Display.report()" >Relatório</p>
+            <p class="menu-item" onClick="Display.dashboard(), SelectedMenu.dashboard()" class="dashboard-menu" >Dashboard</p>
+            <p onClick="Display.client(), SelectedMenu.client()" class="client-menu">Clientes</p>
+            <p onClick="Display.ads(), SelectedMenu.ads()" class="ads-menu">Anúncios</p>
+            <p onClick="Display.report(), SelectedMenu.report()" class="report-menu" ">Relatório</p>
         </nav>
     </section>
 
@@ -42,52 +42,20 @@
                 </div>
             </div>
 
-            <table id="data-table">
+            <table id="data-dashboard">
                 <thead>
                     <tr>
                         <th>Anúncio</th>
+                        <th>Cliente</th>
                         <th>Total Investido</th>
                         <th>Visualizações</th>
                         <th>Cliques</th>
                         <th>Compartilhamentos</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                    </tr>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                    </tr>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                    </tr>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                    </tr>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </section>      
@@ -108,51 +76,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Capgemini</td>
-                        <td>+55 47 2222-5454</td>
-                        <td>capgemini@capgemini.com.br</td>
-                        <td>França</td>
-                        <td><h2>x</h2></td>
-                    </tr>
-                    <tr>
-                        <td>Proway</td>
-                        <td>+55 47 3333-5656</td>
-                        <td>proway@proway.com.br</td>
-                        <td>Brasil</td>
-                        <td><h2>x</h2></td>
-                    </tr>
-                    <tr>
-                        <td>Capgemini</td>
-                        <td>+55 47 2222-5454</td>
-                        <td>capgemini@capgemini.com.br</td>
-                        <td>França</td>
-                        <td><h2>x</h2></td>
-                    </tr>
-                    <tr>
-                        <td>Proway</td>
-                        <td>+55 47 3333-5656</td>
-                        <td>proway@proway.com.br</td>
-                        <td>Brasil</td>
-                        <td><h2>x</h2></td>
-                    </tr>
-                    <tr>
-                        <td>Capgemini</td>
-                        <td>+55 47 2222-5454</td>
-                        <td>capgemini@capgemini.com.br</td>
-                        <td>França</td>
-                        <td><h2>x</h2></td>
-                    </tr>
-                    <tr>
-                        <td>Proway</td>
-                        <td>+55 47 3333-5656</td>
-                        <td>proway@proway.com.br</td>
-                        <td>Brasil</td>
-                        <td><h2>x</h2></td>
-                    </tr>
-                    
-       
+                <tbody>              
                 </tbody>
             </table>
         </section>
@@ -182,16 +106,17 @@
 
         </section>
 
-        <section id="announcement">
+        <section id="ads">
             <div class="title-page">
                 <h1>ANÚNCIOS</h1>
-                <button onclick="Display.displayAnnouncementRegister()" class="positive">Novo Anúncio</button>
+                <button onclick="Display.displayAdsRegister()" class="positive">Novo Anúncio</button>
             </div>
 
-            <table id="data-announcement">
+            <table id="data-ads">       
                 <thead>
                     <tr>
                         <th>Anúncio</th>
+                        <th>Cliente</th>
                         <th>Total Investido</th>
                         <th>Visualizações</th>
                         <th>Cliques</th>
@@ -200,51 +125,11 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                        <td><h2 onclick="Display.displayAnnouncementView()">x</h2></td>
-                    </tr>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                        <td><h2>x</h2></td>
-                    </tr>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                        <td><h2>x</h2></td>
-                    </tr>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                        <td><h2>x</h2></td>
-                    </tr>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                        <td><h2>x</h2></td>
-                    </tr>
                 </tbody>
             </table>
         </section>
 
-        <section id="announcement-view">
+        <section id="ads-view">
             <div class="box-info">
                 <div class="box-dashboard total">
                     <h2>Investimento</h2>
@@ -294,16 +179,16 @@
             
         </section> 
 
-        <section id="announcement-register">
+        <section id="ads-register">
             <div class="title-page">
                 <h1>Cadastrar Anúncio</h1>
             </div>
             <div class="container-client">
                 <form class="data-form" action="">
                     <h3>Nome</h3>
-                    <input type="text" name="client-name" id="announcement-name" placeholder="Nome do anúncio">
+                    <input type="text" name="client-name" id="ads-name" placeholder="Nome do anúncio">
                     <h3>Cliente</h3>
-                    <input type="text" name="client-name" id="clent-announcement" placeholder="Nome do cliente">
+                    <input type="text" name="client-name" id="clent-ads" placeholder="Nome do cliente">
                     <h3>Data de Início</h3>
                     <input type="date" name="date-start" id="date-start">
                     <h3>Data de Término</h3>
@@ -314,7 +199,7 @@
                 </form>
                 <br>
                 <div class="buttons-div">
-                    <button onclick="Display.cancelCreateAnnouncement()" class="negative">Cancelar</button>
+                    <button onclick="Display.cancelCreateAds()" class="negative">Cancelar</button>
                     <button class="positive">Salvar</button>
                 </div>
             </div>
@@ -330,49 +215,26 @@
                 <thead>
                     <tr>
                         <th>Anúncio</th>
+                        <th>Cliente</th>
                         <th>Total Investido</th>
                         <th>Visualizações</th>
                         <th>Cliques</th>
                         <th>Compartilhamentos</th>
+                        th
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                    </tr>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                    </tr>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                    </tr>
-                    <tr>
-                        <td>Campanha XYZ</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                    </tr>
-                    <tr class="total-report">
-                        <td>TOTAL</td>
-                        <td>R$ 50.254.548,00</td>
-                        <td>352.524.854</td>
-                        <td>589.542</td>
-                        <td>597.587</td>
-                    </tr>
+
                 </tbody>
+                <tr>
+                    <td>TOTAL</td>
+                    <td></td>
+                    <td>R$ 50.254.548,00</td>
+                    <td>352.524.854</td>
+                    <td>589.542</td>
+                    <td>597.587</td>
+                    <td></td>
+                </tr>
             </table>
         </section>
     </main>
