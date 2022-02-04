@@ -27,10 +27,8 @@ body {
 /* === DIMENSÃO DAS PÁGINAS === */
 
 #dashboard,
-#client,
 #ads,
 #report,
-#client-register,
 #ads-register,
 #ads-view {
     flex-direction: column;
@@ -130,7 +128,7 @@ nav p:hover {
 /* ================================= DASHBOARD ================================= */
 
 #dashboard {
-    display: none;
+    display: flex;
 }
 
 .box-info {
@@ -167,18 +165,6 @@ nav p:hover {
 
 
 
-
-/* ================================= CLIENTES ================================= */
-#client {
-    display: none;
-}
-
-#client-register {
-    display: none;
-}
-
-
-
 /* ================================= ANÚNCIOS ================================= */
 #ads {
     display: none;
@@ -186,7 +172,7 @@ nav p:hover {
 
 /* === TELA REGISTRO ANÚNCIO === */
 #ads-register {
-    display: flex;
+    display: none;
 }
 
 /* === TELA VISUALIZAÇÃO DE ANÚNCIO INDIVIDUAL === */
@@ -218,7 +204,6 @@ nav p:hover {
 /* === GERAL === */
 
 #data-dashboard,
-#data-client,
 #data-ads,
 #data-report {
     width: 90%;
@@ -280,11 +265,11 @@ table td{
     border-radius: 5px;
     border: none;
 }
-.data-client {
+/* .data-client {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
-}
+} */
 
 span {
     font-size: 12px;

@@ -3,8 +3,6 @@
 // ============================== VÁRIAVEIS RESPONSÁVEIS PELAS TELAS ==============================
 const GetDisplay = {
     displayDashboard: document.querySelector('#dashboard'),
-    displayClient: document.querySelector('#client'),
-    displayClientRegister: document.querySelector('#client-register'),
     displayAds: document.querySelector('#ads'),
     displayAdsRegister: document.querySelector('#ads-register'),
     displayAdsView: document.querySelector('#ads-view'),
@@ -15,70 +13,38 @@ const GetDisplay = {
 const Display = {
     dashboard() { 
         GetDisplay.displayDashboard.style.display = "flex";
-        GetDisplay.displayClient.style.display = "none";
         GetDisplay.displayAds.style.display = "none";
         GetDisplay.displayReport.style.display = "none";
-        GetDisplay.displayClientRegister.style.display = "none";
         GetDisplay.displayAdsRegister.style.display = "none";
         GetDisplay.displayAds.style.display = "none";
-    },
-    client() { 
-        GetDisplay.displayClient.style.display = "flex";
-        GetDisplay.displayDashboard.style.display = "none";
-        GetDisplay.displayAds.style.display = "none";
-        GetDisplay.displayReport.style.display = "none";
-        GetDisplay.displayClientRegister.style.display = "none";
-        GetDisplay.displayAdsRegister.style.display = "none";
-        GetDisplay.displayAdsView.style.display = "none";
     },
     ads() { 
         GetDisplay.displayAds.style.display = "flex";
         GetDisplay.displayDashboard.style.display = "none";
-        GetDisplay.displayClient.style.display = "none";
         GetDisplay.displayReport.style.display = "none";
-        GetDisplay.displayClientRegister.style.display = "none";
         GetDisplay.displayAdsRegister.style.display = "none";
         GetDisplay.displayAdsView.style.display = "none";
     },
     report() { 
         GetDisplay.displayReport.style.display = "flex";
         GetDisplay.displayDashboard.style.display = "none";
-        GetDisplay.displayClient.style.display = "none";
-        GetDisplay.displayAds.style.display = "none";
-        GetDisplay.displayClientRegister.style.display = "none";
-        GetDisplay.displayAdsRegister.style.display = "none";
-        GetDisplay.displayAdsView.style.display = "none";
-    },
-    clientRegister() {
-        GetDisplay.displayClientRegister.style.display = "flex";
-        GetDisplay.displayReport.style.display = "none";
-        GetDisplay.displayDashboard.style.display = "none";
-        GetDisplay.displayClient.style.display = "none";
         GetDisplay.displayAds.style.display = "none";
         GetDisplay.displayAdsRegister.style.display = "none";
         GetDisplay.displayAdsView.style.display = "none";
     },
     displayAdsRegister() {
         GetDisplay.displayAdsRegister.style.display = "flex";
-        GetDisplay.displayClientRegister.style.display = "none";
         GetDisplay.displayReport.style.display = "none";
         GetDisplay.displayDashboard.style.display = "none";
-        GetDisplay.displayClient.style.display = "none";
         GetDisplay.displayAds.style.display = "none";
         GetDisplay.displayAdsView.style.display = "none";
     },
     displayAdsView() {
         GetDisplay.displayAdsView.style.display = "flex";
         GetDisplay.displayAdsRegister.style.display = "none";
-        GetDisplay.displayClientRegister.style.display = "none";
         GetDisplay.displayReport.style.display = "none";
         GetDisplay.displayDashboard.style.display = "none";
-        GetDisplay.displayClient.style.display = "none";
         GetDisplay.displayAds.style.display = "none";
-    },
-    cancelCreateClient() {
-        GetDisplay.displayClientRegister.style.display = "none";
-        GetDisplay.displayClient.style.display = "flex";
     },
     cancelCreateAds() {
         GetDisplay.displayAdsRegister.style.display = "none";
@@ -129,41 +95,6 @@ const Display = {
 // ============================== FUNÇÕES RESPONSÁVEIS PELAS CAMPANHAS e Clientes ==============================
 
 const Campaigns = {
-
-    // ============================== LISTA DE CLIENTES CADASTRADOS ==============================
-    allClients: [  //Array onde será armazenado os dados do input de cadastro de clientes
-        {
-            clientName: "Emerson",
-            clientPhone: 5547999799017,
-            clientEmail: "seiler.emerson@gmail.com",
-            clientCountry: "Brasil"
-        },
-        {
-            clientName: "Mayara",
-            clientPhone: 5547996528676,
-            clientEmail: "mayara@gmail.com",
-            clientCountry: "Estados Unidos"
-        },
-        {
-            clientName: "Evina",
-            clientPhone: 5541996528784,
-            clientEmail: "evina@gmail.com",
-            clientCountry: "Portugal"
-        },
-        {
-            clientName: "Evina",
-            clientPhone: 5541996528784,
-            clientEmail: "evina@gmail.com",
-            clientCountry: "Portugal"
-        },
-        {
-            clientName: "Evina",
-            clientPhone: 5541996528784,
-            clientEmail: "evina@gmail.com",
-            clientCountry: "Portugal"
-        },
-    ],
-
     // ============================== LISTA DE ANÚNCIOS CADASTRADOS ==============================
     allAds: [  //Array onde será armazenado os dados do input de cadastro de anuncios
         {
@@ -207,10 +138,7 @@ const Campaigns = {
         Campaigns.allAds.push(ads)
         App.reload();
     },
-    addClient(client) {
-        Campaigns.allClients.push(client)
-        App.reload()
-    },
+
 
 // ============================== FUNÇÕES RESPONSÁVEIS POR REMOVER CAMPANHAS E CLIENTES AO ARRAY ==============================
 
@@ -218,10 +146,7 @@ const Campaigns = {
         Campaigns.allAds.splice(index,1)
         App.reload()
     },
-    removeClient(index) {
-        Campaigns.allClient.splice(index,1)
-        App.reload()
-    },
+
 
     
 
@@ -289,33 +214,6 @@ const Campaigns = {
     },
 }
 
-// ============================== PEGAR OS DADOS DO MEU FORMULÁRIO DE CLIENTES E COLOCAR NO HTML ==============================
-const dataClient = {
-    dataClientContainer : document.querySelector('#data-client tbody'), //Pega o elemento tbody de dentro do item com id data-client
-
-    addClient(client, index) {  //Responsável por adicionar os dados no htmlClient
-        const trClient = document.createElement('tr');  //Cria um elemento tr na DOM
-        trClient.innerHTML = dataClient.innerHTMLClientTrasaction(client);  //Recebe os dados que vão dentro do td vindos do innerHTMLClientTrasaction
-    
-        dataClient.dataClientContainer.appendChild(trClient)  //Acessa o conteúdo de dataClientContainer e o appendChild lista o elemento trClient criado
-    },
-    innerHTMLClientTrasaction(client) {         //Funcionalidade para fazer a substituição dos itens das linhas do form de clientes pelos clientes existentes no array FormClient
-        //Template dos dados que vão aparecer na tabela
-        const htmlClient = `
-                <td>${client.clientName}</td>
-                <td>${client.clientPhone}</td>
-                <td>${client.clientEmail}</td>
-                <td>${client.clientCountry}</td>
-                <td><h2>x</h2></td>
-        `
-        return htmlClient
-    },
-    clearclient() {
-        dataClient.dataClientContainer.innerHTML = ""; //Limpa os itens da tabela do dashboard
-    }
-    
-};
-
 // ============================== PEGAR OS DADOS DO MEU FORMULÁRIO DE ANUNCIOS E COLOCAR NA PÁGINA DE ANÚNCIOS ==============================
 const dataAds = {
     dataAdsContainer: document.querySelector('#data-ads tbody'), //Pega o elemento tbody de dentro do item com id data-ads
@@ -342,7 +240,8 @@ const dataAds = {
                 <td>${ads.adsView}</td>
                 <td>${ads.adsClicks}</td>
                 <td>${ads.adsShare}</td>
-                <td><h2 onclick="Display.displayAdsView()">x</h2></td>
+                <td>EX</td>
+                <td>ED</td>
             </tr>
         `
         return htmlAds
@@ -376,7 +275,6 @@ const dataAdsDashboard = {
                 <td>${ads.adsView}</td>
                 <td>${ads.adsClicks}</td>
                 <td>${ads.adsShare}</td>
-                <td><h2 onclick="Display.displayAdsView()">x</h2></td>
             </tr>
         `
         return htmlAds
@@ -414,11 +312,12 @@ const dataAdsReport = {
             <tr>
                 <td>${ads.adsName}</td>
                 <td>${ads.adsClient}</td>
+                <td>${ads.adsDateStart}</td>
+                <td>${ads.adsDateEnd}</td>
                 <td>${ads.adsTotalInvestiment}</td>
                 <td>${ads.adsView}</td>
                 <td>${ads.adsClicks}</td>
                 <td>${ads.adsShare}</td>
-                <td><h2 onclick="Display.displayAds()">x</h2></td>
             </tr>
         `
         return htmlAds
@@ -468,7 +367,7 @@ const FormAds = {
     adsClient: document.querySelector('input#client-ads'),
     adsDateStart: document.querySelector('input#date-start'),
     adsDateEnd: document.querySelector('input#date-end'),
-    adsInvestment: document.querySelector('input#ads-investent'),
+    adsInvestment: document.querySelector('input#ads-investment'),
 
     //Pegar os valores dos campos e guardar dentro de um objeto
     getValues() {
@@ -553,91 +452,7 @@ const FormAds = {
 
         } catch (error) {
             alert(error.message)
-        }
-
-        
-    }
-}
-
-// ============================== PEGANDOS OS DADOS DO FORMULÁRIO CADASTRO DE CLIENTES ==============================
-const FormClient = {
-    //Pegar os campos do formulário
-    clientName: document.querySelector('input#client-name'),
-    clientPhone: document.querySelector('input#client-phone'),
-    clientEmail: document.querySelector('input#client-email'),
-    clientCountry: document.querySelector('input#client-country'),
-
-    //Pegar os valores dos campos e guardar dentro de um objeto
-    getValues() {
-        return {
-            clientName: FormClient.clientName.value,
-            clientPhone: FormClient.clientPhone.value,
-            clientEmail: FormClient.clientEmail.value,
-            clientCountry: FormClient.clientCountry.value,
-        }
-    },
-
-    // verificar se todas as informações foram preenchidas
-    validateFields() {
-        const { clientName, clientPhone, clientEmail, clientCountry } = FormClient.getValues() //Retirar os valores dos inputs para dentro das variáveis por desestruturação
-        
-        //Verificar se os campos estão vazios
-        if(
-            clientName.trim() === "" ||
-            clientPhone.trim() === "" ||
-            clientEmail.trim() === "" ||
-            clientCountry.trim() === "" ) {
-                throw new Error("Por favor, preencha todos os campos!")  //Se ouver alguns dos campos acima vazio, será retornado um objeto com erro
-        }
-    },
-
-    //formatar os dados para salvar | A principio não será necessário formatar os dados desse formulário
-    formatValues() {
-        let { clientName, clientPhone, clientEmail, clientCountry } = FormClient.getValues() //Retirar os valores dos inputs para dentro das variáveis por desestruturação
-        
-        //RETORNAR OS DADOS FORMATADOS DENTRO DAS VÁRIAVEIS
-        return {
-            clientName,
-            clientPhone,
-            clientEmail,
-            clientCountry
-        }
-    },
-
-    clearFields() {
-        FormClient.clientName.value = ""
-        FormClient.clientPhone.value = ""
-        FormClient.clientEmail.value = ""
-        FormClient.clientCountry.value = ""
-    },
-
-    //Prevenir o comportamento padrão de envio do formulário
-    submit(event) {
-        event.preventDefault()
-
-        //Estrutura para capturar e tratar os dados dos inputs
-        //E se houver algum input vazio capturar o erro para exibir na tela
-        try {
-            // verificar se todas as informações foram preenchidas
-            FormClient.validateFields()
-            
-            //formatar os dados para salvar
-            const client = FormClient.formatValues()
-
-            //salvar
-            Campaigns.addClient(client)
-
-            //apagar os dados do formulario
-            FormClient.clearFields()
-
-            //fechar página e abrir a pagina de clientes
-            Display.client()
-
-            //Atualizar a aplicação
-
-
-        } catch (error) {
-            alert(error.message)
+            //console.log(error)
         }
 
         
@@ -649,11 +464,6 @@ const FormClient = {
 
 const App = {
     init() {
-        
-        // ============================== EXIBINDO OS CLIENTES EXISTENTES DENTRO DO ARRAY DE CLIENTES FormClient ==============================
-        Campaigns.allClients.forEach(function(FormClient) {  //Para cada item dentro de FormAds
-        dataClient.addClient(FormClient)    //Pegar os dados dos clientes em FormClient e monta dentro da estrutura de tabela de dataClient
-        });
 
         // ============================== EXIBINDO OS ANUNCIOS EXISTENTES DENTRO DO ARRAY DE ANUNCIOS FormAds ==============================
         Campaigns.allAds.forEach(function(FormAds) {  //Para cada item dentro de FormAds
@@ -676,7 +486,6 @@ const App = {
 
     },
     reload() {
-        dataClient.clearclient(); //Limpa os itens da tabela do dashboard
         dataAds.clearAds() //Limpa os itens da tabela de anúncios
         dataAdsDashboard.clearAdsDashboard()  //Limpa os itens da tabela do dashboard
         dataAdsReport.clearReport() //Limpa os itens da tabela de relatorios
@@ -757,36 +566,3 @@ App.init()   //Inicia o App
 //         clientCountry: "Brasil"
 //     },
 // )
-
-
-
-const selecao = {
-    dataClientContainer : document.querySelector('#data-client tbody'), //Pega o elemento tbody de dentro do item com id data-client
-
-    addClient(client, index) {  //Responsável por adicionar os dados no htmlClient
-        const trClient = document.createElement('select');  //Cria um elemento tr na DOM
-        trClient.innerHTML = selecao.innerHTMLClientTrasaction(client);  //Recebe os dados que vão dentro do td vindos do innerHTMLClientTrasaction
-    
-        selecao.dataClientContainer.appendChild(trClient)  //Acessa o conteúdo de dataClientContainer e o appendChild lista o elemento trClient criado
-    },
-    innerHTMLClientTrasaction(client) {         //Funcionalidade para fazer a substituição dos itens das linhas do form de clientes pelos clientes existentes no array FormClient
-        //Template dos dados que vão aparecer na tabela
-        const htmlClient = `
-                <td>${client.clientName}</td>
-                <td>${client.clientPhone}</td>
-                <td>${client.clientEmail}</td>
-                <td>${client.clientCountry}</td>
-                <td><h2>x</h2></td>
-        `
-        return htmlClient
-    },
-    clearclient() {
-        selecao.dataClientContainer.innerHTML = ""; //Limpa os itens da tabela do dashboard
-    }
-    
-};
-
-
-Campaigns.allClients.forEach(function(FormClient) {  //Para cada item dentro de FormAds
-    selecao.addClient(FormClient)    //Pegar os dados dos clientes em FormClient e monta dentro da estrutura de tabela de dataClient
-    });

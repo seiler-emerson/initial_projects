@@ -12,7 +12,6 @@
         <h1 class="logo">LOGO</h1>
         <nav>
             <p class="menu-item" onClick="Display.dashboard(), SelectedMenu.dashboard()" class="dashboard-menu" >Dashboard</p>
-            <p onClick="Display.client(), SelectedMenu.client()" class="client-menu">Clientes</p>
             <p onClick="Display.ads(), SelectedMenu.ads()" class="ads-menu">Anúncios</p>
             <p onClick="Display.report(), SelectedMenu.report()" class="report-menu" ">Relatório</p>
         </nav>
@@ -51,7 +50,6 @@
                         <th>Visualizações</th>
                         <th>Cliques</th>
                         <th>Compartilhamentos</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -59,53 +57,6 @@
                 </tbody>
             </table>
         </section>      
-
-        <section id="client">
-            <div class="title-page">
-                <h1>CLIENTES</h1>
-                <button onclick="Display.clientRegister()" class="positive">Novo Cliente</button>
-            </div>
-
-            <table id="data-client">
-                <thead>
-                    <tr>
-                        <th>Cliente</th>
-                        <th>Telefone</th>
-                        <th>E-mail</th>
-                        <th>País</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>              
-                </tbody>
-            </table>
-        </section>
-
-        <section id="client-register">
-            <div class="title-page">
-                <h1>Cadastrar Cliente</h1>
-            </div>
-            <div class="container-client">
-                <form class="data-form" action="" onsubmit="FormClient.submit(event)">
-                    <h3>Nome</h3>
-                    <input type="text" name="client-name" id="client-name" placeholder="Nome do cliente">
-                    <h3>Telefone</h3>
-                    <input type="number" name="client-phone" id="client-phone" placeholder="554712341234">
-                    <span>Digite apenas números.</span>
-                    <h3>E-mail</h3>
-                    <input type="email" name="email" id="client-email" placeholder="email@email.com">
-                    <h3>País</h3>
-                    <input type="text" name="client-country" id="client-country" placeholder="Brasil">
-                    <br>
-                    <div class="buttons-div">
-                        <button onclick="Display.cancelCreateClient()" class="negative">Cancelar</button>
-                        <button type="submit" class="positive">Salvar</button>
-                    </div>
-                </form>
-                
-            </div>
-
-        </section>
 
         <section id="ads">
             <div class="title-page">
@@ -122,7 +73,8 @@
                         <th>Visualizações</th>
                         <th>Cliques</th>
                         <th>Compartilhamentos</th>
-                        <th></th>
+                        <th>EX</th>
+                        <th>ED</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -186,22 +138,16 @@
             </div>
             <div class="container-client">
                 <form class="data-form" action="" onsubmit="FormAds.submit(event)">
-                    <h3>Nome</h3>
-                    <input type="text" name="client-name" id="ads-name" placeholder="Nome do anúncio">
+                    <h3>Nome do Anúncio</h3>
+                    <input type="text" name="ads-name" id="ads-name" placeholder="Nome do anúncio">
                     <h3>Cliente</h3>
-                    <div id=selecao>
-                        <select name="select">
-                            <option value="valor1">Valor 1</option>
-                            <option value="valor2" selected>Valor 2</option>
-                            <option value="valor3">Valor 3</option>
-                          </select>
-                    </div>
+                    <input type="text" name="client-ads" id="client-ads" placeholder="Nome do anúncio">
                     <h3>Data de Início</h3>
                     <input type="date" name="date-start" id="date-start">
                     <h3>Data de Término</h3>
                     <input type="date" name="date-end" id="date-end">
                     <h3>Investimento</h3>
-                    <input type="text" name="ads-investent" id="ads-investent" placeholder="500">
+                    <input type="text" name="ads-investment" id="ads-investment" placeholder="500">
                     <span>Digite apenas números.</span>
                     <br>
                     <div class="buttons-div">
@@ -224,11 +170,12 @@
                     <tr>
                         <th>Anúncio</th>
                         <th>Cliente</th>
+                        <th>Data Início</th>
+                        <th>Data Término</th>
                         <th>Total Investido</th>
                         <th>Visualizações</th>
                         <th>Cliques</th>
                         <th>Compartilhamentos</th>
-                        th
                     </tr>
                 </thead>
                 <tbody>
@@ -237,11 +184,12 @@
                 <tr>
                     <td>TOTAL</td>
                     <td></td>
+                    <td></td>
+                    <td></td>
                     <td>R$ 50.254.548,00</td>
                     <td>352.524.854</td>
                     <td>589.542</td>
                     <td>597.587</td>
-                    <td></td>
                 </tr>
             </table>
         </section>
