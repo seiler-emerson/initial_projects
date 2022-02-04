@@ -130,7 +130,7 @@ nav p:hover {
 /* ================================= DASHBOARD ================================= */
 
 #dashboard {
-    display: none;
+    display: flex;
 }
 
 .box-info {

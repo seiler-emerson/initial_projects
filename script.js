@@ -1,3 +1,23 @@
+// ============================== Utilidades ==============================
+
+const Utils = {
+// === Manipulando a estrutura dos números ===
+    formatCurrency(value) {
+        
+        const signal = Number(value) < 0 ? "-" : "" ; //Se o número for menor que 0 signal retorna um valor negativo
+        
+        value = String(value).replace(/\D/g,"") //Pegar todos os valores que não são números e remova, mantendo apenas números
+        
+        value = Number(value) / 100
+        
+        // === Formatar Moeda ===
+        value = value.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        })
+        return signal + value
+    }
+}
 
 // ============================== VÁRIAVEIS RESPONSÁVEIS PELAS TELAS ==============================
 const GetDisplay = {
@@ -143,6 +163,18 @@ const FormClient = [  //Array onde será armazenado os dados do input de cadastr
         clientEmail: "evina@gmail.com",
         clientCountry: "Portugal"
     },
+    {
+        clientName: "Evina",
+        clientPhone: 5541996528784,
+        clientEmail: "evina@gmail.com",
+        clientCountry: "Portugal"
+    },
+    {
+        clientName: "Evina",
+        clientPhone: 5541996528784,
+        clientEmail: "evina@gmail.com",
+        clientCountry: "Portugal"
+    },
 ];
 
 
@@ -151,37 +183,104 @@ const FormAds = [  //Array onde será armazenado os dados do input de cadastro d
     {
         adsName: "Campanha do Emerson",
         adsClient: "Emerson Company",
-        adsTotalInvestiment: "50.254.254,00",
-        adsView: "855.548",
-        adsClicks: "125.254",
-        adsShare: "985.124"
+        adsTotalInvestiment: 12345678,
+        adsView: 123456,
+        adsClicks: 123456,
+        adsShare: 123456
     },
     {
         adsName: "Campanha da Mayara",
         adsClient: "Mayara Company",
-        adsTotalInvestiment: "50.254.254,00",
-        adsView: "855.548",
-        adsClicks: "125.254",
-        adsShare: "985.124"
+        adsTotalInvestiment: 12345678,
+        adsView: 123456,
+        adsClicks: 123456,
+        adsShare: 123456
     },
     {
         adsName: "Campanha da Evina",
         adsClient: "Evina Company",
-        adsTotalInvestiment: "50.254.254,00",
-        adsView: "855.548",
-        adsClicks: "125.254",
-        adsShare: "985.124"
+        adsTotalInvestiment: 12345678,
+        adsView: 123456,
+        adsClicks: 23456,
+        adsShare: 123456
     },
     {
         adsName: "Campanha do Sheldon",
         adsClient: "Sheldon Company",
-        adsTotalInvestiment: "50.254.254,00",
-        adsView: "855.548",
-        adsClicks: "125.254",
-        adsShare: "985.124"
+        adsTotalInvestiment: 12345678,
+        adsView: 123456,
+        adsClicks: 123456,
+        adsShare: 12346
     },
     
 ];
+
+// ============================== FUNÇÕES PARA SOMAR OS TOTAIS ==============================
+
+const Total = {
+    // somar os totais de investimento
+    totalInvestment() {
+        let tInvestment = 0;
+
+        //Pegar todas os investimentos
+        //Para cada transação
+        FormAds.forEach(total => {
+            // se ela for maior que zero
+    if (total.adsTotalInvestiment > 0 )
+            //Somar a uma variável e retornar a variável
+            tInvestment = tInvestment + total.adsTotalInvestiment;
+        })
+        
+        //Retorna a soma de todos os investimentos cadastrados
+        return tInvestment;
+    },
+    totalView() {
+        let tView = 0;
+
+        //Pegar todas os investimentos
+        //Para cada transação
+        FormAds.forEach(total => {
+            // se ela for maior que zero
+    if (total.adsView > 0 )
+            //Somar a uma variável e retornar a variável
+            tView = tView + total.adsView;
+        })
+        
+        //Retorna a soma de todos os investimentos cadastrados
+        return tView;
+    },
+    totalClick() {
+        let tClick = 0;
+
+        //Pegar todas os investimentos
+        //Para cada transação
+        FormAds.forEach(total => {
+            // se ela for maior que zero
+    if (total.adsClicks > 0 )
+            //Somar a uma variável e retornar a variável
+            tClick = tClick + total.adsClicks;
+        })
+        
+        //Retorna a soma de todos os investimentos cadastrados
+        return tClick;
+    },
+    totalShare() {
+        let tShare = 0;
+
+        //Pegar todas os investimentos
+        //Para cada transação
+        FormAds.forEach(total => {
+            // se ela for maior que zero
+    if (total.adsShare > 0 )
+            //Somar a uma variável e retornar a variável
+            tShare = tShare + total.adsShare;
+        })
+        
+        //Retorna a soma de todos os investimentos cadastrados
+        return tShare;
+    },
+}
+
 
 
 // ============================== PEGAR OS DADOS DO MEU FORMULÁRIO DE CLIENTES E COLOCAR NO HTML ==============================
@@ -239,7 +338,7 @@ const dataAds = {
                 <td>${ads.adsView}</td>
                 <td>${ads.adsClicks}</td>
                 <td>${ads.adsShare}</td>
-                <td><h2 onclick="Display.displayAds()">x</h2></td>
+                <td><h2 onclick="Display.displayAdsView()">x</h2></td>
             </tr>
         `
         return htmlAds
@@ -256,14 +355,11 @@ FormAds.forEach(function(FormAds) {  //Para cada item dentro de FormAds
 const dataAdsDashboard = {
     dataAdsContainer: document.querySelector('#data-dashboard tbody'), //Pega o elemento tbody de dentro do item com id data-ads
     
-    
-
     addAds(ads, index) {  //Responsável por adicionar os dados no htmlAdd
         const trAds = document.createElement('tr');  //Cria um elemento tr na DOM
         trAds.innerHTML = dataAdsDashboard.innerHTMLAdsTrasaction(ads);  //Recebe os dados que vão dentro do td vindos do innerHTMLAddTrasaction
     
         dataAdsDashboard.dataAdsContainer.appendChild(trAds)  //Acessa o conteúdo de dataAdsContainer e o appendChild lista o elemento trClient criado
-        
         
     },
 
@@ -278,11 +374,20 @@ const dataAdsDashboard = {
                 <td>${ads.adsView}</td>
                 <td>${ads.adsClicks}</td>
                 <td>${ads.adsShare}</td>
-                <td><h2 onclick="Display.displayAds()">x</h2></td>
+                <td><h2 onclick="Display.displayAdsView()">x</h2></td>
             </tr>
         `
         return htmlAds
+    },
+
+    //EXIBIR TOTAIS NO DASHBOARD
+    updateTotalDashboard() {
+        document.querySelector('#dashboardTotalBox').innerHTML = Utils.formatCurrency(Total.totalInvestment());;   //Pega o total somado em Total e exibe no box do dashboard
+        document.querySelector('#dashboardViewBox').innerHTML = Total.totalView();          //Pega o total somado em Total e exibe no box do dashboard
+        document.querySelector('#dashboardClickBox').innerHTML = Total.totalClick();        //Pega o total somado em Total e exibe no box do dashboard
+        document.querySelector('#dashboardShareBox').innerHTML = Total.totalShare();        //Pega o total somado em Total e exibe no box do dashboard
     }
+
 };
 
 // ============================== EXIBINDO OS ANUNCIOS EXISTENTES DENTRO DO ARRAY DE ANUNCIOS FormAds ==============================
@@ -290,6 +395,8 @@ FormAds.forEach(function(FormAds) {  //Para cada item dentro de FormAds
     dataAdsDashboard.addAds(FormAds)  //Pegar os dados dos clientes em FormAds e monta dentro da estrutura de tabela de dataAds
 });
 
+//EXIBIR OS TOTAIS NO DASHBOARD
+dataAdsDashboard.updateTotalDashboard()
 // ============================== PEGAR OS DADOS DO MEU FORMULÁRIO DE ANUNCIOS E COLOCAR NA PÁGINA DE RELATÓRIOS ==============================
 const dataAdsReport = {
     dataAdsContainer: document.querySelector('#data-report tbody'), //Pega o elemento tbody de dentro do item com id data-ads
@@ -329,3 +436,6 @@ FormAds.forEach(function(FormAds) {  //Para cada item dentro de FormAds
 
 
 // ==============================   ==============================
+
+
+
