@@ -1,23 +1,4 @@
-// ============================== Utilidades ==============================
 
-const Utils = {
-// === Manipulando a estrutura dos números ===
-    formatCurrency(value) {
-        
-        const signal = Number(value) < 0 ? "-" : "" ; //Se o número for menor que 0 signal retorna um valor negativo
-        
-        value = String(value).replace(/\D/g,"") //Pegar todos os valores que não são números e remova, mantendo apenas números
-        
-        value = Number(value) / 100
-        
-        // === Formatar Moeda ===
-        value = value.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL"
-        })
-        return signal + value
-    }
-}
 
 // ============================== VÁRIAVEIS RESPONSÁVEIS PELAS TELAS ==============================
 const GetDisplay = {
@@ -215,16 +196,32 @@ const FormAds = [  //Array onde será armazenado os dados do input de cadastro d
     
 ];
 
-// ============================== FUNÇÕES PARA SOMAR OS TOTAIS ==============================
+// ============================== FUNÇÕES RESPONSÁVEIS PELAS CAMPANHAS ==============================
 
-const Total = {
+const Campaigns = {
+    allClients: FormClient,  //Atalho para FormClient (Onde os clientes estão salvos)
+    allAds: FormAds, //Atalho para FormAds (Onde as transações estão salvas)
+    
+// ============================== FUNÇÕES RESPONSÁVEIS POR ADICIONAR CAMPANHAS AO ARRAY ==============================
+
+    addAds(ads) { //Adicionar novas campanhas no array
+        Campaigns.allAds.push(ads)
+        App.reload();
+    },
+    addClient(client) {
+        Campaigns.allClients.push(client)
+        App.reload()
+    },
+
+
+// ============================== SOMA DOS TOTAIS DOS VALORES DAS CAMPANHAS ==============================
     // somar os totais de investimento
     totalInvestment() {
         let tInvestment = 0;
 
         //Pegar todas os investimentos
         //Para cada transação
-        FormAds.forEach(total => {
+        Campaigns.allAds.forEach(total => {
             // se ela for maior que zero
     if (total.adsTotalInvestiment > 0 )
             //Somar a uma variável e retornar a variável
@@ -239,7 +236,7 @@ const Total = {
 
         //Pegar todas os investimentos
         //Para cada transação
-        FormAds.forEach(total => {
+        Campaigns.allAds.forEach(total => {
             // se ela for maior que zero
     if (total.adsView > 0 )
             //Somar a uma variável e retornar a variável
@@ -254,7 +251,7 @@ const Total = {
 
         //Pegar todas os investimentos
         //Para cada transação
-        FormAds.forEach(total => {
+        Campaigns.allAds.forEach(total => {
             // se ela for maior que zero
     if (total.adsClicks > 0 )
             //Somar a uma variável e retornar a variável
@@ -269,7 +266,7 @@ const Total = {
 
         //Pegar todas os investimentos
         //Para cada transação
-        FormAds.forEach(total => {
+        Campaigns.allAds.forEach(total => {
             // se ela for maior que zero
     if (total.adsShare > 0 )
             //Somar a uma variável e retornar a variável
@@ -280,8 +277,6 @@ const Total = {
         return tShare;
     },
 }
-
-
 
 // ============================== PEGAR OS DADOS DO MEU FORMULÁRIO DE CLIENTES E COLOCAR NO HTML ==============================
 const dataClient = {
@@ -303,16 +298,14 @@ const dataClient = {
                 <td><h2>x</h2></td>
         `
         return htmlClient
+    },
+    clearclient() {
+        dataClient.dataClientContainer.innerHTML = ""; //Limpa os itens da tabela do dashboard
     }
+    
 };
 
-// ============================== EXIBINDO OS CLIENTES EXISTENTES DENTRO DO ARRAY DE CLIENTES FormClient ==============================
-FormClient.forEach(function(FormClient) {  //Para cada item dentro de FormAds
-    dataClient.addClient(FormClient)    //Pegar os dados dos clientes em FormClient e monta dentro da estrutura de tabela de dataClient
-});
-
 // ============================== PEGAR OS DADOS DO MEU FORMULÁRIO DE ANUNCIOS E COLOCAR NA PÁGINA DE ANÚNCIOS ==============================
-
 const dataAds = {
     dataAdsContainer: document.querySelector('#data-ads tbody'), //Pega o elemento tbody de dentro do item com id data-ads
     
@@ -342,14 +335,12 @@ const dataAds = {
             </tr>
         `
         return htmlAds
+    },
+    clearAds() {
+        dataAds.dataAdsContainer.innerHTML = ""; //Limpa os itens da tabela de anúncios
     }
+    
 };
-
-// ============================== EXIBINDO OS ANUNCIOS EXISTENTES DENTRO DO ARRAY DE ANUNCIOS FormAds ==============================
-FormAds.forEach(function(FormAds) {  //Para cada item dentro de FormAds
-    dataAds.addAds(FormAds)  //Pegar os dados dos clientes em FormAds e monta dentro da estrutura de tabela de dataAds
-});
-
 
 // ============================== PEGAR OS DADOS DO MEU FORMULÁRIO DE ANUNCIOS E COLOCAR NA PÁGINA DE DASHBOARD ==============================
 const dataAdsDashboard = {
@@ -382,21 +373,18 @@ const dataAdsDashboard = {
 
     //EXIBIR TOTAIS NO DASHBOARD
     updateTotalDashboard() {
-        document.querySelector('#dashboardTotalBox').innerHTML = Utils.formatCurrency(Total.totalInvestment());;   //Pega o total somado em Total e exibe no box do dashboard
-        document.querySelector('#dashboardViewBox').innerHTML = Total.totalView();          //Pega o total somado em Total e exibe no box do dashboard
-        document.querySelector('#dashboardClickBox').innerHTML = Total.totalClick();        //Pega o total somado em Total e exibe no box do dashboard
-        document.querySelector('#dashboardShareBox').innerHTML = Total.totalShare();        //Pega o total somado em Total e exibe no box do dashboard
-    }
+        document.querySelector('#dashboardTotalBox').innerHTML = Utils.formatCurrency(Campaigns.totalInvestment());;   //Pega o total somado em Total e exibe no box do dashboard
+        document.querySelector('#dashboardViewBox').innerHTML = Campaigns.totalView();          //Pega o total somado em Total e exibe no box do dashboard
+        document.querySelector('#dashboardClickBox').innerHTML = Campaigns.totalClick();        //Pega o total somado em Total e exibe no box do dashboard
+        document.querySelector('#dashboardShareBox').innerHTML = Campaigns.totalShare();        //Pega o total somado em Total e exibe no box do dashboard
+    },
 
+    clearAdsDashboard() {
+        dataAdsDashboard.dataAdsContainer.innerHTML = ""; //Limpa os itens da tabela do dashboard
+    }
+    
 };
 
-// ============================== EXIBINDO OS ANUNCIOS EXISTENTES DENTRO DO ARRAY DE ANUNCIOS FormAds ==============================
-FormAds.forEach(function(FormAds) {  //Para cada item dentro de FormAds
-    dataAdsDashboard.addAds(FormAds)  //Pegar os dados dos clientes em FormAds e monta dentro da estrutura de tabela de dataAds
-});
-
-//EXIBIR OS TOTAIS NO DASHBOARD
-dataAdsDashboard.updateTotalDashboard()
 // ============================== PEGAR OS DADOS DO MEU FORMULÁRIO DE ANUNCIOS E COLOCAR NA PÁGINA DE RELATÓRIOS ==============================
 const dataAdsReport = {
     dataAdsContainer: document.querySelector('#data-report tbody'), //Pega o elemento tbody de dentro do item com id data-ads
@@ -423,13 +411,81 @@ const dataAdsReport = {
             </tr>
         `
         return htmlAds
+    },
+
+    clearReport() {
+        dataAdsReport.dataAdsContainer.innerHTML = ""; //Limpa os itens da tabela de anúncios
     }
 };
 
-// ============================== EXIBINDO OS ANUNCIOS EXISTENTES DENTRO DO ARRAY DE ANUNCIOS FormAds ==============================
-FormAds.forEach(function(FormAds) {  //Para cada item dentro de FormAds
-    dataAdsReport.addAds(FormAds)  //Pegar os dados dos clientes em FormAds e monta dentro da estrutura de tabela de dataAds
-});
+
+
+
+
+// ============================== Utilidades ==============================
+
+const Utils = {
+    // === Manipulando a estrutura dos números ===
+        formatCurrency(value) {
+            
+            const signal = Number(value) < 0 ? "-" : "" ; //Se o número for menor que 0 signal retorna um valor negativo
+            
+            value = String(value).replace(/\D/g,"") //Pegar todos os valores que não são números e remova, mantendo apenas números
+            
+            value = Number(value) / 100
+            
+            // === Formatar Moeda ===
+            value = value.toLocaleString("pt-BR", {
+                style: "currency",
+                currency: "BRL"
+            })
+            return signal + value
+        },
+    }
+
+
+//INCIALIZAÇÃO E REINICIALIZAÇÃO DOS DADOS DA TABELA QUANDO UM DADO É ADICIONADO
+
+const App = {
+    init() {
+        
+        // ============================== EXIBINDO OS CLIENTES EXISTENTES DENTRO DO ARRAY DE CLIENTES FormClient ==============================
+        Campaigns.allClients.forEach(function(FormClient) {  //Para cada item dentro de FormAds
+        dataClient.addClient(FormClient)    //Pegar os dados dos clientes em FormClient e monta dentro da estrutura de tabela de dataClient
+        });
+
+        // ============================== EXIBINDO OS ANUNCIOS EXISTENTES DENTRO DO ARRAY DE ANUNCIOS FormAds ==============================
+        Campaigns.allAds.forEach(function(FormAds) {  //Para cada item dentro de FormAds
+        dataAds.addAds(FormAds)  //Pegar os dados dos clientes em FormAds e monta dentro da estrutura de tabela de dataAds
+        });
+
+        // ============================== EXIBINDO OS ANUNCIOS EXISTENTES DENTRO DO ARRAY DE ANUNCIOS FormAds ==============================
+        Campaigns.allAds.forEach(function(FormAds) {  //Para cada item dentro de FormAds
+        dataAdsDashboard.addAds(FormAds)  //Pegar os dados dos clientes em FormAds e monta dentro da estrutura de tabela de dataAds
+        });
+
+        // ============================== EXIBINDO OS ANUNCIOS EXISTENTES DENTRO DO ARRAY DE ANUNCIOS FormAds ==============================
+        Campaigns.allAds.forEach(function(FormAds) {  //Para cada item dentro de FormAds
+        dataAdsReport.addAds(FormAds)  //Pegar os dados dos clientes em FormAds e monta dentro da estrutura de tabela de dataAds
+        });
+
+        //EXIBIR OS TOTAIS NO DASHBOARD
+        dataAdsDashboard.updateTotalDashboard();
+
+
+    },
+    reload() {
+        dataClient.clearclient(); //Limpa os itens da tabela do dashboard
+        dataAds.clearAds() //Limpa os itens da tabela de anúncios
+        dataAdsDashboard.clearAdsDashboard()  //Limpa os itens da tabela do dashboard
+        dataAdsReport.clearReport() //Limpa os itens da tabela de relatorios
+        App.init();
+    },
+}
+
+
+App.init()   //Inicia o App
+
 
 
 
@@ -438,4 +494,59 @@ FormAds.forEach(function(FormAds) {  //Para cada item dentro de FormAds
 // ==============================   ==============================
 
 
+// ============================== TESTES ==============================
 
+Campaigns.addAds(
+    {
+        adsName: "TESTE",
+        adsClient: "TESTE Company",
+        adsTotalInvestiment: 99999,
+        adsView: 12999,
+        adsClicks: 123456,
+        adsShare: 12346
+    },  
+)
+Campaigns.addAds(
+    {
+        adsName: "TESTE",
+        adsClient: "TESTE Company",
+        adsTotalInvestiment: 99999,
+        adsView: 12999,
+        adsClicks: 123456,
+        adsShare: 12346
+    },  
+)
+Campaigns.addAds(
+    {
+        adsName: "TESTE3",
+        adsClient: "TESTE Company",
+        adsTotalInvestiment: 99999,
+        adsView: 12999,
+        adsClicks: 123456,
+        adsShare: 12346
+    },  
+)
+Campaigns.addClient(
+    {
+        clientName: "Emerson",
+        clientPhone: 5547999799017,
+        clientEmail: "seiler.emerson@gmail.com",
+        clientCountry: "Brasil"
+    },
+)
+Campaigns.addClient(
+    {
+        clientName: "Emerson",
+        clientPhone: 5547999799017,
+        clientEmail: "seiler.emerson@gmail.com",
+        clientCountry: "Brasil"
+    },
+)
+Campaigns.addClient(
+    {
+        clientName: "Emerson Seiler",
+        clientPhone: 5547999799017,
+        clientEmail: "seiler.emerson@gmail.com",
+        clientCountry: "Brasil"
+    },
+)
