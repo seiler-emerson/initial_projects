@@ -165,22 +165,22 @@
                 <h1>Cadastrar Anúncio</h1>
             </div>
             <div class="container-client">
-                <form class="data-form" action="" onsubmit="FormAds.submit(event)">
+                <form class="data-form" id="ads-form" action="" onsubmit="FormAds.submit(event)">
                     <h3>Nome do Anúncio</h3>
-                    <input type="text" name="ads-name" id="ads-name" placeholder="Nome do anúncio">
+                    <input type="text" name="ads-name" id="ads-name" placeholder="Nome do anúncio" required>
                     <h3>Cliente</h3>
-                    <input type="text" name="client-ads" id="client-ads" placeholder="Nome do anúncio">
+                    <input type="text" name="client-ads" id="ads-client" placeholder="Nome do anúncio" required>
                     <h3>Data de Início</h3>
-                    <input type="date" name="date-start" id="date-start">
+                    <input type="date" name="date-start" id="ads-date-start" required>
                     <h3>Data de Término</h3>
-                    <input type="date" name="date-end" id="date-end">
+                    <input type="date" name="date-end" id="ads-date-end" required>
                     <h3>Investimento Diário</h3>
-                    <input type="text" name="ads-investment" id="ads-investment" placeholder="500">
+                    <input type="text" name="ads-investment" id="ads-investment" placeholder="500" required>
                     <span>Digite apenas números.</span>
                     <br>
                     <div class="buttons-div">
                         <button onclick="Display.cancelCreateAds()" class="negative">Cancelar</button>
-                        <button class="positive">Salvar</button>
+                        <button id="saveAds" class="positive">Salvar</button>
                     </div>
                 </form>
                 
