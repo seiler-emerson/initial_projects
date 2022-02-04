@@ -30,7 +30,8 @@ body {
 #ads,
 #report,
 #ads-register,
-#ads-view {
+#ads-view,
+#contact {
     flex-direction: column;
     align-items: center;
     width: calc(100vw - 220px);
@@ -39,7 +40,7 @@ body {
 /* === TITULO PÁGINAS === */
 .title-page {
     width: 90%;
-    max-width: 840px;
+    max-width: 1000px;
     height: 100px;
     display: flex;
     align-items: center;
@@ -66,19 +67,23 @@ button.positive {
     background-color: var(--blue);
 }
 button.positive:hover {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 button.negative {
     background-color: var(--red);
 }
 button.negative:hover {
-    opacity: 0.8;
+    opacity: 0.9;
 }
 
 .buttons-div {
     display: flex;
     justify-content: space-between;
+}
+#edit,
+#exclude {
+    width: 40px;
 }
 
 /* ================================= MENU ================================= */
@@ -128,16 +133,17 @@ nav p:hover {
 /* ================================= DASHBOARD ================================= */
 
 #dashboard {
-    display: flex;
+    display: none;
+    
 }
 
 .box-info {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    max-width: 840px;
-    height: 110px;
+    max-width: 1000px;
     margin-bottom: 30px;
+    flex-wrap: wrap;
 }
 
 .box-info .box-dashboard {
@@ -146,10 +152,11 @@ nav p:hover {
     align-items: center;
     justify-content: center;
     width: 90%;
-    max-width: 200px;
-    height: 110px;
+    max-width: 300px;
+    height: 200px;
     border-radius: 15px;
     background-color: var(--white);
+    margin-bottom: 20px;
 }
 .box-info .box-dashboard h2 {
     font-size: 20px;
@@ -167,7 +174,7 @@ nav p:hover {
 
 /* ================================= ANÚNCIOS ================================= */
 #ads {
-    display: none;
+    display: flex;
 }
 
 /* === TELA REGISTRO ANÚNCIO === */
@@ -185,7 +192,7 @@ nav p:hover {
 }
 #ads-view .buttons-div {
     width: 90%;
-    max-width: 840px;
+    max-width: 1000px;
     margin-top: 20px;
 }
 
@@ -198,6 +205,10 @@ nav p:hover {
     font-weight: bold;
 }
 
+/* ================================= CONTATO ================================= */
+#contact {
+    display: none;
+}
 
 /* ================================= TABELAS ================================= */
 
@@ -207,7 +218,7 @@ nav p:hover {
 #data-ads,
 #data-report {
     width: 90%;
-    max-width: 840px;
+    max-width: 1000px;
     border-spacing: 0 0.5rem;
     color: #969cb3;
 }
@@ -234,7 +245,7 @@ table tbody tr {
 }
 
 table tbody tr:hover {
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 table td{
@@ -249,7 +260,7 @@ table td{
 
 .data-form {
     width: 90%;
-    max-width: 840px;
+    max-width: 1000px;
     display: flex;
     flex-direction: column;
 }
@@ -265,12 +276,6 @@ table td{
     border-radius: 5px;
     border: none;
 }
-/* .data-client {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-} */
-
 span {
     font-size: 12px;
     color: var(--darkGray);

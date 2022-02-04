@@ -11,9 +11,10 @@
     <section class="menu-bar">
         <h1 class="logo">LOGO</h1>
         <nav>
-            <p class="menu-item" onClick="Display.dashboard(), SelectedMenu.dashboard()" class="dashboard-menu" >Dashboard</p>
-            <p onClick="Display.ads(), SelectedMenu.ads()" class="ads-menu">Anúncios</p>
-            <p onClick="Display.report(), SelectedMenu.report()" class="report-menu" ">Relatório</p>
+            <p class="menu-item" onClick="Display.dashboard()" class="dashboard-menu" >Dashboard</p>
+            <p onClick="Display.ads()" class="ads-menu">Anúncios</p>
+            <p onClick="Display.report()" class="report-menu" >Relatório</p>
+            <p onclick="Display.contact()">Contato</p>
         </nav>
     </section>
 
@@ -23,39 +24,31 @@
                 <h1>DASHBOARD</h1>
             </div>
             <div class="box-info">
-                <div class="box-dashboard total">
-                    <h2>Total Geral</h2>
-                    <p id="dashboardTotalBox">R$ 362.120,00</p>
+                <div class="box-dashboard totalAds">
+                    <h2>Total Anúncios</h2>
+                    <p id="dashboardTotalAdsBox">15</p>
+                </div>
+                <div class="box-dashboard Investment">
+                    <h2>Total Investido</h2>
+                    <p id="dashboardTotalInvestment">R$ 362.120,00</p>
                 </div>
                 <div class="box-dashboard view">
-                    <h2>Visualizações</h2>
+                    <h2>Total Visualizações</h2>
                     <p id="dashboardViewBox">28.254.268</p>
                 </div>
                 <div class="box-dashboard clicks">
-                    <h2>Cliques</h2>
+                    <h2>Total Cliques</h2>
                     <p id="dashboardClickBox">8.254.268</p>
                 </div>
+                <div class="box-dashboard">
+                    
+                </div>
                 <div class="box-dashboard share">
-                    <h2>Compartilhamentos</h2>
+                    <h2>Total Compartilhamentos</h2>
                     <p id="dashboardShareBox">510.268</p>
                 </div>
+                
             </div>
-
-            <table id="data-dashboard">
-                <thead>
-                    <tr>
-                        <th>Anúncio</th>
-                        <th>Cliente</th>
-                        <th>Total Investido</th>
-                        <th>Visualizações</th>
-                        <th>Cliques</th>
-                        <th>Compartilhamentos</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                </tbody>
-            </table>
         </section>      
 
         <section id="ads">
@@ -69,15 +62,50 @@
                     <tr>
                         <th>Anúncio</th>
                         <th>Cliente</th>
-                        <th>Total Investido</th>
-                        <th>Visualizações</th>
-                        <th>Cliques</th>
-                        <th>Compartilhamentos</th>
-                        <th>EX</th>
-                        <th>ED</th>
+                        <th>Data de Início</th>
+                        <th>Data de Fim</th>
+                        <th>Investimento Diário</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
+                    <tr>
+                        <td>Anúncio XYZ</td>
+                        <td>Emerson Company</td>
+                        <td>01/02/2022</td>
+                        <td>10/02/2022</td>
+                        <td>R$ 1000,00</td>
+                        <td><button id="exclude" class="negative">X</button></td>
+                        <td><button id="edit" class="positive">E</button></td>
+                    </tr>
+                    <tr>
+                        <td>Anúncio XYZ</td>
+                        <td>Emerson Company</td>
+                        <td>01/02/2022</td>
+                        <td>10/02/2022</td>
+                        <td>R$ 1000,00</td>
+                        <td><button id="exclude" class="negative">X</button></td>
+                        <td><button id="edit" class="positive">E</button></td>
+                    </tr>
+                    <tr>
+                        <td>Anúncio XYZ</td>
+                        <td>Emerson Company</td>
+                        <td>01/02/2022</td>
+                        <td>10/02/2022</td>
+                        <td>R$ 1000,00</td>
+                        <td><button id="exclude" class="negative">X</button></td>
+                        <td><button id="edit" class="positive">E</button></td>
+                    </tr>
+                    <tr>
+                        <td>Anúncio XYZ</td>
+                        <td>Emerson Company</td>
+                        <td>01/02/2022</td>
+                        <td>10/02/2022</td>
+                        <td>R$ 1000,00</td>
+                        <td><button id="exclude" class="negative">X</button></td>
+                        <td><button id="edit" class="positive">E</button></td>
+                    </tr>
                 </tbody>
             </table>
         </section>
@@ -146,7 +174,7 @@
                     <input type="date" name="date-start" id="date-start">
                     <h3>Data de Término</h3>
                     <input type="date" name="date-end" id="date-end">
-                    <h3>Investimento</h3>
+                    <h3>Investimento Diário</h3>
                     <input type="text" name="ads-investment" id="ads-investment" placeholder="500">
                     <span>Digite apenas números.</span>
                     <br>
@@ -176,11 +204,56 @@
                         <th>Visualizações</th>
                         <th>Cliques</th>
                         <th>Compartilhamentos</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    <tr>
+                        <td>Anúncio XYZ</td>
+                        <td>Emerson Company</td>
+                        <td>01/02/2022</td>
+                        <td>10/02/2022</td>
+                        <td>R$ 1500,00</td>
+                        <td>352524854</td>
+                        <td>589542</td>
+                        <td>597587</td>
+                        <td><button id="edit" class="positive">D</button></td>
+                    </tr>
+                    <tr>
+                        <td>Anúncio XYZ</td>
+                        <td>Emerson Company</td>
+                        <td>01/02/2022</td>
+                        <td>10/02/2022</td>
+                        <td>R$ 1500,00</td>
+                        <td>352524854</td>
+                        <td>589542</td>
+                        <td>597587</td>
+                        <td><button id="edit" class="positive">D</button></td>
+                    </tr>
+                    <tr>
+                        <td>Anúncio XYZ</td>
+                        <td>Emerson Company</td>
+                        <td>01/02/2022</td>
+                        <td>10/02/2022</td>
+                        <td>R$ 1500,00</td>
+                        <td>352524854</td>
+                        <td>589542</td>
+                        <td>597587</td>
+                        <td><button id="edit" class="positive">D</button></td>
+                    </tr>
+                    <tr>
+                        <td>Anúncio XYZ</td>
+                        <td>Emerson Company</td>
+                        <td>01/02/2022</td>
+                        <td>10/02/2022</td>
+                        <td>R$ 1500,00</td>
+                        <td>352524854</td>
+                        <td>589542</td>
+                        <td>597587</td>
+                        <td><button id="edit" class="positive">D</button></td>
+                    </tr>
                 </tbody>
+
                 <tr>
                     <td>TOTAL</td>
                     <td></td>
@@ -190,8 +263,17 @@
                     <td>352.524.854</td>
                     <td>589.542</td>
                     <td>597.587</td>
+                    <td></td>
                 </tr>
             </table>
+        </section>
+
+        <section id="contact">
+            <div class="title-page">
+                <h1>CONTATO</h1>
+            </div>
+
+            </div>
         </section>
     </main>
 
