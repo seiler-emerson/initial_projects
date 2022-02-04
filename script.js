@@ -124,85 +124,84 @@ const Display = {
 
 
 
-// ============================== LISTA DE CLIENTES CADASTRADOS ==============================
-const FormClient = [  //Array onde será armazenado os dados do input de cadastro de clientes
-    {
-        clientName: "Emerson",
-        clientPhone: 5547999799017,
-        clientEmail: "seiler.emerson@gmail.com",
-        clientCountry: "Brasil"
-    },
-    {
-        clientName: "Mayara",
-        clientPhone: 5547996528676,
-        clientEmail: "mayara@gmail.com",
-        clientCountry: "Estados Unidos"
-    },
-    {
-        clientName: "Evina",
-        clientPhone: 5541996528784,
-        clientEmail: "evina@gmail.com",
-        clientCountry: "Portugal"
-    },
-    {
-        clientName: "Evina",
-        clientPhone: 5541996528784,
-        clientEmail: "evina@gmail.com",
-        clientCountry: "Portugal"
-    },
-    {
-        clientName: "Evina",
-        clientPhone: 5541996528784,
-        clientEmail: "evina@gmail.com",
-        clientCountry: "Portugal"
-    },
-];
 
 
-// ============================== LISTA DE ANÚNCIOS CADASTRADOS ==============================
-const FormAds = [  //Array onde será armazenado os dados do input de cadastro de anuncios
-    {
-        adsName: "Campanha do Emerson",
-        adsClient: "Emerson Company",
-        adsTotalInvestiment: 12345678,
-        adsView: 123456,
-        adsClicks: 123456,
-        adsShare: 123456
-    },
-    {
-        adsName: "Campanha da Mayara",
-        adsClient: "Mayara Company",
-        adsTotalInvestiment: 12345678,
-        adsView: 123456,
-        adsClicks: 123456,
-        adsShare: 123456
-    },
-    {
-        adsName: "Campanha da Evina",
-        adsClient: "Evina Company",
-        adsTotalInvestiment: 12345678,
-        adsView: 123456,
-        adsClicks: 23456,
-        adsShare: 123456
-    },
-    {
-        adsName: "Campanha do Sheldon",
-        adsClient: "Sheldon Company",
-        adsTotalInvestiment: 12345678,
-        adsView: 123456,
-        adsClicks: 123456,
-        adsShare: 12346
-    },
-    
-];
-
-// ============================== FUNÇÕES RESPONSÁVEIS PELAS CAMPANHAS ==============================
+// ============================== FUNÇÕES RESPONSÁVEIS PELAS CAMPANHAS e Clientes ==============================
 
 const Campaigns = {
-    allClients: FormClient,  //Atalho para FormClient (Onde os clientes estão salvos)
-    allAds: FormAds, //Atalho para FormAds (Onde as transações estão salvas)
+
+    // ============================== LISTA DE CLIENTES CADASTRADOS ==============================
+    allClients: [  //Array onde será armazenado os dados do input de cadastro de clientes
+        {
+            clientName: "Emerson",
+            clientPhone: 5547999799017,
+            clientEmail: "seiler.emerson@gmail.com",
+            clientCountry: "Brasil"
+        },
+        {
+            clientName: "Mayara",
+            clientPhone: 5547996528676,
+            clientEmail: "mayara@gmail.com",
+            clientCountry: "Estados Unidos"
+        },
+        {
+            clientName: "Evina",
+            clientPhone: 5541996528784,
+            clientEmail: "evina@gmail.com",
+            clientCountry: "Portugal"
+        },
+        {
+            clientName: "Evina",
+            clientPhone: 5541996528784,
+            clientEmail: "evina@gmail.com",
+            clientCountry: "Portugal"
+        },
+        {
+            clientName: "Evina",
+            clientPhone: 5541996528784,
+            clientEmail: "evina@gmail.com",
+            clientCountry: "Portugal"
+        },
+    ],
+
+    // ============================== LISTA DE ANÚNCIOS CADASTRADOS ==============================
+    allAds: [  //Array onde será armazenado os dados do input de cadastro de anuncios
+        {
+            adsName: "Campanha do Emerson",
+            adsClient: "Emerson Company",
+            adsTotalInvestiment: 12345678,
+            adsView: 123456,
+            adsClicks: 123456,
+            adsShare: 123456
+        },
+        {
+            adsName: "Campanha da Mayara",
+            adsClient: "Mayara Company",
+            adsTotalInvestiment: 12345678,
+            adsView: 123456,
+            adsClicks: 123456,
+            adsShare: 123456
+        },
+        {
+            adsName: "Campanha da Evina",
+            adsClient: "Evina Company",
+            adsTotalInvestiment: 12345678,
+            adsView: 123456,
+            adsClicks: 23456,
+            adsShare: 123456
+        },
+        {
+            adsName: "Campanha do Sheldon",
+            adsClient: "Sheldon Company",
+            adsTotalInvestiment: 12345678,
+            adsView: 123456,
+            adsClicks: 123456,
+            adsShare: 12346
+        },
+        
+    ],
     
-// ============================== FUNÇÕES RESPONSÁVEIS POR ADICIONAR CAMPANHAS AO ARRAY ==============================
+// ============================== FUNÇÕES RESPONSÁVEIS POR ADICIONAR CAMPANHAS E CLIENTES AO ARRAY ==============================
 
     addAds(ads) { //Adicionar novas campanhas no array
         Campaigns.allAds.push(ads)
@@ -213,6 +212,18 @@ const Campaigns = {
         App.reload()
     },
 
+// ============================== FUNÇÕES RESPONSÁVEIS POR REMOVER CAMPANHAS E CLIENTES AO ARRAY ==============================
+
+    removeAds(index) {
+        Campaigns.allAds.splice(index,1)
+        App.reload()
+    },
+    removeClient(index) {
+        Campaigns.allClient.splice(index,1)
+        App.reload()
+    },
+
+    
 
 // ============================== SOMA DOS TOTAIS DOS VALORES DAS CAMPANHAS ==============================
     // somar os totais de investimento
@@ -419,9 +430,6 @@ const dataAdsReport = {
 };
 
 
-
-
-
 // ============================== Utilidades ==============================
 
 const Utils = {
@@ -442,6 +450,15 @@ const Utils = {
             return signal + value
         },
     }
+
+
+const FormAds = {
+    
+}
+
+const FormClient = {
+
+}
 
 
 //INCIALIZAÇÃO E REINICIALIZAÇÃO DOS DADOS DA TABELA QUANDO UM DADO É ADICIONADO
@@ -492,6 +509,12 @@ App.init()   //Inicia o App
 
 
 // ==============================   ==============================
+
+
+
+
+
+
 
 
 // ============================== TESTES ==============================
