@@ -757,36 +757,3 @@ App.init()   //Inicia o App
 //         clientCountry: "Brasil"
 //     },
 // )
-
-
-
-const selecao = {
-    dataClientContainer : document.querySelector('#data-client tbody'), //Pega o elemento tbody de dentro do item com id data-client
-
-    addClient(client, index) {  //Responsável por adicionar os dados no htmlClient
-        const trClient = document.createElement('select');  //Cria um elemento tr na DOM
-        trClient.innerHTML = selecao.innerHTMLClientTrasaction(client);  //Recebe os dados que vão dentro do td vindos do innerHTMLClientTrasaction
-    
-        selecao.dataClientContainer.appendChild(trClient)  //Acessa o conteúdo de dataClientContainer e o appendChild lista o elemento trClient criado
-    },
-    innerHTMLClientTrasaction(client) {         //Funcionalidade para fazer a substituição dos itens das linhas do form de clientes pelos clientes existentes no array FormClient
-        //Template dos dados que vão aparecer na tabela
-        const htmlClient = `
-                <td>${client.clientName}</td>
-                <td>${client.clientPhone}</td>
-                <td>${client.clientEmail}</td>
-                <td>${client.clientCountry}</td>
-                <td><h2>x</h2></td>
-        `
-        return htmlClient
-    },
-    clearclient() {
-        selecao.dataClientContainer.innerHTML = ""; //Limpa os itens da tabela do dashboard
-    }
-    
-};
-
-
-Campaigns.allClients.forEach(function(FormClient) {  //Para cada item dentro de FormAds
-    selecao.addClient(FormClient)    //Pegar os dados dos clientes em FormClient e monta dentro da estrutura de tabela de dataClient
-    });
