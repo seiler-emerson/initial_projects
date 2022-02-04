@@ -86,7 +86,7 @@
                 <h1>Cadastrar Cliente</h1>
             </div>
             <div class="container-client">
-                <form class="data-form" action="">
+                <form class="data-form" action="" onsubmit="FormClient.submit(event)">
                     <h3>Nome</h3>
                     <input type="text" name="client-name" id="client-name" placeholder="Nome do cliente">
                     <h3>Telefone</h3>
@@ -96,12 +96,13 @@
                     <input type="email" name="email" id="client-email" placeholder="email@email.com">
                     <h3>País</h3>
                     <input type="text" name="client-country" id="client-country" placeholder="Brasil">
+                    <br>
+                    <div class="buttons-div">
+                        <button onclick="Display.cancelCreateClient()" class="negative">Cancelar</button>
+                        <button type="submit" class="positive">Salvar</button>
+                    </div>
                 </form>
-                <br>
-                <div class="buttons-div">
-                    <button onclick="Display.cancelCreateClient()" class="negative">Cancelar</button>
-                    <button type="submit" class="positive">Salvar</button>
-                </div>
+                
             </div>
 
         </section>
@@ -184,24 +185,25 @@
                 <h1>Cadastrar Anúncio</h1>
             </div>
             <div class="container-client">
-                <form class="data-form" action="">
+                <form class="data-form" action="" onsubmit="FormAds.submit(event)">
                     <h3>Nome</h3>
                     <input type="text" name="client-name" id="ads-name" placeholder="Nome do anúncio">
                     <h3>Cliente</h3>
-                    <input type="text" name="client-name" id="clent-ads" placeholder="Nome do cliente">
+                    <input type="text" name="client-name" id="client-ads" placeholder="Nome do cliente">
                     <h3>Data de Início</h3>
                     <input type="date" name="date-start" id="date-start">
                     <h3>Data de Término</h3>
                     <input type="date" name="date-end" id="date-end">
                     <h3>Investimento</h3>
-                    <input type="text" name="client-country" id="client-country" placeholder="500">
+                    <input type="text" name="ads-investent" id="ads-investent" placeholder="500">
                     <span>Digite apenas números.</span>
+                    <br>
+                    <div class="buttons-div">
+                        <button onclick="Display.cancelCreateAds()" class="negative">Cancelar</button>
+                        <button class="positive">Salvar</button>
+                    </div>
                 </form>
-                <br>
-                <div class="buttons-div">
-                    <button onclick="Display.cancelCreateAds()" class="negative">Cancelar</button>
-                    <button class="positive">Salvar</button>
-                </div>
+                
             </div>
         </section>
 

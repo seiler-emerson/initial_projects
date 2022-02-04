@@ -449,15 +449,199 @@ const Utils = {
             })
             return signal + value
         },
+        formatInvestment(value) {
+            value = Number(value)   //Converte o input recebido em um número
+        },
+        formatDate(date) {  //Pegar a data no formato ISO
+            const splittedDate = date.split("-") //Separar onde houver traços e criar um array com 03 posições
+            return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}` //montar a data no padrão br
+        }
     }
 
 
+
+// ============================== PEGANDO OS DADOS DO FORMULÁRIO CADASTRO DE ANÚNCIOS ==============================
+
 const FormAds = {
-    
+    //Pegar os campos do formulário
+    adsName: document.querySelector('input#ads-name'),
+    adsClient: document.querySelector('input#client-ads'),
+    adsDateStart: document.querySelector('input#date-start'),
+    adsDateEnd: document.querySelector('input#date-end'),
+    adsInvestment: document.querySelector('input#ads-investent'),
+
+    //Pegar os valores dos campos e guardar dentro de um objeto
+    getValues() {
+        return {
+            adsName: FormAds.adsName.value,
+            adsClient: FormAds.adsClient.value,
+            adsDateStart: FormAds.adsDateStart.value,
+            adsDateEnd: FormAds.adsDateEnd.value,
+            adsInvestment: FormAds.adsInvestment.value,
+        }
+    },
+
+    // verificar se todas as informações foram preenchidas
+    validateFields() {
+        const { adsName, adsClient, adsDateStart, adsDateEnd, adsInvestment } = FormAds.getValues() //Retirar os valores dos inputs para dentro das variáveis por desestruturação
+        
+        //Verificar se os campos estão vazios
+        if(
+            adsName.trim() === "" ||
+            adsClient.trim() === "" ||
+            adsDateStart.trim() === "" ||
+            adsDateEnd.trim() === "" ||
+            adsInvestment.trim() === "" ) {
+                throw new Error("Por favor, preencha todos os campos!")  //Se ouver alguns dos campos acima vazio, será retornado um objeto com erro
+        }
+    },
+
+    //formatar os dados para salvar
+    formatValues() {
+        let { adsName, adsClient, adsDateStart, adsDateEnd, adsInvestment } = FormAds.getValues()
+        
+        adsInvestment = Utils.formatInvestment(adsInvestment);
+        console.log(adsInvestment)
+
+        adsDateStart = Utils.formatDate(adsDateStart);
+        console.log(adsDateStart)
+        adsDateEnd = Utils.formatDate(adsDateEnd);
+        console.log(adsDateEnd)
+
+        //RETORNAR OS DADOS FORMATADOS DENTRO DAS VÁRIAVEIS
+        return {
+            adsName,
+            adsClient,
+            adsDateStart,
+            adsDateEnd,
+            adsInvestment
+        }
+    },
+
+    clearFields() {
+        FormAds.adsName.value = ""
+        FormAds.adsClient.value = ""
+        FormAds.adsDateStart.value = ""
+        FormAds.adsDateEnd.value = ""
+        FormAds.adsInvestment.value = ""
+    },
+
+    //Prevenir o comportamento padrão de envio do formulário
+    submit(event) {
+        event.preventDefault()
+
+        //Estrutura para capturar e tratar os dados dos inputs
+        //E se houver algum input vazio capturar o erro para exibir na tela
+        try {
+            // verificar se todas as informações foram preenchidas
+            FormAds.validateFields()
+            
+            //formatar os dados para salvar
+            const ads = FormAds.formatValues()
+
+            //salvar
+            Campaigns.addAds(ads)
+
+            //apagar os dados do formulario
+            FormAds.clearFields()
+
+            //fechar página e abrir a pagina de anuncios
+            Display.ads()
+
+            //Atualizar a aplicação
+
+
+        } catch (error) {
+            alert(error.message)
+        }
+
+        
+    }
 }
 
+// ============================== PEGANDOS OS DADOS DO FORMULÁRIO CADASTRO DE CLIENTES ==============================
 const FormClient = {
+    //Pegar os campos do formulário
+    clientName: document.querySelector('input#client-name'),
+    clientPhone: document.querySelector('input#client-phone'),
+    clientEmail: document.querySelector('input#client-email'),
+    clientCountry: document.querySelector('input#client-country'),
 
+    //Pegar os valores dos campos e guardar dentro de um objeto
+    getValues() {
+        return {
+            clientName: FormClient.clientName.value,
+            clientPhone: FormClient.clientPhone.value,
+            clientEmail: FormClient.clientEmail.value,
+            clientCountry: FormClient.clientCountry.value,
+        }
+    },
+
+    // verificar se todas as informações foram preenchidas
+    validateFields() {
+        const { clientName, clientPhone, clientEmail, clientCountry } = FormClient.getValues() //Retirar os valores dos inputs para dentro das variáveis por desestruturação
+        
+        //Verificar se os campos estão vazios
+        if(
+            clientName.trim() === "" ||
+            clientPhone.trim() === "" ||
+            clientEmail.trim() === "" ||
+            clientCountry.trim() === "" ) {
+                throw new Error("Por favor, preencha todos os campos!")  //Se ouver alguns dos campos acima vazio, será retornado um objeto com erro
+        }
+    },
+
+    //formatar os dados para salvar | A principio não será necessário formatar os dados desse formulário
+    formatValues() {
+        let { clientName, clientPhone, clientEmail, clientCountry } = FormClient.getValues() //Retirar os valores dos inputs para dentro das variáveis por desestruturação
+        
+        //RETORNAR OS DADOS FORMATADOS DENTRO DAS VÁRIAVEIS
+        return {
+            clientName,
+            clientPhone,
+            clientEmail,
+            clientCountry
+        }
+    },
+
+    clearFields() {
+        FormClient.clientName.value = ""
+        FormClient.clientPhone.value = ""
+        FormClient.clientEmail.value = ""
+        FormClient.clientCountry.value = ""
+    },
+
+    //Prevenir o comportamento padrão de envio do formulário
+    submit(event) {
+        event.preventDefault()
+
+        //Estrutura para capturar e tratar os dados dos inputs
+        //E se houver algum input vazio capturar o erro para exibir na tela
+        try {
+            // verificar se todas as informações foram preenchidas
+            FormClient.validateFields()
+            
+            //formatar os dados para salvar
+            const client = FormClient.formatValues()
+
+            //salvar
+            Campaigns.addClient(client)
+
+            //apagar os dados do formulario
+            FormClient.clearFields()
+
+            //fechar página e abrir a pagina de clientes
+            Display.client()
+
+            //Atualizar a aplicação
+
+
+        } catch (error) {
+            alert(error.message)
+        }
+
+        
+    }
 }
 
 
@@ -508,7 +692,7 @@ App.init()   //Inicia o App
 
 
 
-// ==============================   ==============================
+// ==============================  ==============================
 
 
 
@@ -519,57 +703,57 @@ App.init()   //Inicia o App
 
 // ============================== TESTES ==============================
 
-Campaigns.addAds(
-    {
-        adsName: "TESTE",
-        adsClient: "TESTE Company",
-        adsTotalInvestiment: 99999,
-        adsView: 12999,
-        adsClicks: 123456,
-        adsShare: 12346
-    },  
-)
-Campaigns.addAds(
-    {
-        adsName: "TESTE",
-        adsClient: "TESTE Company",
-        adsTotalInvestiment: 99999,
-        adsView: 12999,
-        adsClicks: 123456,
-        adsShare: 12346
-    },  
-)
-Campaigns.addAds(
-    {
-        adsName: "TESTE3",
-        adsClient: "TESTE Company",
-        adsTotalInvestiment: 99999,
-        adsView: 12999,
-        adsClicks: 123456,
-        adsShare: 12346
-    },  
-)
-Campaigns.addClient(
-    {
-        clientName: "Emerson",
-        clientPhone: 5547999799017,
-        clientEmail: "seiler.emerson@gmail.com",
-        clientCountry: "Brasil"
-    },
-)
-Campaigns.addClient(
-    {
-        clientName: "Emerson",
-        clientPhone: 5547999799017,
-        clientEmail: "seiler.emerson@gmail.com",
-        clientCountry: "Brasil"
-    },
-)
-Campaigns.addClient(
-    {
-        clientName: "Emerson Seiler",
-        clientPhone: 5547999799017,
-        clientEmail: "seiler.emerson@gmail.com",
-        clientCountry: "Brasil"
-    },
-)
+// Campaigns.addAds(
+//     {
+//         adsName: "TESTE",
+//         adsClient: "TESTE Company",
+//         adsTotalInvestiment: 99999,
+//         adsView: 12999,
+//         adsClicks: 123456,
+//         adsShare: 12346
+//     },  
+// )
+// Campaigns.addAds(
+//     {
+//         adsName: "TESTE",
+//         adsClient: "TESTE Company",
+//         adsTotalInvestiment: 99999,
+//         adsView: 12999,
+//         adsClicks: 123456,
+//         adsShare: 12346
+//     },  
+// )
+// Campaigns.addAds(
+//     {
+//         adsName: "TESTE3",
+//         adsClient: "TESTE Company",
+//         adsTotalInvestiment: 99999,
+//         adsView: 12999,
+//         adsClicks: 123456,
+//         adsShare: 12346
+//     },  
+// )
+// Campaigns.addClient(
+//     {
+//         clientName: "Emerson",
+//         clientPhone: 5547999799017,
+//         clientEmail: "seiler.emerson@gmail.com",
+//         clientCountry: "Brasil"
+//     },
+// )
+// Campaigns.addClient(
+//     {
+//         clientName: "Emerson",
+//         clientPhone: 5547999799017,
+//         clientEmail: "seiler.emerson@gmail.com",
+//         clientCountry: "Brasil"
+//     },
+// )
+// Campaigns.addClient(
+//     {
+//         clientName: "Emerson Seiler",
+//         clientPhone: 5547999799017,
+//         clientEmail: "seiler.emerson@gmail.com",
+//         clientCountry: "Brasil"
+//     },
+// )

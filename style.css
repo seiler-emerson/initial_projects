@@ -130,7 +130,7 @@ nav p:hover {
 /* ================================= DASHBOARD ================================= */
 
 #dashboard {
-    display: none;
+    display: flex;
 }
 
 .box-info {
@@ -186,7 +186,7 @@ nav p:hover {
 
 /* === TELA REGISTRO ANÚNCIO === */
 #ads-register {
-    display: flex;
+    display: none;
 }
 
 /* === TELA VISUALIZAÇÃO DE ANÚNCIO INDIVIDUAL === */
