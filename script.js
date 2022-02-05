@@ -8,6 +8,9 @@ const Form = {
     adsDateStart: document.querySelector('#ads-date-start'),
     adsDateEnd: document.querySelector('#ads-date-end'),
     adsInvestment: document.querySelector('#ads-investment'),
+    // adsViewProjection,
+    // adsClicksProjection,
+    // adsShareProjection,
 
     //Pegar valores do formulário
     getValues() {
@@ -17,6 +20,10 @@ const Form = {
             adsDateStart: Form.adsDateStart.value,
             adsDateEnd: Form.adsDateEnd.value,
             adsInvestment: Form.adsInvestment.value,
+            adsViewProjection: Form.totalViewProjection,
+            adsClicksProjection: Form.totalClicksProjection,
+            adsShareProjection: Form.totalShareProjection,
+
         }
     }
 }
@@ -139,9 +146,9 @@ const Utils = {
 
         if(value.includes(',') || value.includes('.')) {
             value = String(value).replace(/\D/g, "")  //Procure tudo que não for número e substitua por nada | Ficará apenas números
-            value = Number(value) * 100 //Transformar o valore recebido em um numero e multiplicar ele por 100
+            value = Number(value) //Transformar o valore recebido em um numero e multiplicar ele por 100
         } else {
-            value = Number(value) * 100 //Transformar o valore recebido em um numero e multiplicar ele por 100
+            value = Number(value) //Transformar o valore recebido em um numero e multiplicar ele por 100
         }
         return value
         
@@ -158,7 +165,7 @@ const Utils = {
     moneyConvert(value) {
         
         //value = String(value).replace(/\D/g, "")  //Procure tudo que não for número e substitua por nada | Ficará apenas números
-        value = Number(value) / 100
+        value = Number(value)
 
         value = value.toLocaleString("pr-BR", {
             style: "currency",
@@ -184,11 +191,7 @@ const clearFields = () => {   //Limpar os campos do formulário de cadastro de a
 };
 
 const formatValues = (value) => {  //Formatar os valores antes de cadastrar no localstorage
-    let { adsName, adsClient, adsDateStart, adsDateEnd, adsInvestment } = Form.getValues()
-
-    adsInvestment = Utils.formatIvestment(adsInvestment)
-    adsDateStart = Utils.formatDate(adsDateStart)
-    adsDateEnd = Utils.formatDate(adsDateEnd)
+    let { adsName, adsClient, adsDateStart, adsDateEnd, adsInvestment, adsViewProjection, adsClicksProjection, adsShareProjection } = Form.getValues()
 
     return {
         adsName,
@@ -196,6 +199,9 @@ const formatValues = (value) => {  //Formatar os valores antes de cadastrar no l
         adsDateStart,
         adsDateEnd,
         adsInvestment,
+        adsViewProjection,
+        adsClicksProjection,
+        adsShareProjection
     }
 
 }
@@ -212,7 +218,7 @@ const saveAds = (event) => { //Pegar os dados dos inputs do formulário, valida 
     }
 
     //Se os campos não estiverem vazios pega os dados e salva
-    if(ads.adsName.trim() !== "" || ads.adsClient.trim() !== "" || ads.adsDateStart.trim() !== "" || ads.adsDateEnd.trim() !== "" || ads.adsInvestment.trim() === "" ) {
+    if(ads.adsName.trim() === "" || ads.adsClient.trim() === "" || ads.adsDateStart.trim() === "" || ads.adsDateEnd.trim() === "" || ads.adsInvestment.trim() === "" ) {
         alert("Por favor, preencha todos so campos!")
     } else {
         const index = document.querySelector('#ads-name').dataset.index
@@ -220,13 +226,17 @@ const saveAds = (event) => { //Pegar os dados dos inputs do formulário, valida 
             const formData = formatValues()
             createAds(formData);   //Cria o JSON e envia para a tela
             clearFields();    //Limpa os campos do fomulário
-            updateTableAds(); //Atualiza a tabela no display
+            updateTableAds(); //Atualiza a tabela no display anuncios
+            updateTableReport(); //Atualiza a tabela no display relatorio
+            updateCalc(); // Atualiza os calculos
             Display.ads();    //Fecha a tela do formulário e abre a tela dos anuncios
         } else {
             formatValues()
             updateAds(index, ads)
-            updateTableAds(); //Atualiza a tabela no display
+            updateTableAds(); //Atualiza a tabela no display anuncios
+            updateTableReport(); //Atualiza a tabela no display relatorio
             Display.ads();    //Fecha a tela do formulário e abre a tela dos anuncios
+            updateCalc(); // Atualiza os calculos
             console.log('Editando')
         }
     }
@@ -287,18 +297,19 @@ document.querySelector('#data-ads>tbody').addEventListener('click', editDelete)
 // =========================================================================================================================== //
 
 
-const createTr = (ads, index) => {  //Criar estrutura da tabela para inserção na página
+const createTrAds = (ads, index) => {  //Criar estrutura da tabela para inserção na página
     const newRow = document.createElement('tr')  //cria uma tr e armazena na variavel newRow
     //Monta a estrutura da linha
     newRow.innerHTML = `
         <td>${ads.adsName}</td>
         <td>${ads.adsClient}</td>
-        <td>${ads.adsDateStart}</td>
-        <td>${ads.adsDateEnd}</td>
+        <td>${Utils.formatDate(ads.adsDateStart)}</td>
+        <td>${Utils.formatDate(ads.adsDateEnd)}</td>
         <td>${Utils.moneyConvert((ads.adsInvestment))}</td>
         <td><button id="exclude" type="button" data-action="delete-${index}" class="negative">X</button></td>
         <td><button id="edit" type="button" data-action="edit-${index}" class="positive">E</button></td>
     `
+    //console.log(ads.adsInvestment)
     document.querySelector('#data-ads tbody').appendChild(newRow)
 }
 
@@ -310,23 +321,53 @@ const clearTableAds = () => { //Limpar visualização da tabela de anuncios, par
 const updateTableAds = () => {  //Atualizar a visualização da tabela de anuncios
     const dbAds = readAds();    //Pega todos os dados do localStorage
     clearTableAds();
-    dbAds.forEach(createTr);    //Roda um forEach para cada item do localStorage e envia para a função createTr
+    dbAds.forEach(createTrAds);    //Roda um forEach para cada item do localStorage e envia para a função createTr
+    
 }
 updateTableAds() //Atualizar a tabela de anuncios na página de 
 
+// ======================================================================================================================= //
+// ==============================    ATUALIZAR DADOS DOS ANÚNCIOS NA TABELA DE RELATÓRIO   ============================== //
+// ====================================================================================================================== //
 
+const createTrReport = (ads, index) => {
+    const newRow = document.createElement('tr')
+
+    newRow.innerHTML = `
+        <td>${ads.adsName}</td>
+        <td>${ads.adsClient}</td>
+        <td>${Utils.formatDate(ads.adsDateStart)}</td>
+        <td>${Utils.formatDate(ads.adsDateEnd)}</td>
+        <td>${Utils.moneyConvert((ads.adsInvestment))}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+    `
+
+    document.querySelector('#data-report tbody').appendChild(newRow)
+}
+
+const clearTableReport = () => {
+    const rows = document.querySelectorAll('#data-report>tbody tr')
+    rows.forEach(row => row.parentNode.removeChild(row))
+}
+
+const updateTableReport = () => {
+    const dbReport = readAds();
+    clearTableReport();
+    dbReport.forEach(createTrReport);
+    
+}
+updateTableReport()
 
 // =================================================================================== //
 // ==============================    REGRA DE NEGÓCIO   ============================== //
 // =================================================================================== //
 
 
-const indexAdsInvestment = readAds()   //Pega o array no localstorage
-indexAdsInvestment.forEach(Calc)       //Pega cada objeto dentro do array e envia para a função Calc para fazer o cálculo do investimento
 
 function Calc(index) {
 
-    
     let investmentDay = index.adsInvestment //Valor investido por dia pego do localStorage
     let totalAdsDay = 10    //Total de dias de veiculação do anuncio
     let viewByOneInvestmentDay = 30  //Visualizações por um real diario 
@@ -394,12 +435,17 @@ function Calc(index) {
     // console.log("Clicaram: "+fourthdShareClick);
     // console.log("Compartilhado Rede social: "+fourthShareSocialMedia)
     // console.log("============================================")
-    console.log(`====================TOTAIS========================`)
-    console.log("Investimento Diário: " + investmentDay)
-    console.log("Total visualizações: "+totalViewProjection)
-    console.log("Total Clicks: "+totalClicksProjection)
-    console.log("Total Compartilhado Rede social: "+totalShareProjection)
-
+    // console.log(`====================TOTAIS========================`)
+    // console.log("Investimento Diário: " + investmentDay)
+    
+    // console.log("Total visualizações: "+totalViewProjection)
+    // console.log("Total Clicks: "+totalClicksProjection)
+    // console.log("Total Compartilhado Rede social: "+totalShareProjection)
 
 }
 
+//Atualizar os calculos de todos os itens do array
+const updateCalc = () => {
+    const indexAdsInvestment = readAds()   //Pega o array no localstorage
+    indexAdsInvestment.forEach(Calc)       //Pega cada objeto dentro do array e envia para a função Calc para fazer o cálculo do investimento
+}
