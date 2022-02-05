@@ -139,6 +139,7 @@ const Utils = {
 
         if(value.includes(',') || value.includes('.')) {
             value = String(value).replace(/\D/g, "")  //Procure tudo que não for número e substitua por nada | Ficará apenas números
+            value = Number(value) * 100 //Transformar o valore recebido em um numero e multiplicar ele por 100
         } else {
             value = Number(value) * 100 //Transformar o valore recebido em um numero e multiplicar ele por 100
         }
@@ -211,7 +212,7 @@ const saveAds = (event) => { //Pegar os dados dos inputs do formulário, valida 
     }
 
     //Se os campos não estiverem vazios pega os dados e salva
-    if(ads.adsName.trim() === "" || ads.adsClient.trim() === "" || ads.adsDateStart.trim() === "" || ads.adsDateEnd.trim() === "" || ads.adsInvestment.trim() === "" ) {
+    if(ads.adsName.trim() !== "" || ads.adsClient.trim() !== "" || ads.adsDateStart.trim() !== "" || ads.adsDateEnd.trim() !== "" || ads.adsInvestment.trim() === "" ) {
         alert("Por favor, preencha todos so campos!")
     } else {
         const index = document.querySelector('#ads-name').dataset.index
@@ -311,77 +312,94 @@ const updateTableAds = () => {  //Atualizar a visualização da tabela de anunci
     clearTableAds();
     dbAds.forEach(createTr);    //Roda um forEach para cada item do localStorage e envia para a função createTr
 }
-updateTableAds() //Atualizar a tabela de anuncios na página de anuncios
+updateTableAds() //Atualizar a tabela de anuncios na página de 
 
 
 
 // =================================================================================== //
 // ==============================    REGRA DE NEGÓCIO   ============================== //
 // =================================================================================== //
-let investimentoDiario = 1
-let diasAnuncio = 9
-let investimentoTotal = diasAnuncio * investimentoDiario
-//30 pessoas visualizam o anúncio original (não compartilhado) a cada R$ 1,00 investido.
-//let visualizacoes = investimentoTotal*30
-let visualizacoes = 100
-console.log("Visualizaram: "+visualizacoes)
-
-// a cada 100 pessoas que visualizam o anúncio 12 clicam nele.
-let click = (visualizacoes*12)/100
-console.log("Clicaram: "+click)
-
-// a cada 20 pessoas que clicam no anúncio 3 compartilham nas redes sociais.
-let compRedeSocial = (click*3)/20
-console.log("Compartilhado Rede social: "+compRedeSocial)
-
-console.log("============================================")
-
-// cada compartilhamento nas redes sociais gera 40 novas visualizações.
-// o mesmo anúncio é compartilhado no máximo 4 vezes em sequência
-// (1ª pessoa -> compartilha -> 2ª pessoa -> compartilha - > 3ª pessoa -> compartilha -> 4ª pessoa)
-let visualizacoes1 = (compRedeSocial*40)
-console.log("Novas visualizações: "+visualizacoes1)
-let click1 = (visualizacoes1*12)/100
-console.log("Clicaram: "+click1)
-let compRedeSocial1 = (click1*3)/20
-console.log("Compartilhado Rede social: "+compRedeSocial1)
-
-console.log("============================================")
-
-let visualizacoes2 = (compRedeSocial1*40)
-console.log("Novas visualizações: "+visualizacoes2)
-let click2 = (visualizacoes2*12)/100
-console.log("Clicaram: "+click2)
-let compRedeSocial2 = (click2*3)/20
-console.log("Compartilhado Rede social: "+compRedeSocial2)
-
-console.log("============================================")
-
-let visualizacoes3 = (compRedeSocial2*40)
-console.log("Novas visualizações: "+visualizacoes1)
-let click3 = (visualizacoes3*12)/100
-console.log("Clicaram: "+click1)
-let compRedeSocial3 = (click3*3)/20
-console.log("Compartilhado Rede social: "+compRedeSocial3)
-
-console.log("============================================")
-
-let visualizacoes4 = (compRedeSocial3*40)
-console.log("Novas visualizações: "+visualizacoes4)
-let click4 = (visualizacoes4*12)/100
-console.log("Clicaram: "+click4)
-let compRedeSocial4 = (click4*3)/20
-console.log("Compartilhado Rede social: "+compRedeSocial4)
-
-console.log("============================================")
-let totalVisualizacoes = visualizacoes+visualizacoes1+visualizacoes2+visualizacoes3+visualizacoes4
-console.log(totalVisualizacoes)
-let totalClicks = click + click1 + click2 + click3 + click4
-console.log(totalClicks)
-let totalCompartilhamentos = compRedeSocial + compRedeSocial1 + compRedeSocial2 + compRedeSocial3 + compRedeSocial4
-console.log(totalCompartilhamentos)
 
 
+const indexAdsInvestment = readAds()   //Pega o array no localstorage
+indexAdsInvestment.forEach(Calc)       //Pega cada objeto dentro do array e envia para a função Calc para fazer o cálculo do investimento
+
+function Calc(index) {
+
+    
+    let investmentDay = index.adsInvestment //Valor investido por dia pego do localStorage
+    let totalAdsDay = 10    //Total de dias de veiculação do anuncio
+    let viewByOneInvestmentDay = 30  //Visualizações por um real diario 
+    
+
+    //CALCULO INICIAL
+    
+    let totalInvestment = investmentDay * totalAdsDay      //Investimento total do anuncio
+    let initialView = totalInvestment * viewByOneInvestmentDay       //Visualização maxima | 30 pessoas visualizam o anúncio original (não compartilhado) a cada R$ 1,00 investido.
+    let initialClick = (initialView * 12) / 100;                    //Clicks maximos | a cada 100 pessoas que visualizam o anúncio 12 clicam nele.
+    let initalShareSocialMedia = (initialClick * 3) / 20                     //Compartilhamento máximo | a cada 20 pessoas que clicam no anúncio 3 compartilham nas redes sociais.
+    
+    // O mesmo anúncio é compartilhado no máximo 4 vezes em sequência
+    // (1ª pessoa -> compartilha -> 2ª pessoa -> compartilha - > 3ª pessoa -> compartilha -> 4ª pessoa)
+    
+    // PRIMEIRO CALCULO COMPARTILHAMENTO
+    
+    let firstShareView = initalShareSocialMedia * 40  //Cada compartilhamento nas redes sociais gera 40 novas visualizações.
+    let firstShareClick = (firstShareView * 12) / 100;                //Clicks maximos | a cada 100 pessoas que visualizam o anúncio 12 clicam nele.
+    let firstShareSocialMedia = (firstShareClick * 3) / 20            //Compartilhamento máximo | a cada 20 pessoas que clicam no anúncio 3 compartilham nas redes sociais.
+    
+    // SEGUNDO CALCULO COMPARTILHAMENTO
+    
+    let secondShareView = firstShareSocialMedia * 40  //Cada compartilhamento nas redes sociais gera 40 novas visualizações.
+    let secondShareClick = (secondShareView * 12) / 100;                //Clicks maximos | a cada 100 pessoas que visualizam o anúncio 12 clicam nele.
+    let secondShareSocialMedia = (secondShareClick * 3) / 20            //Compartilhamento máximo | a cada 20 pessoas que clicam no anúncio 3 compartilham nas redes sociais.
+    
+    // TERCEIRO CALCULO COMPARTILHAMENTO
+    
+    let thirdShareView = secondShareSocialMedia * 40  //Cada compartilhamento nas redes sociais gera 40 novas visualizações.
+    let thirdShareClick = (thirdShareView * 12) / 100;                //Clicks maximos | a cada 100 pessoas que visualizam o anúncio 12 clicam nele.
+    let thirdShareSocialMedia = (thirdShareClick * 3) / 20            //Compartilhamento máximo | a cada 20 pessoas que clicam no anúncio 3 compartilham nas redes sociais.
+    
+    
+    // QUARTO CALCULO COMPARTILHAMENTO
+    
+    let fourthShareView = thirdShareSocialMedia * 40  //Cada compartilhamento nas redes sociais gera 40 novas visualizações.
+    let fourthdShareClick = (fourthShareView * 12) / 100;                //Clicks maximos | a cada 100 pessoas que visualizam o anúncio 12 clicam nele.
+    let fourthShareSocialMedia = (fourthdShareClick * 3) / 20            //Compartilhamento máximo | a cada 20 pessoas que clicam no anúncio 3 compartilham nas redes sociais.
+    
+    // PROJEÇÕES TOTAIS
+    
+    let totalViewProjection = initialView + firstShareView + secondShareView + thirdShareView + fourthShareView
+    let totalClicksProjection = initialClick + firstShareClick  + secondShareClick + thirdShareClick + fourthdShareClick
+    let totalShareProjection = initalShareSocialMedia + firstShareSocialMedia  + secondShareSocialMedia + thirdShareSocialMedia + fourthShareSocialMedia
 
 
+    // console.log("Visualizaram: "+initialView);
+    // console.log("Clicaram: "+initialClick);
+    // console.log("Compartilhado Rede social: "+initalShareSocialMedia)
+    // console.log("============================================")
+    // console.log(firstShareView);
+    // console.log("Clicaram: "+firstShareClick);
+    // console.log("Compartilhado Rede social: "+firstShareSocialMedia)
+    // console.log("============================================")
+    // console.log("Visualizaram: "+secondShareView);
+    // console.log("Clicaram: "+secondShareClick);
+    // console.log("Compartilhado Rede social: "+secondShareSocialMedia)
+    // console.log("============================================")
+    // console.log("Visualizaram: "+thirdShareView);
+    // console.log("Clicaram: "+thirdShareClick);
+    // console.log("Compartilhado Rede social: "+thirdShareSocialMedia)
+    // console.log("============================================")
+    // console.log("Visualizaram: "+fourthShareView);
+    // console.log("Clicaram: "+fourthdShareClick);
+    // console.log("Compartilhado Rede social: "+fourthShareSocialMedia)
+    // console.log("============================================")
+    console.log(`====================TOTAIS========================`)
+    console.log("Investimento Diário: " + investmentDay)
+    console.log("Total visualizações: "+totalViewProjection)
+    console.log("Total Clicks: "+totalClicksProjection)
+    console.log("Total Compartilhado Rede social: "+totalShareProjection)
+
+
+}
 
