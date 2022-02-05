@@ -68,33 +68,33 @@ const Display = {
 };
 
 
-// =========== TEMPLATE FORM DATA =========== //
-// =========== TEMPLATE DADOS FORMULÁRIO =========== //
-
+// ======================================================================= //
+// ==============================    CRUD   ============================== //
+// ======================================================================= //
 
 // =========== ACESSO/ENVIO LOCALSTORAGE =========== //
 const getLocalStorage = () => JSON.parse(localStorage.getItem('db_ads')) ?? [];   //Leia o que está no localstorage, transforma em JSON e atribui a variável db_ads, caso o localstorage esteja vazio, crie um array vazio
 const setLocalStorage = (dbAds) => localStorage.setItem("db_ads", JSON.stringify(dbAds)) //Converte para string e envia o conteúdo alterado para o localstorage
 
-// =========== CREATE (CRUD) =========== //
+// =========== CREATE =========== //
 const createAds = (ads) => {                        //Função para pegar os dados do formulário e enviar para o localstorage do navegador
     const dbAds = getLocalStorage()
     dbAds.push(ads)                                 //Adiciona mais um item ao objeto, no caso os dados vindos do formulário
     setLocalStorage(dbAds)
 };
 
-// =========== READE (CRUD) =========== //
+// =========== READE =========== //
 const readAds = () => getLocalStorage()             //Ler os dados do localstorage
 
 
-// =========== UPDATE (CRUD) =========== //
+// =========== UPDATE =========== //
 const updateAds = (index, ads) => {                 //Recebe o index do array e o ads
     const dbAds = readAds()                         //Lê o localstorage e armazena os dados na variável dbAds
     dbAds[index] = ads                              //O array na posição X vai receber os novos dados
     setLocalStorage(dbAds)                          //O array é enviado para o localstorage
 }
 
-// =========== DELETE (CRUD) =========== //
+// =========== DELETE =========== //
 const deleteAds = (index) => {
     const dbAds = readAds()                         //Lê o localstorage e armazena os dados na variável dbAds
     dbAds.splice(index,1)                           //Fatia o array na posição do index e pega apenas o primeiro item definido
@@ -102,23 +102,25 @@ const deleteAds = (index) => {
 }
 
 
+// ========================================================================================== //
+// ==============================    FORMULÁRIO DE ANUNCIOS   ============================== //
+// ========================================================================================= //
 
-// =========== Validação dos campos do formulário =========== //
-const isValidFiels = () => {
+
+const isValidFiels = () => { //Validação dos campos do formulário
     return document.querySelector('#ads-form').reportValidity() //Só vai validar se todas os requires do form forem atendidos
 }
 
-// =========== LIMPAR CAMPOS DO FORMULÁRIO =========== //
 const clearFields = () => {   //Limpar os campos do formulário de cadastro de anuncio
     document.querySelector('#ads-name').value = ""
     document.querySelector('#ads-client').value = ""
     document.querySelector('#ads-date-start').value = ""
     document.querySelector('#ads-date-end').value = ""
     document.querySelector('#ads-investment').value = ""
+    
 };
 
-// =========== ADICIONAR INFORMAÇÕES DO FORMULÁRIO AO LOCALSTORAGE =========== //
-const saveAds = (event) => {
+const saveAds = (event) => { //Pegar os dados dos inputs do formulário e enviar para o localstorage
     event.preventDefault()
     
     //validar campos
@@ -132,29 +134,70 @@ const saveAds = (event) => {
             adsInvestment: document.querySelector('#ads-investment').value,
             
         }
-        
-        createAds(ads);   //Cria o JSON e envia para a tela
-        clearFields();    //Limpa os campos do fomulário
-        updateTableAds(); //Atualiza a tabela no display
-        Display.ads();    //Fecha a tela do formulário e abre a tela dos anuncios
+        const index = document.querySelector('#ads-name').dataset.index
+        if(index == 'new') {
+            createAds(ads);   //Cria o JSON e envia para a tela
+            clearFields();    //Limpa os campos do fomulário
+            updateTableAds(); //Atualiza a tabela no display
+            Display.ads();    //Fecha a tela do formulário e abre a tela dos anuncios
+        } else {
+            updateAds(index, ads)
+            updateTableAds(); //Atualiza a tabela no display
+            Display.ads();    //Fecha a tela do formulário e abre a tela dos anuncios
+            console.log('Editando')
+        }
+  
     }
 }
 
-// =========== BOTÃO SALVAR FORMULÁRIO ANÚNCIO =========== //
-document.querySelector('#saveAds').addEventListener('click', saveAds);
+document.querySelector('#saveAds').addEventListener('click', saveAds);   //Adicionar evento de click no botão salvar anuncio e chamar a função responsável por salvar o cadastro
 
-// =========== BOTÃO CANCELAR FORMULÁRIO ANÚNCIO =========== //
-const cancelAddAds = () => {
+const cancelAddAds = () => {   //Limpa os dados dos inputs e fecha a tela de cadastro
     clearFields();
     Display.ads()
+    
 }
-document.querySelector('#cancelAddAds').addEventListener('click', cancelAddAds);
+document.querySelector('#cancelAddAds').addEventListener('click', cancelAddAds); //Adicionar evento de click no botão cancelar anuncio e chamar a função responsável por cancelar o cadastro
 
+
+// ==================  BOTÕES EXCLUIR E EDITAR PÁGINA DE ANUNCIOS ================== //
+const fillFields = (ads) => { //Preencher os campos do formulario com os dados coletados
+    document.querySelector('#ads-name').value = ads.adsName
+    document.querySelector('#ads-client').value = ads.adsClient
+    document.querySelector('#ads-date-start').value = ads.adsDateStart
+    document.querySelector('#ads-date-end').value = ads.adsDateEnd
+    document.querySelector('#ads-investment').value = ads.adsInvestment
+    document.querySelector('#ads-name').dataset.index = ads.index
+}
+
+const editAds = (index) => {
+    const ads = readAds(index)[index]  //Le o array do localstorage na posição recebida
+    ads.index = index
+    fillFields(ads)
+    Display.displayAdsRegister()
+}
+
+const editDelete = (event) => {
+    if((event.target.type === 'button')) {  //Captura o click quando clicar em um botão
+        const [action, index] = (event.target.dataset.action.split("-"))
+        if(action === 'edit') {
+            editAds(index)
+        } else {
+            const ads = readAds()[index]
+            const response = confirm(`Deseja realmente excluir a campanha ${ads.adsName}`)
+            if (response) {
+                deleteAds(index)
+                updateTableAds()
+            }
+        }
+    }
+}
+document.querySelector('#data-ads>tbody').addEventListener('click', editDelete)
 
 
 // =========== ATUALIZAR DADOS DOS ANÚNCIOS NA TABELA DA PÁGINA ANÚNCIO =========== //
 
-const createTr = (ads, index) => {
+const createTr = (ads, index) => {  //Criar estrutura da tabela para inserção na página
     const newRow = document.createElement('tr')  //cria uma tr e armazena na variavel newRow
     //Monta a estrutura da linha
     newRow.innerHTML = `
@@ -169,14 +212,12 @@ const createTr = (ads, index) => {
     document.querySelector('#data-ads tbody').appendChild(newRow)
 }
 
-// =========== LIMPAR VISUALIZAÇÃO DA TABELA DE ANUNCIOS, PARA EVITAR DUPLICATAS =========== //
-const clearTableAds = () => {
+const clearTableAds = () => { //Limpar visualização da tabela de anuncios, para evitar duplicatas
     const rows = document.querySelectorAll('#data-ads>tbody tr')
     rows.forEach(row => row.parentNode.removeChild(row)) //Varre todas as linhas e remove-as
 }
 
-// =========== ATUALIZAR A VISUALIZAÇÃO DA TABELA DE ANUNCIOS =========== //
-const updateTableAds = () => {
+const updateTableAds = () => {  //Atualizar a visualização da tabela de anuncios
     const dbAds = readAds();    //Pega todos os dados do localStorage
     clearTableAds();
     dbAds.forEach(createTr);    //Roda um forEach para cada item do localStorage e envia para a função createTr
@@ -186,31 +227,4 @@ updateTableAds() //Atualizar a tabela de anuncios na página de anuncios
 
 
 
-// ===========  BOTÕES EXCLUIR E EDITAR PÁGINA DE ANUNCIOS =========== //
-const fillFields = (ads) => { //Preencher os campos do formulario com os dados coletados
-    document.querySelector('#ads-name').value = ads.adsName
-    document.querySelector('#ads-client').value = ads.adsClient
-    document.querySelector('#ads-date-start').value = ads.adsDateStart
-    document.querySelector('#ads-date-end').value = ads.adsDateEnd
-    document.querySelector('#ads-investment').value = ads.adsInvestment
 
-
-}
-
-const editAds = (index) => {
-    const ads = readAds(index)[index]  //Le o array do localstorage na posição recebida
-    fillFields(ads)
-    Display.displayAdsRegister()
-}
-
-const editDelete = (event) => {
-    if((event.target.type === 'button')) {  //Captura o click quando clicar em um botão
-        const [action, index] = (event.target.dataset.action.split("-"))
-        if(action === 'edit') {
-            editAds(index)
-        } else {
-            console.log("Excluindo anuncio")
-        }
-    }
-}
-document.querySelector('#data-ads>tbody').addEventListener('click', editDelete)
