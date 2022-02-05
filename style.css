@@ -216,7 +216,8 @@ nav p:hover {
 
 #data-dashboard,
 #data-ads,
-#data-report {
+#data-report,
+#data-report-total {
     width: 90%;
     max-width: 1000px;
     border-spacing: 0 0.5rem;
@@ -254,6 +255,17 @@ table td{
     padding: 10px 10px;
     text-align: center;
     font-size: 14px;
+}
+
+#data-report-total table thead th {
+    background: white;
+    font-weight: 500;
+    padding: 10px 10px;
+    text-align: center;
+    color: var(--title);
+}
+#first-th {
+    padding-right: 500px;
 }
 
 /* ================================= FORMULÁRIO DE CADASTRO ================================= */

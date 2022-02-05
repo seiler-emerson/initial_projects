@@ -1,6 +1,10 @@
 // // ============================================================================================= //
 // // ==============================    DADOS DO FORM EM VARIÁVEIS   ============================== //
 // // ============================================================================================= //
+var projecaoV = 10
+var projecaoC = 20
+var projecaoS = 30
+
 
 const Form = {
     adsName: document.querySelector('#ads-name'),
@@ -8,9 +12,9 @@ const Form = {
     adsDateStart: document.querySelector('#ads-date-start'),
     adsDateEnd: document.querySelector('#ads-date-end'),
     adsInvestment: document.querySelector('#ads-investment'),
-    // adsViewProjection,
-    // adsClicksProjection,
-    // adsShareProjection,
+    adsViewProjection: projecaoV,
+    adsClicksProjection: projecaoC,
+    adsShareProjection: projecaoS,
 
     //Pegar valores do formulário
     getValues() {
@@ -20,6 +24,9 @@ const Form = {
             adsDateStart: Form.adsDateStart.value,
             adsDateEnd: Form.adsDateEnd.value,
             adsInvestment: Form.adsInvestment.value,
+            adsViewProjection: Form.adsViewProjection,
+            adsClicksProjection: Form.adsClicksProjection,
+            adsShareProjection: Form.adsShareProjection,
         }
     }
 }
@@ -195,14 +202,17 @@ const formatValues = (value) => {  //Formatar os valores antes de cadastrar no l
         adsDateStart,
         adsDateEnd,
         adsInvestment,
-    }
+        adsViewProjection,
+        adsClicksProjection,
+        adsShareProjection
+        }
 
 }
 
 const saveAds = (event) => { //Pegar os dados dos inputs do formulário, valida e enviar para o localstorage
     event.preventDefault()
 
-    
+
 
     ads = {
         adsName: Form.adsName.value,
@@ -210,7 +220,14 @@ const saveAds = (event) => { //Pegar os dados dos inputs do formulário, valida 
         adsDateStart: Form.adsDateStart.value,
         adsDateEnd: Form.adsDateEnd.value,
         adsInvestment: Form.adsInvestment.value,
+        adsViewProjection: Form.adsViewProjection,
+        adsClicksProjection: Form.adsClicksProjection,
+        adsShareProjection: Form.adsShareProjection,
     }
+
+    
+
+
 
     //Se os campos não estiverem vazios pega os dados e salva
     if(ads.adsName.trim() === "" || ads.adsClient.trim() === "" || ads.adsDateStart.trim() === "" || ads.adsDateEnd.trim() === "" || ads.adsInvestment.trim() === "" ) {
@@ -232,7 +249,7 @@ const saveAds = (event) => { //Pegar os dados dos inputs do formulário, valida 
             updateTableReport(); //Atualiza a tabela no display relatorio
             Display.ads();    //Fecha a tela do formulário e abre a tela dos anuncios
             updateCalc(); // Atualiza os calculos
-            console.log('Editando')
+            
         }
     }
 
@@ -261,6 +278,7 @@ const fillFields = (ads) => { //Preencher os campos do formulario com os dados c
 
 const editAds = (index) => {
     const ads = readAds(index)[index]  //Le o array do localstorage na posição recebida
+    console.log(ads)
     ads.index = index
     fillFields(ads)
     Display.displayAdsRegister()
