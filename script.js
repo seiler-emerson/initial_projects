@@ -315,3 +315,73 @@ updateTableAds() //Atualizar a tabela de anuncios na página de anuncios
 
 
 
+// =================================================================================== //
+// ==============================    REGRA DE NEGÓCIO   ============================== //
+// =================================================================================== //
+let investimentoDiario = 1
+let diasAnuncio = 9
+let investimentoTotal = diasAnuncio * investimentoDiario
+//30 pessoas visualizam o anúncio original (não compartilhado) a cada R$ 1,00 investido.
+//let visualizacoes = investimentoTotal*30
+let visualizacoes = 100
+console.log("Visualizaram: "+visualizacoes)
+
+// a cada 100 pessoas que visualizam o anúncio 12 clicam nele.
+let click = (visualizacoes*12)/100
+console.log("Clicaram: "+click)
+
+// a cada 20 pessoas que clicam no anúncio 3 compartilham nas redes sociais.
+let compRedeSocial = (click*3)/20
+console.log("Compartilhado Rede social: "+compRedeSocial)
+
+console.log("============================================")
+
+// cada compartilhamento nas redes sociais gera 40 novas visualizações.
+// o mesmo anúncio é compartilhado no máximo 4 vezes em sequência
+// (1ª pessoa -> compartilha -> 2ª pessoa -> compartilha - > 3ª pessoa -> compartilha -> 4ª pessoa)
+let visualizacoes1 = (compRedeSocial*40)
+console.log("Novas visualizações: "+visualizacoes1)
+let click1 = (visualizacoes1*12)/100
+console.log("Clicaram: "+click1)
+let compRedeSocial1 = (click1*3)/20
+console.log("Compartilhado Rede social: "+compRedeSocial1)
+
+console.log("============================================")
+
+let visualizacoes2 = (compRedeSocial1*40)
+console.log("Novas visualizações: "+visualizacoes2)
+let click2 = (visualizacoes2*12)/100
+console.log("Clicaram: "+click2)
+let compRedeSocial2 = (click2*3)/20
+console.log("Compartilhado Rede social: "+compRedeSocial2)
+
+console.log("============================================")
+
+let visualizacoes3 = (compRedeSocial2*40)
+console.log("Novas visualizações: "+visualizacoes1)
+let click3 = (visualizacoes3*12)/100
+console.log("Clicaram: "+click1)
+let compRedeSocial3 = (click3*3)/20
+console.log("Compartilhado Rede social: "+compRedeSocial3)
+
+console.log("============================================")
+
+let visualizacoes4 = (compRedeSocial3*40)
+console.log("Novas visualizações: "+visualizacoes4)
+let click4 = (visualizacoes4*12)/100
+console.log("Clicaram: "+click4)
+let compRedeSocial4 = (click4*3)/20
+console.log("Compartilhado Rede social: "+compRedeSocial4)
+
+console.log("============================================")
+let totalVisualizacoes = visualizacoes+visualizacoes1+visualizacoes2+visualizacoes3+visualizacoes4
+console.log(totalVisualizacoes)
+let totalClicks = click + click1 + click2 + click3 + click4
+console.log(totalClicks)
+let totalCompartilhamentos = compRedeSocial + compRedeSocial1 + compRedeSocial2 + compRedeSocial3 + compRedeSocial4
+console.log(totalCompartilhamentos)
+
+
+
+
+
