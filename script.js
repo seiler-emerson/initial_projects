@@ -221,7 +221,6 @@ const saveAds = (event) => { //Pegar os dados dos inputs do formulário, valida 
         adsShareProjection: Form.adsShareProjection,
     }
 
-
     //Se os campos não estiverem vazios pega os dados e salva
     if(ads.adsName.trim() === "" || ads.adsClient.trim() === "" || ads.adsDateStart.trim() === "" || ads.adsDateEnd.trim() === "" || ads.adsInvestment.trim() === "" ) {
         alert("Por favor, preencha todos so campos!")
@@ -385,6 +384,7 @@ const createTrReport = (ads, index) => {
     let totalClicksProjection = initialClick + firstShareClick  + secondShareClick + thirdShareClick + fourthdShareClick
     let totalShareProjection = initalShareSocialMedia + firstShareSocialMedia  + secondShareSocialMedia + thirdShareSocialMedia + fourthShareSocialMedia
 
+    
 
     // console.log(`====================TOTAIS========================`)
     // console.log("Investimento Diário: " + investmentDay)
@@ -443,3 +443,6 @@ const updateTableReport = () => {
     
 }
 updateTableReport()
+
+
+
