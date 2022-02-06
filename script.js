@@ -75,69 +75,71 @@ const Display = {
 // ==============================    ARRAY COM OS DADOS   ============================== //
 // ===================================================================================== //
 
-const ads = [
-    {
-        adsName: "Anuncio Emerson",
-        adsClient: "Emerson Company",
-        adsDateStart: "23/02/2021",
-        adsDateEnd: "10/02/2022",
-        adsInvestmentDay: 1000,
-        adsViewProjection: 0,
-        adsClicksProjection: 0,
-        adsShareProjection: 0,
-    },
-    {
-        adsName: "Anuncio Mayara",
-        adsClient: "Mayara Company",
-        adsDateStart: "23/02/2021",
-        adsDateEnd: "10/02/2022",
-        adsInvestmentDay: 506,
-        adsViewProjection: 0,
-        adsClicksProjection: 0,
-        adsShareProjection: 0,
-    },
-    {
-        adsName: "Anuncio Capgemini",
-        adsClient: "Capgemini Company",
-        adsDateStart: "23/02/2021",
-        adsDateEnd: "10/02/2022",
-        adsInvestmentDay: 108,
-        adsViewProjection: 0,
-        adsClicksProjection: 0,
-        adsShareProjection: 0,
-    },
-    {
-        adsName: "Anuncio Capgemini",
-        adsClient: "Capgemini Company",
-        adsDateStart: "23/02/2021",
-        adsDateEnd: "10/02/2022",
-        adsInvestmentDay: 104,
-        adsViewProjection: 0,
-        adsClicksProjection: 0,
-        adsShareProjection: 0,
-    },
-    
-    
-]
-
-const totals = [
-    {
-        totalInvestment: 1500,
-        totalViews: 50,
-        totalClicks: 4,
-        totalShareSocialMedia: 3
-
-    }
-]
-
 
 const Ads = {
-    allAds: ads,
+    allAds: [
+        {
+            adsName: "0-Anuncio Emerson",
+            adsClient: "Emerson Company",
+            adsDateStart: "23/02/2021",
+            adsDateEnd: "10/02/2022",
+            adsInvestmentDay: 1001,
+            adsViewProjection: 0,
+            adsClicksProjection: 0,
+            adsShareProjection: 0,
+        },
+        {
+            adsName: "1-Anuncio Mayara",
+            adsClient: "Mayara Company",
+            adsDateStart: "23/02/2021",
+            adsDateEnd: "10/02/2022",
+            adsInvestmentDay: 106,
+            adsViewProjection: 0,
+            adsClicksProjection: 0,
+            adsShareProjection: 0,
+        },
+        {
+            adsName: "2-Anuncio Capgemini",
+            adsClient: "Capgemini Company",
+            adsDateStart: "23/02/2021",
+            adsDateEnd: "10/02/2022",
+            adsInvestmentDay: 108,
+            adsViewProjection: 0,
+            adsClicksProjection: 0,
+            adsShareProjection: 0,
+        },
+        {
+            adsName: "3-Anuncio Capgemini",
+            adsClient: "Capgemini Company",
+            adsDateStart: "23/02/2021",
+            adsDateEnd: "10/02/2022",
+            adsInvestmentDay: 104,
+            adsViewProjection: 0,
+            adsClicksProjection: 0,
+            adsShareProjection: 0,
+        },
+        
+        
+    ],
 
+    //Adicionar um elemento no array 
     add(info) {
         Ads.allAds.push(info)
 
-        console.log(Ads.allAds)
+        // console.log(Ads.allAds)
+
+        App.reload()
+    },
+
+    //Remover um elemento do array
+    remove(index) {
+        Ads.allAds.splice(index, 1)
+        App.reload()
+    },
+
+    //Editar um elemento do array
+    edit(index) {
+
     },
     
     // ========================================== REGRA DE NEGÓCIO ========================================== //
@@ -145,9 +147,7 @@ const Ads = {
         let investmentDay = ads.adsInvestmentDay                           //Valor investido por dia pego do localStorage
         let totalAdsDay = 15                                               //Total de dias de veiculação do anuncio
         let viewByOneInvestmentDay = 30                                    //Visualizações por um real diario 
-        
-    // ========================================== REGRA DE NEGÓCIO ========================================== //
-    
+            
         totalInvestment = investmentDay * totalAdsDay                       //Investimento total do anuncio
         let initialView = totalInvestment * viewByOneInvestmentDay          //Visualização maxima | 30 pessoas visualizam o anúncio original (não compartilhado) a cada R$ 1,00 investido.
         let initialClick = (initialView * 12) / 100;                        //Clicks maximos | a cada 100 pessoas que visualizam o anúncio 12 clicam nele.
@@ -184,22 +184,19 @@ const Ads = {
         // console.log(totalViews)
 
         //ENVIA PARA O ARRAY OS VALORES CALCULADOS DE PROJEÇÃO
-
         ads.adsViewProjection = totalViews
         ads.adsClicksProjection = totalClicks
         ads.adsShareProjection = totalShareSocialMedia
 
-        
-        return {
-            totalViews,
-            totalClicks,
-            totalShareSocialMedia
-        }
     },
+    
+    //Conta quantos anuncios estão cadastrados
     totalAds() {
         totalAds = Ads.allAds.length
         return totalAds
     },
+
+    //Faz a soma de todos os valores investidos em anuncio de todos os clientes
     totalInvesments() { 
         let totalInvesments = 0
 
@@ -214,6 +211,8 @@ const Ads = {
          //retornar a variavel
         return totalInvesments
     },
+
+    //Faz a soma de todas os visualizações de todos os clientes
     totalViews() {
         let totalViews = 0
 
@@ -228,6 +227,8 @@ const Ads = {
          //retornar a variavel
         return totalViews
     },
+
+    //Faz a soma de todos os clicks de todos os clientes
     totalClicks() {
         let totalClicks = 0
 
@@ -242,6 +243,8 @@ const Ads = {
          //retornar a variavel
         return totalClicks
     },
+
+    //Faz a soma de todas os compartilhamentos de todos os clientes
     totalShares() { 
         let totalShares = 0
 
@@ -258,18 +261,30 @@ const Ads = {
     }
 }
 
-// ads[0].adsInvestmentDay = 50
 
-function teste() {
-
-    ads.push(ads[0].adsInvestmentDay = 20)
-}
 // ================================================================================================= //
 // ==============================    CONVERSÃO DOS DADOS DE ENTRADA   ============================== //
 // ================================================================================================= //
 
 
 const Utils = {
+
+    //Formatar o numero de investimento diario recebido do formulario
+    formatInvestment(value) {
+        value = Number(value) * 100
+        
+        return value
+
+    },
+
+    //Formata as Datas
+    formatDate(date) {
+        // console.log(date)
+        const splittedDate = date.split("-")
+        
+        // console.log(`${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`)
+        return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
+    },
 
     // ================== FORMATAÇÃO DE MOEDA ================== //
     formatCurrency(value) {
@@ -289,14 +304,6 @@ const Utils = {
 
     //Formatar número recebido do valor de investimento diario
     
-
-    formatDate(date) {
-        const splittedDate = date.split("-")
-
-        return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
-        
-
-    },
 
     
 }
@@ -332,7 +339,13 @@ const DOMAds = {
             <td><button id="edit" type="button" data-action="edit-" class="positive">E</button></td>
         `
         return html
+    },
+
+    //Limpar tela de anuncios antes de inserir um novo anuncio
+    clearAds() {
+        DOMAds.adsContainer.innerHTML = "";
     }
+
 }
 
 // ======================================================================================================================= //
@@ -368,7 +381,13 @@ const DOMReportAds = {
         <td><button id="edit" class="positive">O</button></td>
         `
         return html
+    },
+    
+    //Limpar tela de anuncios antes de inserir um novo anuncio
+    clearReportAds() {
+        DOMReportAds.adsReportContainer.innerHTML = "";
     }
+
 }
 
 // ======================================================================================================================= //
@@ -391,50 +410,152 @@ const DOMTotals = {
         document.querySelector('#dashboardShareBox').innerHTML = Math.round(Ads.totalShares())
     },
 }
-DOMTotals.updateTotals()
-// =========================================================================== //
-// ==============================    FOREACH    ============================== //
-// =========================================================================== //
 
-//Pegar os dados do array e colocar dentro da função reposnsável pela tabela de relatorios
+// ============================================================================== //
+// ==============================    FORMULÁRIO    ============================== //
+// ============================================================================== //
 
-const App = {
-    init() {
-        Ads.allAds.forEach(function(ads) {
-            DOMAds.addAds(ads) 
-            Ads.calcTotal(ads)
-            DOMReportAds.addReportAds(ads)  
-            
-        })
-        DOMTotals.updateTotals()
+const Form = {
+    //Pegar os inputs do formulário | Deixar a estrutura dos totais prontas
+    adsName: document.querySelector('#ads-name'),
+    adsClient: document.querySelector('#ads-client'),
+    adsDateStart: document.querySelector('#ads-date-start'),
+    adsDateEnd: document.querySelector('#ads-date-end'),
+    adsInvestmentDay: document.querySelector('#ads-investment-day'),
+    adsViewProjection: 0,
+    adsClicksProjection: 0,
+    adsShareProjection: 0,
+
+    //Pegar os valores do input
+    getValues() {
+        return {
+            adsName: Form.adsName.value,
+            adsClient: Form.adsClient.value,
+            adsDateStart: Form.adsDateStart.value,
+            adsDateEnd: Form.adsDateEnd.value,
+            adsInvestmentDay: Form.adsInvestmentDay.value,
+            adsViewProjection: Form.adsViewProjection,
+            adsClicksProjection: Form.adsClicksProjection,
+            adsShareProjection: Form.adsShareProjection,
+        }
     },
-    reload() {
+
+    // Verificar se todas as informações foram preenchidas
+    validateFields() {
+        const { adsName, adsClient, adsDateStart, adsDateEnd, adsInvestmentDay, adsViewProjection, adsClicksProjection, adsShareProjection } = Form.getValues()
+        
+        if(adsName.trim() === "" || adsClient.trim() === "" || adsDateStart.trim() === "" || adsDateEnd.trim() === "" || adsInvestmentDay.trim() === "" ) {
+            throw new Error("Por favor, preencha todos so campos!")
+        } 
+    },
+
+    // Formatar os dados para salvar
+    formatValues() {
+        let { adsName, adsClient, adsDateStart, adsDateEnd, adsInvestmentDay, adsViewProjection, adsClicksProjection, adsShareProjection } = Form.getValues()
+        
+        adsInvestmentDay = Utils.formatInvestment(adsInvestmentDay)
+
+        adsDateStart = Utils.formatDate(adsDateStart)
+
+        adsDateEnd = Utils.formatDate(adsDateEnd)
+
+        // console.log("Formatar os dados")
+        return {
+            adsName,
+            adsClient,
+            adsDateStart,
+            adsDateEnd,
+            adsInvestmentDay,
+            adsViewProjection,
+            adsClicksProjection,
+            adsShareProjection
+        }
+    },
+
+    // Limpar o formulário
+    clearFields() {
+        Form.adsName.value = ""
+        Form.adsClient.value = ""
+        Form.adsDateStart.value = ""
+        Form.adsDateEnd.value = ""
+        Form.adsInvestmentDay.value = ""
+    },
+
+
+    submit(event) {
+        event.preventDefault()
+
+        try {
+           
+            // Verificar se todas as informações foram preenchidas
+            Form.validateFields()
+
+            // Formatar os dados para salvar
+            const adsForm = Form.formatValues()
+
+            // Salvar
+            Ads.add(adsForm) //Salvar o anuncio inserido via formulario
+
+            // Limpar o formulário
+            Form.clearFields()
+
+            // Fechar página
+            Display.ads()
+
+        } catch (error) {
+            alert(error.message)
+        }
+
+        
 
     }
 }
 
 
 
+// ========================================================================================== //
+// ==============================    EXECUÇÃO DAS APLICAÇÃO    ============================== //
+// ========================================================================================== //
 
+const App = {
+    init() {
+
+        Ads.allAds.forEach(function(ads) {
+            DOMAds.addAds(ads)              //Exibe os anuncios na pagina de anuncios 
+            Ads.calcTotal(ads)              //Executa os calculos de todos os anuncios
+            DOMReportAds.addReportAds(ads)  //Exibe os anuncios na página de relatórios   
+            
+        })
+        DOMTotals.updateTotals()
+    },
+    reload() {
+        DOMAds.clearAds()
+        DOMReportAds.clearReportAds()
+        App.init()
+    }
+}
+
+
+
+
+App.init()
 
 
 
 Ads.add(
     {
-        adsName: "Anuncio teste",
+        adsName: "4-Anuncio teste",
         adsClient: "Capgemini teste",
         adsDateStart: "23/02/2021",
         adsDateEnd: "10/02/2022",
-        adsInvestmentDay: 100,
+        adsInvestmentDay: 150,
         adsViewProjection: 11,
         adsClicksProjection: 12,
-        adsShareProjection: 13,
-    },
-        
+        adsShareProjection: 14,
+    }   
 )
 
 
-App.init()
 
 
 

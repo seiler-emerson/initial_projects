@@ -174,12 +174,12 @@ nav p:hover {
 
 /* ================================= ANÚNCIOS ================================= */
 #ads {
-    display: NONE;
+    display: none;
 }
 
 /* === TELA REGISTRO ANÚNCIO === */
 #ads-register {
-    display: none;
+    display: flex;
 }
 
 /* === TELA VISUALIZAÇÃO DE ANÚNCIO INDIVIDUAL === */
@@ -198,7 +198,7 @@ nav p:hover {
 
 /* ================================= RELATÓRIOS ================================= */
 #report {
-    display: FLEX;
+    display: none;
 }
 
 .total-report {
