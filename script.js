@@ -271,6 +271,8 @@ const Utils = {
 
     //Formatar o numero de investimento diario recebido do formulario
     formatInvestment(value) {
+        // value = Number(value.replace(/\,\./g, "")) * 100
+        // console.log(value)
         value = Number(value) * 100
         
         return value
@@ -318,14 +320,15 @@ const DOMAds = {
 
     addAds(ads, index) {  //Responsável por adicionar o anuncio na tabela
         const tr = document.createElement('tr')
-        tr.innerHTML = DOMAds.innerHTMLAds(ads)
+        tr.innerHTML = DOMAds.innerHTMLAds(ads, index)
+        tr.dataset.index = index
         
         DOMAds.adsContainer.appendChild(tr)
 
 
     },
 
-    innerHTMLAds(ads) {
+    innerHTMLAds(ads, index) {
 
         const adsInvestmentDay = Utils.formatCurrency(ads.adsInvestmentDay)
 
@@ -335,7 +338,7 @@ const DOMAds = {
             <td>${ads.adsDateStart}</td>
             <td>${ads.adsDateEnd}</td>
             <td>${adsInvestmentDay}</td>
-            <td><button id="exclude" type="button" data-action="delete" class="negative">X</button></td>
+            <td><button onclick="Ads.remove(${index})" id="exclude" type="button" data-action="delete" class="negative">X</button></td>
             <td><button id="edit" type="button" data-action="edit-" class="positive">E</button></td>
         `
         return html
@@ -488,7 +491,7 @@ const Form = {
         try {
            
             // Verificar se todas as informações foram preenchidas
-            Form.validateFields()
+           Form.validateFields()
 
             // Formatar os dados para salvar
             const adsForm = Form.formatValues()
@@ -520,8 +523,8 @@ const Form = {
 const App = {
     init() {
 
-        Ads.allAds.forEach(function(ads) {
-            DOMAds.addAds(ads)              //Exibe os anuncios na pagina de anuncios 
+        Ads.allAds.forEach(function(ads, index) {
+            DOMAds.addAds(ads, index)              //Exibe os anuncios na pagina de anuncios 
             Ads.calcTotal(ads)              //Executa os calculos de todos os anuncios
             DOMReportAds.addReportAds(ads)  //Exibe os anuncios na página de relatórios   
             
