@@ -81,8 +81,8 @@ const Ads = {
         {
             adsName: "0-Anuncio Emerson",
             adsClient: "Emerson Company",
-            adsDateStart: "23/02/2021",
-            adsDateEnd: "10/02/2022",
+            adsDateStart: "2022-10-10",
+            adsDateEnd: "2022-10-10",
             adsInvestmentDay: 1001,
             adsViewProjection: 0,
             adsClicksProjection: 0,
@@ -91,8 +91,8 @@ const Ads = {
         {
             adsName: "1-Anuncio Mayara",
             adsClient: "Mayara Company",
-            adsDateStart: "23/02/2021",
-            adsDateEnd: "10/02/2022",
+            adsDateStart: "2022-10-10",
+            adsDateEnd: "2022-10-10",
             adsInvestmentDay: 106,
             adsViewProjection: 0,
             adsClicksProjection: 0,
@@ -101,8 +101,8 @@ const Ads = {
         {
             adsName: "2-Anuncio Capgemini",
             adsClient: "Capgemini Company",
-            adsDateStart: "23/02/2021",
-            adsDateEnd: "10/02/2022",
+            adsDateStart: "2022-10-10",
+            adsDateEnd: "2022-10-10",
             adsInvestmentDay: 108,
             adsViewProjection: 0,
             adsClicksProjection: 0,
@@ -111,8 +111,8 @@ const Ads = {
         {
             adsName: "3-Anuncio Capgemini",
             adsClient: "Capgemini Company",
-            adsDateStart: "23/02/2021",
-            adsDateEnd: "10/02/2022",
+            adsDateStart: "2022-10-10",
+            adsDateEnd: "2022-10-10",
             adsInvestmentDay: 104,
             adsViewProjection: 0,
             adsClicksProjection: 0,
@@ -139,17 +139,24 @@ const Ads = {
 
     //Editar um elemento do array
     edit(index) {
+        //Abrir a tela do formulario
         Display.displayAdsRegister()
 
+        //Ler o array do cliente que foi selecionado
+        const adsForEdit = Ads.allAds[index]
+
+        //Preencher campos
         document.querySelector('#ads-name').value = Ads.allAds[index].adsName
         document.querySelector('#ads-client').value = Ads.allAds[index].adsClient
         document.querySelector('#ads-date-start').value = Ads.allAds[index].adsDateStart
         document.querySelector('#ads-date-end').value = Ads.allAds[index].adsDateEnd
         document.querySelector('#ads-investment-day').value = Ads.allAds[index].adsInvestmentDay
+        document.querySelector('#ads-name').dataset.index = index
     
-        console.log(adsName)
+        // console.log("adsName")
         // console.log("editando"+ index)
-        // console.log(Ads.allAds[index])
+        // console.log(document.querySelector("#edit").dataset.action)
+        console.log(adsForEdit)
     },
     
     // ========================================== REGRA DE NEGÓCIO ========================================== //
@@ -348,8 +355,8 @@ const DOMAds = {
             <td>${ads.adsDateStart}</td>
             <td>${ads.adsDateEnd}</td>
             <td>${adsInvestmentDay}</td>
-            <td><button onclick="Ads.remove(${index})" id="exclude" type="button" data-action="delete" class="negative">X</button></td>
-            <td><button onclick="Ads.edit(${index})" id="edit" type="button" data-action="edit-" class="positive">E</button></td>
+            <td><button onclick="Ads.remove(${index})" id="exclude" type="button" data-action="delete-${index}" class="negative">X</button></td>
+            <td><button onclick="Ads.edit(${index})" id="edit" type="button" data-action="edit-${index}" class="positive">E</button></td>
         `
         return html
     },
@@ -496,31 +503,51 @@ const Form = {
 
     //Cancelar cadastro de anuncio
     cancelAddAds(event) {
+        Form.clearFields()
         Display.ads()
     },
+
+    saveAds() {
+        //Verificar se é um novo cliente ou uma edição
+        const index = document.querySelector('#ads-name').dataset.index   //Caso o input ads-name contenha o data-index = new quer dizer que é uma nova inclusão
+        const adsForm = Form.formatValues()
+
+        console.log(index)
+        if (index === "new") {
+            // Formatar os dados para salvar
+            Ads.add(adsForm) //Salvar o anuncio inserido via formulario
+            console.log("novo")
+
+        } else {
+            console.log("Editando")
+            Ads.remove(index)   //Exlui o objeto sem edição do array 
+            Ads.add(adsForm) //Salvar o anuncio inserido via formulario em um novo objeto
+        }
+
+
+
+    },
+
 
     submit(event) {
         event.preventDefault()
 
         try {
+            // Verificar se todas as informações foram preenchidas
+            Form.validateFields()
             
-                // Verificar se todas as informações foram preenchidas
-                Form.validateFields()
-                
-                // Formatar os dados para salvar
-                const adsForm = Form.formatValues()
-                
-                // Salvar
-                Ads.add(adsForm) //Salvar o anuncio inserido via formulario
-                
-                // Limpar o formulário
-                Form.clearFields()
-                
-                // Fechar página
-                Display.ads()
-                console.log('novo')
+            // Formatar os dados para salvar
+            // const adsForm = Form.formatValues()
             
-           
+            // Salvar
+            Form.saveAds()
+            
+            // Limpar o formulário
+            Form.clearFields()
+            
+            // Fechar página
+            Display.ads()
+            console.log('SALVO')
 
         } catch (error) {
             alert(error.message)
