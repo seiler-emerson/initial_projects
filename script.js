@@ -139,7 +139,17 @@ const Ads = {
 
     //Editar um elemento do array
     edit(index) {
+        Display.displayAdsRegister()
 
+        document.querySelector('#ads-name').value = Ads.allAds[index].adsName
+        document.querySelector('#ads-client').value = Ads.allAds[index].adsClient
+        document.querySelector('#ads-date-start').value = Ads.allAds[index].adsDateStart
+        document.querySelector('#ads-date-end').value = Ads.allAds[index].adsDateEnd
+        document.querySelector('#ads-investment-day').value = Ads.allAds[index].adsInvestmentDay
+    
+        console.log(adsName)
+        // console.log("editando"+ index)
+        // console.log(Ads.allAds[index])
     },
     
     // ========================================== REGRA DE NEGÓCIO ========================================== //
@@ -339,7 +349,7 @@ const DOMAds = {
             <td>${ads.adsDateEnd}</td>
             <td>${adsInvestmentDay}</td>
             <td><button onclick="Ads.remove(${index})" id="exclude" type="button" data-action="delete" class="negative">X</button></td>
-            <td><button id="edit" type="button" data-action="edit-" class="positive">E</button></td>
+            <td><button onclick="Ads.edit(${index})" id="edit" type="button" data-action="edit-" class="positive">E</button></td>
         `
         return html
     },
@@ -456,11 +466,11 @@ const Form = {
     formatValues() {
         let { adsName, adsClient, adsDateStart, adsDateEnd, adsInvestmentDay, adsViewProjection, adsClicksProjection, adsShareProjection } = Form.getValues()
         
-        adsInvestmentDay = Utils.formatInvestment(adsInvestmentDay)
+        // adsInvestmentDay = Utils.formatInvestment(adsInvestmentDay)  //VERIFICAR  A FORMA DE SALVAR OS VALORES
 
-        adsDateStart = Utils.formatDate(adsDateStart)
-
-        adsDateEnd = Utils.formatDate(adsDateEnd)
+        // adsDateStart = Utils.formatDate(adsDateStart)   //VERIFICAR FORMA DE SALVAR A DATA 
+        
+        // adsDateEnd = Utils.formatDate(adsDateEnd)
 
         // console.log("Formatar os dados")
         return {
@@ -484,26 +494,33 @@ const Form = {
         Form.adsInvestmentDay.value = ""
     },
 
+    //Cancelar cadastro de anuncio
+    cancelAddAds(event) {
+        Display.ads()
+    },
 
     submit(event) {
         event.preventDefault()
 
         try {
+            
+                // Verificar se todas as informações foram preenchidas
+                Form.validateFields()
+                
+                // Formatar os dados para salvar
+                const adsForm = Form.formatValues()
+                
+                // Salvar
+                Ads.add(adsForm) //Salvar o anuncio inserido via formulario
+                
+                // Limpar o formulário
+                Form.clearFields()
+                
+                // Fechar página
+                Display.ads()
+                console.log('novo')
+            
            
-            // Verificar se todas as informações foram preenchidas
-           Form.validateFields()
-
-            // Formatar os dados para salvar
-            const adsForm = Form.formatValues()
-
-            // Salvar
-            Ads.add(adsForm) //Salvar o anuncio inserido via formulario
-
-            // Limpar o formulário
-            Form.clearFields()
-
-            // Fechar página
-            Display.ads()
 
         } catch (error) {
             alert(error.message)
@@ -542,26 +559,3 @@ const App = {
 
 
 App.init()
-
-
-
-Ads.add(
-    {
-        adsName: "4-Anuncio teste",
-        adsClient: "Capgemini teste",
-        adsDateStart: "23/02/2021",
-        adsDateEnd: "10/02/2022",
-        adsInvestmentDay: 150,
-        adsViewProjection: 11,
-        adsClicksProjection: 12,
-        adsShareProjection: 14,
-    }   
-)
-
-
-
-
-
-
-
-
