@@ -208,7 +208,8 @@ const formatValues = (value) => {  //Formatar os valores antes de cadastrar no l
 const saveAds = (event) => { //Pegar os dados dos inputs do formulário, valida e enviar para o localstorage
     event.preventDefault()
 
-
+    let { total1, total2, total3 } = createTrReport()
+    console.log(total1)
 
     ads = {
         adsName: Form.adsName.value,
@@ -318,6 +319,8 @@ const createTrAds = (ads, index) => {  //Criar estrutura da tabela para inserç�
     `
     //console.log(ads.adsInvestment)
     document.querySelector('#data-ads tbody').appendChild(newRow)
+
+    
 }
 
 const clearTableAds = () => { //Limpar visualização da tabela de anuncios, para evitar duplicatas
@@ -428,7 +431,11 @@ const createTrReport = (ads, index) => {
         <td>00000</td>
         <td></td>
     `
-
+    return {
+        totalViewProjection,
+        totalClicksProjection,
+        totalShareProjection
+    }
 }
 
 const clearTableReport = () => {
