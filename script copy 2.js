@@ -71,31 +71,56 @@ const Display = {
 };
 
 
-
-// ================================================================================= //
-// ==============================    BANCO DE DADOS   ============================== //
-// ================================================================================= //
-
-const Storage = {
-    //Pegar informações
-    get() {  //Retorna um array em forma de string do localstorage e converte novamente para array OU caso não tenha nada no localstorage cria um array vazio
-        return JSON.parse(localStorage.getItem("system_ads")) || []
-    },
-
-    //Guardar informações
-    set(ads) {   //Envia para o localstorage um array em forma de string com a chave system_ads
-        localStorage.setItem("system_ads", JSON.stringify(ads))
-    }
-}
-
-
 // ===================================================================================== //
 // ==============================    ARRAY COM OS DADOS   ============================== //
 // ===================================================================================== //
 
 
 const Ads = {
-    allAds: Storage.get(),
+    allAds: [
+        {
+            adsName: "0-Anuncio Emerson",
+            adsClient: "Emerson Company",
+            adsDateStart: "2022-10-10",
+            adsDateEnd: "2022-10-20",
+            adsInvestmentDay: 100,
+            adsViewProjection: 0,
+            adsClicksProjection: 0,
+            adsShareProjection: 0,
+        },
+        // {
+        //     adsName: "1-Anuncio Mayara",
+        //     adsClient: "Mayara Company",
+        //     adsDateStart: "2022-10-10",
+        //     adsDateEnd: "2022-10-13",
+        //     adsInvestmentDay: 2000,
+        //     adsViewProjection: 0,
+        //     adsClicksProjection: 0,
+        //     adsShareProjection: 0,
+        // },
+        // {
+        //     adsName: "2-Anuncio Capgemini",
+        //     adsClient: "Capgemini Company",
+        //     adsDateStart: "2022-10-10",
+        //     adsDateEnd: "2022-10-14",
+        //     adsInvestmentDay: 3000,
+        //     adsViewProjection: 0,
+        //     adsClicksProjection: 0,
+        //     adsShareProjection: 0,
+        // },
+        // {
+        //     adsName: "3-Anuncio Capgemini",
+        //     adsClient: "Capgemini Company",
+        //     adsDateStart: "2022-10-10",
+        //     adsDateEnd: "2022-10-15",
+        //     adsInvestmentDay: 4000,
+        //     adsViewProjection: 0,
+        //     adsClicksProjection: 0,
+        //     adsShareProjection: 0,
+        // },
+        
+        
+    ],
 
     //Adicionar um elemento no array 
     add(info) {
@@ -133,7 +158,7 @@ const Ads = {
         // console.log(document.querySelector("#edit").dataset.action)
         console.log(adsForEdit)
     },
-
+    
     // ========================================== REGRA DE NEGÓCIO ========================================== //
     calcTotal(ads) {
         const second = 1000
@@ -144,7 +169,7 @@ const Ads = {
         let dateStart = new Date(ads.adsDateStart)
         let dateEnd = new Date(ads.adsDateEnd)
 
-        let days = Math.floor((dateEnd.getTime() - dateStart.getTime()) / day)
+        let days = Math.floor((dateEnd.getTime() - dateStart.getTime()) / day) +1
 
         let investmentDay = ads.adsInvestmentDay  / 100                        //Valor investido por dia pego do localStorage
         let totalAdsDay = days                                               //Total de dias de veiculação do anuncio
@@ -183,7 +208,7 @@ const Ads = {
         let totalClicks = initialClick + firstShareClick + secondShareClick + thirdShareClick + fourthdShareClick
 
         //Calcular o alcance total de compartilhamento do anuncio
-        let totalShareSocialMedia = initalShareSocialMedia + firstShareSocialMedia + secondShareSocialMedia + thirdShareSocialMedia + fourthShareSocialMedia
+        let totalShareSocialMedia = initalShareSocialMedia + firstShareSocialMedia + secondShareSocialMedia + thirdShareSocialMedia + fourthShareSocialMedia  
         
         // console.log(totalViews)
 
@@ -191,9 +216,10 @@ const Ads = {
         ads.adsViewProjection = totalViews
         ads.adsClicksProjection = totalClicks
         ads.adsShareProjection = totalShareSocialMedia
-        ads.adsTotalInvestment = totalInvestment * 100   //Devido como o valor de dinheiro é formatado, é necessário multiplicar por 100
 
         console.log("Dias de veiculação: " +days)
+
+        return totalInvestment
     },
     
     //Conta quantos anuncios estão cadastrados
@@ -211,7 +237,7 @@ const Ads = {
         Ads.allAds.forEach(ads => {
         //Somar a uma variavel
         if(ads.adsInvestmentDay > 0) {
-            totalInvesments = totalInvesments + ads.adsTotalInvestment
+            totalInvesments = totalInvesments + ads.adsInvestmentDay
         }
         })
          //retornar a variavel
@@ -386,7 +412,7 @@ const DOMReportAds = {
 
     innerHTMLReport(ads) {
 
-        const adsTotalInvestment = Utils.formatCurrency(ads.adsTotalInvestment)
+        const adsInvestmentDay = Utils.formatCurrency(ads.adsInvestmentDay)
         const adsViewProjection = Math.round(ads.adsViewProjection)
         const adsClicksProjection = Math.round(ads.adsClicksProjection)
         const adsShareProjection = Math.round(ads.adsShareProjection)
@@ -398,11 +424,11 @@ const DOMReportAds = {
         <td>${ads.adsClient}</td>
         <td>${adsDateStart}</td>
         <td>${adsDateEnd}</td>
-        <td>${adsTotalInvestment}</td>
+        <td>${adsInvestmentDay}</td>
         <td>${adsViewProjection}</td>
         <td>${adsClicksProjection}</td>
         <td>${adsShareProjection}</td>
-        <td></td>
+        <td><button id="edit" class="positive">O</button></td>
         `
         return html
     },
@@ -421,14 +447,12 @@ const DOMReportAds = {
 const DOMTotals = {
     
     updateTotals() {
-        //TOTAIS DO RELATÓRIO
+        
         document.querySelector('#total-ads').innerHTML = Ads.totalAds()
         document.querySelector('#total-investment').innerHTML = Utils.formatCurrency(Ads.totalInvesments())
         document.querySelector('#total-view').innerHTML = Math.round(Ads.totalViews())
         document.querySelector('#total-click').innerHTML = Math.round(Ads.totalClicks())
         document.querySelector('#total-share').innerHTML = Math.round(Ads.totalShares())
-
-        //TOTAIS DO DASHBOARD
         document.querySelector('#dashboardTotalAdsBox').innerHTML = Ads.totalAds()
         document.querySelector('#dashboardTotalInvestment').innerHTML = Utils.formatCurrency(Ads.totalInvesments())
         document.querySelector('#dashboardViewBox').innerHTML = Math.round(Ads.totalViews())
@@ -436,60 +460,6 @@ const DOMTotals = {
         document.querySelector('#dashboardShareBox').innerHTML = Math.round(Ads.totalShares())
     },
 }
-
-// ======================================================================================================== //
-// ==============================    ATUALIZAR ANUNCIO NA TELA DE DETALHES   ============================== //
-// ======================================================================================================== //
-
-/*
-const DOMDetailAds = {
-    detailBoxContainer: document.querySelector('#ads-view'),
-
-    addDetails(ads, index) {  //Responsável por adicionar a div
-       const div = document.createElement('div')
-       div.classList.add('box-info')
-       div.innerHTML = DOMDetailAds.innerHTMLDetails(ads)
-        
-        // DOMReportAds.detailBoxContainer.appendChild(div)
-    },
-        
-
-
-
-    innerHTMLDetails(ads) {
-        const adsTotalInvestment = Utils.formatCurrency(ads.adsTotalInvestment)
-        const adsViewProjection = Math.round(ads.adsViewProjection)
-        const adsClicksProjection = Math.round(ads.adsClicksProjection)
-        const adsShareProjection = Math.round(ads.adsShareProjection)
-
-        const adsName = ads.adsName
-        const adsClient = ads.adsClient
-        const adsDateStart = Utils.formatDate(ads.adsDateStart)
-        const adsDateEnd = Utils.formatDate(ads.adsDateEnd)
-        
-
-        const html = `
-        <div class="box-dashboard total">
-                    <h2>Investimento Total</h2>
-                    <p id="details-total" >${adsTotalInvestment}</p>
-                </div>
-                <div class="box-dashboard view">
-                    <h2>Visualizações</h2>
-                    <p id="view-projection">${adsViewProjection}</p>
-                </div>
-                <div class="box-dashboard clicks">
-                    <h2>Cliques</h2>
-                    <p id="click-projection">${adsViewProjection}</p>
-                </div>
-                <div class="box-dashboard share">
-                    <h2>Compartilhamentos</h2>
-                    <p id="share-projection">${adsViewProjection}</p>
-                </div>
-        `
-        return html
-    },
-}
-*/
 
 // ============================================================================== //
 // ==============================    FORMULÁRIO    ============================== //
@@ -505,7 +475,6 @@ const Form = {
     adsViewProjection: 0,
     adsClicksProjection: 0,
     adsShareProjection: 0,
-    adsTotalInvestment: 0,
 
     //Pegar os valores do input
     getValues() {
@@ -518,13 +487,12 @@ const Form = {
             adsViewProjection: Form.adsViewProjection,
             adsClicksProjection: Form.adsClicksProjection,
             adsShareProjection: Form.adsShareProjection,
-            adsTotalInvestment: Form.adsTotalInvestment
         }
     },
 
     // Verificar se todas as informações foram preenchidas
     validateFields() {
-        const { adsName, adsClient, adsDateStart, adsDateEnd, adsInvestmentDay, adsViewProjection, adsClicksProjection, adsShareProjection, adsTotalInvestment } = Form.getValues()
+        const { adsName, adsClient, adsDateStart, adsDateEnd, adsInvestmentDay, adsViewProjection, adsClicksProjection, adsShareProjection } = Form.getValues()
         
         if(adsName.trim() === "" || adsClient.trim() === "" || adsDateStart.trim() === "" || adsDateEnd.trim() === "" || adsInvestmentDay.trim() === "" ) {
             throw new Error("Por favor, preencha todos so campos!")
@@ -533,8 +501,13 @@ const Form = {
 
     // Formatar os dados para salvar
     formatValues() {
-        let { adsName, adsClient, adsDateStart, adsDateEnd, adsInvestmentDay, adsViewProjection, adsClicksProjection, adsShareProjection, adsTotalInvestment } = Form.getValues()
+        let { adsName, adsClient, adsDateStart, adsDateEnd, adsInvestmentDay, adsViewProjection, adsClicksProjection, adsShareProjection } = Form.getValues()
         
+        // adsInvestmentDay = Utils.formatInvestment(adsInvestmentDay)  //VERIFICAR  A FORMA DE SALVAR OS VALORES
+
+        // adsDateStart = Utils.formatDate(adsDateStart)   //VERIFICAR FORMA DE SALVAR A DATA 
+        
+        // adsDateEnd = Utils.formatDate(adsDateEnd)
 
         // console.log("Formatar os dados")
         return {
@@ -545,8 +518,7 @@ const Form = {
             adsInvestmentDay: Utils.formatInvestment(adsInvestmentDay),
             adsViewProjection,
             adsClicksProjection,
-            adsShareProjection,
-            adsTotalInvestment
+            adsShareProjection
         }
     },
 
@@ -619,20 +591,21 @@ const Form = {
 }
 
 
+
 // ========================================================================================== //
 // ==============================    EXECUÇÃO DAS APLICAÇÃO    ============================== //
 // ========================================================================================== //
 
 const App = {
     init() {
+
         Ads.allAds.forEach(function(ads, index) {
-            DOMAds.addAds(ads, index)               //Exibe os anuncios na pagina de anuncios 
-            Ads.calcTotal(ads)                      //Executa os calculos de todos os anuncios
-            DOMReportAds.addReportAds(ads)          //Exibe os anuncios na página de relatórios   
-            // DOMDetailAds.addDetails(ads)            //Exibe o detalhe dos anuncios
+            DOMAds.addAds(ads, index)              //Exibe os anuncios na pagina de anuncios 
+            Ads.calcTotal(ads)              //Executa os calculos de todos os anuncios
+            DOMReportAds.addReportAds(ads)  //Exibe os anuncios na página de relatórios   
+            
         })
         DOMTotals.updateTotals()
-        Storage.set(Ads.allAds)
     },
     reload() {
         DOMAds.clearAds()
@@ -645,3 +618,40 @@ const App = {
 
 
 App.init()
+
+
+//  ======================================================
+/*
+*/
+let x
+// x = Ads.allAds[3].adsInvestmentDay
+
+x = 40
+
+// x = Utils.formatInvestment(x)
+
+// console.log("Sem ponto e virgula: " + x)
+
+x = Utils.formatCurrency(Utils.formatInvestment(x))
+
+console.log("Formato moeda: " + x)
+
+/*
+
+const second = 1000
+const minute = second * 60
+const hour = minute * 60
+const day = hour * 24
+
+function countDays() {
+    let dateStart = new Date(Ads.allAds[0].adsDateStart)
+    let dateEnd = new Date(Ads.allAds[0].adsDateEnd)
+
+    let days = Math.floor((dateEnd.getTime() - dateStart.getTime()) / day) +1
+
+    console.log(days)
+}
+
+countDays()
+
+*/

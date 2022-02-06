@@ -26,26 +26,26 @@
             <div class="box-info">
                 <div class="box-dashboard totalAds">
                     <h2>Total Anúncios</h2>
-                    <p id="dashboardTotalAdsBox">15</p>
+                    <p id="dashboardTotalAdsBox">0</p>
                 </div>
                 <div class="box-dashboard Investment">
                     <h2>Total Investido</h2>
-                    <p id="dashboardTotalInvestment">R$ 362.120,00</p>
+                    <p id="dashboardTotalInvestment">R$ 0,00</p>
                 </div>
                 <div class="box-dashboard view">
                     <h2>Total Visualizações</h2>
-                    <p id="dashboardViewBox">28.254.268</p>
+                    <p id="dashboardViewBox">0</p>
                 </div>
                 <div class="box-dashboard clicks">
                     <h2>Total Cliques</h2>
-                    <p id="dashboardClickBox">8.254.268</p>
+                    <p id="dashboardClickBox">0</p>
                 </div>
                 <div class="box-dashboard">
                     
                 </div>
                 <div class="box-dashboard share">
                     <h2>Total Compartilhamentos</h2>
-                    <p id="dashboardShareBox">510.268</p>
+                    <p id="dashboardShareBox">0</p>
                 </div>
                 
             </div>
@@ -76,23 +76,23 @@
         </section>
 
         <section id="ads-view">
-            <div class="box-info">
+            <!-- <div class="box-info">
                 <div class="box-dashboard total">
-                    <h2>Investimento</h2>
-                    <p>R$ 362.120,00</p>
+                    <h2>Investimento Total</h2>
+                    <p id="details-total" >R$ 362.120,00</p>
                 </div>
                 <div class="box-dashboard view">
                     <h2>Visualizações</h2>
-                    <p>28.254.268</p>
+                    <p id="view-projection">28.254.268</p>
                 </div>
                 <div class="box-dashboard clicks">
                     <h2>Cliques</h2>
-                    <p>8.254.268</p>
+                    <p id="click-projection">8.254.268</p>
                 </div>
                 <div class="box-dashboard share">
                     <h2>Compartilhamentos</h2>
-                    <p>510.268</p>
-                </div>
+                    <p id="share-projection">510.268</p>
+                </div> -->
             </div>
 
             <table id="data-table">
@@ -107,19 +107,18 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Campanha XYZ</td>
-                        <td>Capgemini</td>
-                        <td>01/01/2022</td>
-                        <td>20/02/2022</td>
-                        <td>R$ 1530,00</td>
+                        <td id="detail-name">Campanha XYZ</td>
+                        <td id="detail-client">Capgemini</td>
+                        <td id="detail-date-start">01/01/2022</td>
+                        <td id="detail-date-end">20/02/2022</td>
+                        <td id="detail-investment">R$ 1530,00</td>
                     </tr>
                 </tbody>
                 
             </table>
 
             <div class="buttons-div">
-                <button class="negative">Excluir</button>
-                <button class="positive">Editar</button>
+                <button onClick="Display.report()" class="positive">Voltar</button>
             </div>
             
             
@@ -141,7 +140,7 @@
                     <input type="date" name="date-end" id="ads-date-end">
                     <h3>Investimento Diário</h3>
                     <input type="text" name="ads-investment-day" id="ads-investment-day" placeholder="0,00">
-                    <span>Digite apenas números.</span>
+                    <span>Digite apenas números inteiros ou decimais com ponto(.)</span>
                     <br>
                     <div class="buttons-div">
                         <a onclick="Form.cancelAddAds()" id="cancelAddAds" class="negative">Cancelar</a>
@@ -173,7 +172,15 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <!-- <td>${ads.adsName}</td>
+                    <td>${ads.adsClient}</td>
+                    <td>${adsDateStart}</td>
+                    <td>${adsDateEnd}</td>
+                    <td>${adsTotalInvestment}</td>
+                    <td>${adsViewProjection}</td>
+                    <td>${adsClicksProjection}</td>
+                    <td>${adsShareProjection}</td>
+                    <td><button onClick="Display.displayAdsView()" id="edit" class="positive">O</button></td> -->
                 </tbody>
             </table>
 
@@ -214,3 +221,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+
