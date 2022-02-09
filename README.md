@@ -16,8 +16,9 @@ Contém as seguintes funcionalidades:</p>
 
 <p>Para executar basta:</p>
 <ul>
+    <li>npm install electron</li>
     <li>Definir a URL no arquivo config.js</li>
-    <li>Executar o comando: npm start</li>
+    <li>npm start</li>
 </ul>
 
 </br>
