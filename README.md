@@ -1,7 +1,7 @@
 # VIDEO TO UP
 
 <p>Esté é um projeto de uma página web flutuante, que fica sempre visível independente do aplicativo que estiver aberto</br>
-O projeto foi desenvolvido usando o Electon seguindo os passos da Aula do Mayk Brito. </br>
+O projeto foi desenvolvido usando o Electron seguindo os passos da Aula do Mayk Brito. </br>
 Projeto desenvolvido para facilitar o acompanhamento das aulas por quem não tem multiplos monitores, assim permitindo que o editor de códigos se mantenha totalmente aberto e a video aula seja redimensionada da melhor forma possível.
 Contém as seguintes funcionalidades:</p>
 
