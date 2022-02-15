@@ -124,8 +124,8 @@ $ git clone https://github.com/seileremerson/proway_capgemini.git
     - Via Bash (Node)
         ![](./gifs/q2_node.gif)
 
-        - Via Chrome (Console)
-        ![](./gifs/q2_chrome.gif)
+    - Via Chrome (Console)
+    ![](./gifs/q2_chrome.gif)
 #
 - Questão 03 - word (linha 12)
     - Via Bash (Node)
