@@ -15,7 +15,7 @@
    * [Desafio](#-desafio)
    * [Como executar o projeto](#-como-executar-o-projeto)
      * [Pré-requisitos](#user-content--pré-requisitos)
-     * [Executando o projeto](#user-content--executando-o-projeto)
+     * [Executando o projeto](#user-content--executando-o-projeto-via-node)
      * [Executando os testes](#user-content--executando-os-testes)
    * [Tecnologias](#-tecnologias)
    * [Autor](#-autor)
