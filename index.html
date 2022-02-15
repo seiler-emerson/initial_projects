@@ -11,10 +11,10 @@
     <section class="menu-bar">
         <h1 class="logo">LOGO</h1>
         <nav>
-            <p class="menu-item" onClick="Display.dashboard()" class="dashboard-menu" >Dashboard</p>
-            <p onClick="Display.ads()" class="ads-menu">Anúncios</p>
-            <p onClick="Display.report()" class="report-menu" >Relatório</p>
-            <p onclick="Display.contact()">Contato</p>
+            <p class="dashboard-menu" onClick="Display.dashboard(); SelectMenu.dashboard()" class="dashboard-menu" id="active-menu">Dashboard</p>
+            <p class="ads-menu" onClick="Display.ads(); SelectMenu.ads()">Anúncios</p>
+            <p class="report-menu" onClick="Display.report(); SelectMenu.report()">Relatório</p>
+            <p class="contact-menu" onclick="Display.contact(); SelectMenu.contact()">Contato</p>
         </nav>
     </section>
 
@@ -24,14 +24,6 @@
                 <h1>DASHBOARD</h1>
             </div>
             <div class="box-info">
-                <div class="box-dashboard totalAds">
-                    <h2>Total Anúncios</h2>
-                    <p id="dashboardTotalAdsBox">0</p>
-                </div>
-                <div class="box-dashboard Investment">
-                    <h2>Total Investido</h2>
-                    <p id="dashboardTotalInvestment">R$ 0,00</p>
-                </div>
                 <div class="box-dashboard view">
                     <h2>Total Visualizações</h2>
                     <p id="dashboardViewBox">0</p>
@@ -40,13 +32,22 @@
                     <h2>Total Cliques</h2>
                     <p id="dashboardClickBox">0</p>
                 </div>
-                <div class="box-dashboard">
-                    
-                </div>
                 <div class="box-dashboard share">
                     <h2>Total Compartilhamentos</h2>
                     <p id="dashboardShareBox">0</p>
                 </div>
+                <div class="box-dashboard Investment">
+                    <h2>Total Investido</h2>
+                    <p id="dashboardTotalInvestment">R$ 0,00</p>
+                </div>
+                <div class="box-dashboard totalAds">
+                    <h2>Total Anúncios</h2>
+                    <p id="dashboardTotalAdsBox">0</p>
+                </div>
+                <div class="box-dashboard empty">
+                    
+                </div>
+                
                 
             </div>
         </section>      
@@ -54,7 +55,10 @@
         <section id="ads">
             <div class="title-page">
                 <h1>ANÚNCIOS</h1>
-                <button onclick="Display.displayAdsRegister()" class="positive">Novo Anúncio</button>
+                <div class="borderButton">
+                    <button onclick="Display.displayAdsRegister()" class="positive">Novo Anúncio</button>
+                    <div class="circlePlus">+</div>
+                </div>
             </div>
 
             <table id="data-ads">       
@@ -142,9 +146,18 @@
                     <input type="text" name="ads-investment-day" id="ads-investment-day" placeholder="0,00">
                     <span>Digite apenas números inteiros ou decimais com ponto(.)</span>
                     <br>
-                    <div class="buttons-div">
-                        <a onclick="Form.cancelAddAds()" id="cancelAddAds" class="negative">Cancelar</a>
-                        <button id="saveAds" class="positive">Salvar</button>
+                    <div>
+                        <div class="buttons-div">
+                            <div class="borderButton negative">
+                                <a onclick="Form.cancelAddAds()" id="cancelAddAds" class="negative">Cancelar</a>
+                                <div class="circlePlus"><img src="./icons/exclude.svg" alt="Exclude Icon"></div>
+                            </div>
+                            <div class="borderButton">
+                                <button id="saveAds" class="positive">Salvar</button>
+                                <div class="circlePlus">✓</div>
+                            </div>
+                            
+                        </div>
                     </div>
                 </form>
                 
@@ -154,7 +167,7 @@
         <section id="report">
             <div class="title-page">
                 <h1>RELATÓRIOS</h1>
-                <button class="positive">Imprimir</button>
+                <!-- <button class="positive">Imprimir</button> -->
             </div>
 
             <table id="data-report">
@@ -212,7 +225,15 @@
             <div class="title-page">
                 <h1>CONTATO</h1>
             </div>
+            <div class="content-box">
+                
+                <img src="https://avatars.githubusercontent.com/seileremerson" alt="Foto Emerson Seiler"/>
+                <div class="info">
+                    <h1>Emerson Seiler</h1>
+                    <p>Engenheiro / Desenvolvedor Jr</p>
 
+                    <a href="https://www.linkedin.com/in/seileremerson/" target="_blank">Linkedin</a>
+                </div>
             </div>
         </section>
     </main>
@@ -221,3 +242,4 @@
     <script src="script.js"></script>
 </body>
 </html>
+

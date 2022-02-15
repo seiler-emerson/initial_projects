@@ -1,6 +1,35 @@
-// // ===================================================================================== //
-// // ==============================    TRANSIÇÕES DE TELA   ============================== //
-// // ===================================================================================== //
+const SelectMenu = {
+    dashboard() {
+        document.querySelector('.dashboard-menu').setAttribute('id', 'active-menu');
+        document.querySelector('.ads-menu').removeAttribute('id');
+        document.querySelector('.report-menu').removeAttribute('id');
+        document.querySelector('.contact-menu').removeAttribute('id');
+    },
+    ads() {
+        document.querySelector('.ads-menu').setAttribute('id', 'active-menu');
+        document.querySelector('.dashboard-menu').removeAttribute('id');
+        document.querySelector('.report-menu').removeAttribute('id');
+        document.querySelector('.contact-menu').removeAttribute('id');
+    },
+    report() {
+        document.querySelector('.report-menu').setAttribute('id', 'active-menu');
+        document.querySelector('.dashboard-menu').removeAttribute('id');
+        document.querySelector('.ads-menu').removeAttribute('id');
+        document.querySelector('.contact-menu').removeAttribute('id');
+    },
+    contact(){ 
+        document.querySelector('.contact-menu').setAttribute('id', 'active-menu');
+        document.querySelector('.dashboard-menu').removeAttribute('id');
+        document.querySelector('.report-menu').removeAttribute('id');
+        document.querySelector('.dashboard-menu').removeAttribute('id');
+    }
+
+}
+
+
+// ===================================================================================== //
+// ==============================    TRANSIÇÕES DE TELA   ============================== //
+// ===================================================================================== //
 
 
 // === VÁRIAVEIS RESPONSÁVEIS PELAS TELAS ===
@@ -357,8 +386,8 @@ const DOMAds = {
             <td>${adsDateStart}</td>
             <td>${adsDateEnd}</td>
             <td>${adsInvestmentDay}</td>
-            <td><button onclick="Ads.remove(${index})" id="exclude" type="button" data-action="delete-${index}" class="negative">X</button></td>
-            <td><button onclick="Ads.edit(${index})" id="edit" type="button" data-action="edit-${index}" class="positive">E</button></td>
+            <td><button onclick="Ads.remove(${index})" id="exclude" type="button" data-action="delete-${index}" class="negative"><img src="./icons/exclude.svg" alt="Exclude Icon"></button></td>
+            <td><button onclick="Ads.edit(${index})" id="edit" type="button" data-action="edit-${index}" class="positive"><img src="./icons/edit.svg" alt="Edit Icon"></button></td>
         `
         return html
     },
