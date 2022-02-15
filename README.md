@@ -5,8 +5,11 @@
 <h3 align="center">
     Desafio de Programação Academia Capgemini / Proway - 2021
 </h3>
-<br>
+</br>
 
+![](./gifs/seiler_ads.gif)
+
+</br>
 
 📜 Tabela de conteúdos
 =================
