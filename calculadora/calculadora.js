@@ -1,5 +1,5 @@
-    let investmentDay = 1                       //Valor investido por dia pego do localStorage
-    let totalAdsDay = 11                                        //Total de dias de veiculação do anuncio
+    let investmentDay = 110                       //Valor investido por dia pego do localStorage
+    let totalAdsDay = 25.3                                        //Total de dias de veiculação do anuncio
     let viewByOneInvestmentDay = 30                             //Visualizações por um real diario 
     
 
