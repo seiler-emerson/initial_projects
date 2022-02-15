@@ -119,7 +119,7 @@ Para resolução do desafio, desenvolvi um sistema em HTML, CSS e Javascript.
 
 Para testar a aplicação basta ter acesso a um navegador com internet e acessar o link abaixo.
 
-[TESTE AQUI](https://git-scm.com/downloads)
+[TESTE AQUI](https://seileremerson.github.io/desafio_proway_capgemini/)
 
 Outra forma é executando o arquivo index.html da pasta após o download do arquivo completo.
 
