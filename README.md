@@ -121,7 +121,7 @@ Para testar a aplicação basta ter acesso a um navegador com internet e acessar
 
 [TESTE AQUI](https://git-scm.com/downloads)
 
-Outra forma é exe3cutando o arquivo index.html da pasta após o download do arquivo completo.
+Outra forma é executando o arquivo index.html da pasta após o download do arquivo completo.
 
 O sistema possui 4 telas
   - Dashboard: Mostra a projeção total de todos os anúncios cadastrados no sistema.
