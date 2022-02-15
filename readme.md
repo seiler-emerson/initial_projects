@@ -108,7 +108,7 @@ $ git clone https://github.com/seileremerson/proway_capgemini.git
 
 <br>
 
-## 🤔 Executando os testes
+## 🦾 Executando os testes
 
 <br>
 
@@ -152,7 +152,7 @@ Neste projeto optei por utilizar as seguintes tecnologias:
 </br>
 
 ---
-## ⚒ Desafio 2021
+## 💼 Desafio 2021
 
 Eu também desenvolvi uma aplicação referente ao desafio proposto em 2021.
 
