@@ -86,7 +86,7 @@ O sistema fornecerá os relatórios de cada anúncio contendo:
 
 # Instruções para rodar o Projeto
 
-Faça uma cópia do projeto para sua máquina: git clone https://github.com/seileremerson/desafio_proway_capgemini_2021.git ou um download.
+Faça uma cópia do projeto para sua máquina: git clone https://github.com/seiler-emerson/desafio_proway_capgemini_2021.git ou um download.
 </br>
 
 </br>
@@ -122,7 +122,7 @@ Para resolução do desafio, desenvolvi um sistema em HTML, CSS e Javascript.
 
 Para testar a aplicação basta ter acesso a um navegador com internet e acessar o link abaixo.
 
-[TESTE AQUI](https://seileremerson.github.io/proway_capgemini_2021/)
+[TESTE AQUI](https://seiler-emerson.github.io/proway_capgemini_2021/)
 
 Outra forma é executando o arquivo index.html da pasta após o download do arquivo completo.
 
@@ -157,7 +157,7 @@ Neste projeto optei por utilizar as seguintes tecnologias:
 <br>
 
 <a href="https://www.linkedin.com/in/seileremerson/">
- <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/seileremerson" width="100px;" alt=""/>
+ <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/seiler-emerson" width="100px;" alt=""/>
  <br />
  <sub><b>Emerson Seiler</b></sub></a> <a href="https://www.linkedin.com/in/seileremerson/" title="Emerson Seiler"></a>
  <br />
