@@ -1,3 +1,7 @@
+// ====================================================================================== //
+// ==============================    LISTA DE PROFILES    =============================== //
+// ====================================================================================== //
+
 const users = [
     {
         userName: "Emerson Seiler",
@@ -27,9 +31,82 @@ const users = [
         email: "arianamoreira5021@gmail.com",
         BusinessInterests: ["ambevtech","capgemini","philips"]
     },
+    {
+        userName: "Stephanie Vieira",
+        linkedin: "https://www.linkedin.com/in/ste-vieira/",
+        githubUser: "Ste-Vieira",
+        email: "tefiholzschuk@gmail.com",
+        BusinessInterests: ["ambevtech","philips","warren"]
+    },
+    {
+        userName: "Ciro Ugalde",
+        linkedin: "https://www.linkedin.com/in/ciro-damasco-ugalde-151756220/",
+        githubUser: "Ciro-Ugalde",
+        email: "ciro.daniel.ugalde@gmail.com",
+        BusinessInterests: ["ambevtech","philips","capgemini"]
+    },
+    {
+        userName: "Joe Vieira",
+        linkedin: "https://www.linkedin.com/in/joevieirajr/",
+        githubUser: "ProfJoeVieira",
+        email: "profjoevieirajr@gmail.com",
+        BusinessInterests: ["philips","capgemini","x"]
+    },
+    {
+        userName: "Thabata Santos",
+        linkedin: "https://www.linkedin.com/in/thabatasantos/",
+        githubUser: "ThataSantos",
+        email: "thata_santoss@hotmail.com",
+        BusinessInterests: ["capgemini","ambevtech","warren"]
+    },
+    {
+        userName: "Geovani S. Brustolin",
+        linkedin: "https://www.linkedin.com/in/geovani-da-silva-brustolin-278600235/",
+        githubUser: "Geo-Silva",
+        email: "rumblycactus3@gmail.com",
+        BusinessInterests: ["philips","capgemini","ambevtech"]
+    },
+    {
+        userName: "Thiago Souza",
+        linkedin: "https://www.linkedin.com/in/thiago-souza-53b03979/",
+        githubUser: "wzthiago",
+        email: "wzthiago@gmail.com",
+        BusinessInterests: ["ambevtech","philips","capgemini"]
+    },
+    {
+        userName: "Bruno Roberto",
+        linkedin: "https://www.linkedin.com/in/bruno-roberto-49941a186/",
+        githubUser: "bruno-roberto",
+        email: "brunorobertopds@gmail.com",
+        BusinessInterests: ["ambevtech","philips","capgemini"]
+    },
+    {
+        userName: "Kalil Fakhouri",
+        linkedin: "https://www.linkedin.com/in/kalil-j-fakhouri-1744b321a/",
+        githubUser: "kaka-jaques",
+        email: "kjfakhouri@gmail.com",
+        BusinessInterests: ["ambevtech","x","x"]
+    },
+    {
+        userName: "Cristian Schauffert",
+        linkedin: "https://www.linkedin.com/in/",
+        githubUser: "Cristian-Baade",
+        email: "Schauffertcristian@gmail.com",
+        BusinessInterests: ["philips","capgemini","ambevtech"]
+    },
+    {
+        userName: "Erick Gabriel Carvalho",
+        linkedin: "https://www.linkedin.com/in/erick-gabriel-carvalho-da-silva-441277238/",
+        githubUser: "ERICK-GABRIEL",
+        email: "erick3000msn9@gmail.com",
+        BusinessInterests: ["philips","ambevtech","capgemini"]
+    },
+
 ]
 
-// SECTION - DIV CONTAINER  -- DIV PROFILE  - DIV PROFILEBOX 
+// ================================================================================================= //
+// ==============================    CRIAÇÃO DOS PROFILES NA TELA    =============================== //
+// ================================================================================================= //
 
 const DOMProfile = {
     profileContainer: document.querySelector(".profile"),
@@ -72,8 +149,6 @@ const DOMProfile = {
     },
 
 }
-
-DOMProfile.addProfile(users[0]);
 
 // ========================================================================================== //
 // ==============================    EXECUÇÃO DAS APLICAÇÃO    ============================== //

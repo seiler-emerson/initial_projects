@@ -19,7 +19,7 @@ body {
 }
 
 .container {
-    width: 1140px;
+    max-width: 1140px;
     margin: auto;
 }
 
@@ -31,6 +31,15 @@ section {
     margin: auto;
 }
 
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0 10px 0;
+}
+footer p {
+    text-align: center;
+}
 
 
 .profile {
@@ -60,4 +69,43 @@ section {
 .profileBox .infos h2 {
     font-size: 16px;
     margin: 8px 0px 5px 0px;
+}
+
+@media (min-width: 720px) and (max-width: 980px) {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile {
+        grid-template-columns: repeat(3, 224px);
+        justify-content: center;
+    }
+
+}
+
+@media (min-width: 500px) and (max-width: 768px) { 
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile {
+        grid-template-columns: repeat(2, 224px);
+        justify-content: center;
+    }
+}
+@media (max-width: 499px) { 
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .profile {
+        grid-template-columns: repeat(1, 224px);
+        justify-content: center;
+    }
 }
