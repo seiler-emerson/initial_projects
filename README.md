@@ -28,7 +28,7 @@ The information stored is:
 
 ---
 ## Link
-[Test Here](./index.html)
+[Test Here](https://seiler-emerson.github.io/hiremeflix/)
 
 ![Gif Demonstration](./img_readme/image.gif)
 ---
