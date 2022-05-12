@@ -101,7 +101,20 @@ const users = [
         email: "erick3000msn9@gmail.com",
         BusinessInterests: ["philips","ambevtech","capgemini"]
     },
-
+    {
+        userName: "Bárbara Ribeiro",
+        linkedin: "https://www.linkedin.com/in/B%C3%A1rbaraRibeiro050392/",
+        githubUser: "Ba-Ribeiro",
+        email: "babi_rib@hotmail.com",
+        BusinessInterests: ["ailos","warren","ambevtech"]
+    },
+    {
+        userName: "Alexsandro Correa",
+        linkedin: "https://www.linkedin.com/in/alexsandro-correa-088572238/",
+        githubUser: "Alexsandro-Correa",
+        email: "alexsandro19031@hotmail.com",
+        BusinessInterests: ["philips","unifique","warren"]
+    },
 ]
 
 // ================================================================================================= //
