@@ -156,7 +156,9 @@ const DOMProfile = {
 
 const App = {
     init() {
-       users.forEach(function(index) {
+       users.sort(function(a,b){
+           return (a.userName > b.userName) ? 1 : ((b.userName > a.userName) ? -1 : 0);
+       }).forEach(function(index) {
         DOMProfile.addProfile(index);               //Exibe os anuncios na pagina de anuncios 
         })
     }
