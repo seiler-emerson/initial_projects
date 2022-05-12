@@ -18,8 +18,10 @@ The information stored is:
 
 ## Differentials
 - Link to email with personalized message for each friend.
-- Link to LinkedIn
-- Link to Github
+- Photo updated directly by github avatar.
+- Link to LinkedIn.
+- Link to Github.
+- Responsive Layout.
 
 ## Technologies Used
 - HTML
