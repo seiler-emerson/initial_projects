@@ -1,7 +1,7 @@
 # Academia Java Capgemini
 
 ### É um Programa de Formação designado a capacitar futuros(as) colaboradore(as) para os times de trabalho da empresa.
-### Formação Java de mais de 500 horas de treinamento, totalmente remunerada..
+### Formação Java de mais de 500 horas de treinamento, totalmente remunerada.
     
 |Capcacitações| MODALIDADE |Local| SITE |
 |------|------|------|------|
