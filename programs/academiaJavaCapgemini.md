@@ -8,4 +8,4 @@
 |Java, Angular e Node|EAD|BR|<div align="center">[▶️](https://capgemini.proway.com.br/)</div>|
 
 ---
-[PÁGINA INICIAL](../)
+[PÁGINA INICIAL](https://github.com/seiler-emerson/Programas_Capacitacao_Dev)
