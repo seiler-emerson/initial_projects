@@ -25,3 +25,15 @@
 |C#, Java/Angular, UX/UI, React/Native, Android, Python, Banco de Dados, Vue.js, Flutter, Analista de Dados, Analista de Mídias Digitais, Suporte de TI, PHP|Presencial/EAD|SC|<div align="center">[▶️](https://www.entra21.com.br/)</div>|
 
 </details>
+
+
+<details open>
+    <summary><b> &nbsp; Academia Java Capgemini</b></summary>
+        <P>É um Programa de Formação designado a capacitar futuros (as) colaboradores (as) parA os times de trabalho da empresa.</P>
+        <p> Formação Java de mais de 500 horas de treinamento, totalmente remunerada.</p>
+    
+|Capcacitações| MODALIDADE |Local| SITE |
+|------|------|------|------|
+|Java, Angular e Node|EAD|BR|<div align="center">[▶️](https://capgemini.proway.com.br/)</div>|
+
+</details>
