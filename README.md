@@ -1,4 +1,4 @@
-# PROGRAMAS DE CAPACITAÇÃO PARA DESENVOLVDORES
+# Programas de Capacitação para Desenvolvedores
 
 | PROGRAMA | INSTITUIÇÃO | MODALIDADE | DETALHES |
 |------|------|------|------|
