@@ -129,6 +129,13 @@ const users = [
         email: "mateusgoettems@gmail.com",
         BusinessInterests: ["ambevtech","philips","tSystems"]
     },
+    {
+        userName: "Arthur Estevan Vargas",
+        linkedin: "https://www.linkedin.com/in/arthur-estevan-vargas-189208223",
+        githubUser: "ArthurEstevan",
+        email: "arthur.estevan01@gmail.com",
+        BusinessInterests: ["capgemini","datainfo","havanLabs"]
+    },
 ]
 
 // ================================================================================================= //
