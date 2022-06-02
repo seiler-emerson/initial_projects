@@ -8,7 +8,7 @@ const users = [
         linkedin: "https://www.linkedin.com/in/seileremerson/",
         githubUser: "seiler-emerson",
         email: "seiler.emerson@gmail.com",
-        BusinessInterests: ["philips","capgemini","ambevtech"]
+        BusinessInterests: ["capgemini","ambevtech","warren"]
     },
     {
         userName: "Filipe Albuquerque",
@@ -114,6 +114,20 @@ const users = [
         githubUser: "Alexsandro-Correa",
         email: "alexsandro19031@hotmail.com",
         BusinessInterests: ["philips","unifique","warren"]
+    },
+    {
+        userName: "Mateus Felipe Goettems",
+        linkedin: "https://www.linkedin.com/in/mateusgoettems/",
+        githubUser: "mat-felipe",
+        email: "mateusgoettems@gmail.com",
+        BusinessInterests: ["senior","capgemini","ambevtech"]
+    },
+    {
+        userName: "Rafael Macedo",
+        linkedin: "https://www.linkedin.com/in/rafael-macedo-49801011a/",
+        githubUser: "rmcedo",
+        email: "mateusgoettems@gmail.com",
+        BusinessInterests: ["ambevtech","philips","tSystems"]
     },
 ]
 
