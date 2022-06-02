@@ -85,7 +85,7 @@ const users = [
         linkedin: "https://www.linkedin.com/in/kalil-j-fakhouri-1744b321a/",
         githubUser: "kaka-jaques",
         email: "kjfakhouri@gmail.com",
-        BusinessInterests: ["ambevtech","x","x"]
+        BusinessInterests: ["ambevtech","ailos","warren"]
     },
     {
         userName: "Cristian Schauffert",
