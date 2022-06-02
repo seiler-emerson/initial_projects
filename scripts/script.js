@@ -50,7 +50,7 @@ const users = [
         linkedin: "https://www.linkedin.com/in/joevieirajr/",
         githubUser: "ProfJoeVieira",
         email: "profjoevieirajr@gmail.com",
-        BusinessInterests: ["philips","capgemini","x"]
+        BusinessInterests: ["philips","capgemini","havanLabs"]
     },
     {
         userName: "Thabata Santos",
@@ -131,7 +131,7 @@ const users = [
     },
     {
         userName: "Arthur Estevan Vargas",
-        linkedin: "https://www.linkedin.com/in/arthur-estevan-vargas-189208223",
+        linkedin: "https://www.linkedin.com/in/arthurestevanvargas/",
         githubUser: "ArthurEstevan",
         email: "arthur.estevan01@gmail.com",
         BusinessInterests: ["capgemini","datainfo","havanLabs"]
