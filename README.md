@@ -2,7 +2,7 @@
 
 | PROGRAMA | INSTITUIÇÃO | MODALIDADE | DETALHES |
 |------|------|------|------|
-|Entra21|Blusoft|Presencial/EAD|<div align="center">[▶️](./programs/entra21/entra21.md)</div>|
+|Entra21|Blusoft|Presencial/ EAD|<div align="center">[▶️](./programs/entra21/entra21.md)</div>|
 |Academia Capgemini|Capgemini|EAD|<div align="center">[▶️](./programs/academiaJavaCapgemini/academiaJavaCapgemini.md)</div>|
 |Start Capgemini|Capgemini|EAD|<div align="center">[▶️](./programs/startCapgemini/startCapgemini.md)</div>|
 |+Devs2Blu|Prefeitura Blumenau / Blusoft|Presencial|<div align="center">[▶️](./programs/devs2blu/devs2blu.md)</div>|
