@@ -83,7 +83,6 @@ O sistema fornecerá os relatórios de cada anúncio contendo:
 
   ---
 
-
 # Instruções para rodar o Projeto
 
 Faça uma cópia do projeto para sua máquina: git clone https://github.com/seiler-emerson/desafio_proway_capgemini_2021.git ou um download.
