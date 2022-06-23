@@ -1,4 +1,4 @@
-# HIREMEFLIX.
+# HIREMEFLIX
 
 This project aims to expose the interest of classmates in the Entra21-Blusoft program, as well as the companies they would like to work for.
 
