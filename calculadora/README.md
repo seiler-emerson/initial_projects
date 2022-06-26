@@ -9,7 +9,7 @@
     <li>DIVISÃO</li>
 </ul>
 
-<h3>TESTE <a href="https://seiler-emerson.github.io/calculadora/" target="_blank">AQUI</a></h3>
+<h3>TESTE <a href="https://seiler-emerson.github.io/initial_projects/calculadora/" target="_blank">AQUI</a></h3>
 
 <img src="github/calculadora.gif" alt="Demonstração Calculadora">
 

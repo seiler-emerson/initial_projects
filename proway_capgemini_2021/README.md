@@ -121,7 +121,7 @@ Para resolução do desafio, desenvolvi um sistema em HTML, CSS e Javascript.
 
 Para testar a aplicação basta ter acesso a um navegador com internet e acessar o link abaixo.
 
-[TESTE AQUI](https://seiler-emerson.github.io/proway_capgemini_2021/)
+[TESTE AQUI](https://seiler-emerson.github.io/initial_projects/proway_capgemini_2021)
 
 Outra forma é executando o arquivo index.html da pasta após o download do arquivo completo.
 

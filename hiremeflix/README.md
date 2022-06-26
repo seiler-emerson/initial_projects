@@ -30,7 +30,7 @@ The information stored is:
 
 ---
 ## Link
-[Test Here](https://seiler-emerson.github.io/hiremeflix/)
+[Test Here](https://seiler-emerson.github.io/initial_projects/hiremeflix/)
 
 ![Gif Demonstration](./img_readme/image.gif)
 ---

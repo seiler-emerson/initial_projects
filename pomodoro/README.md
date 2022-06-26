@@ -14,7 +14,7 @@ Contém as seguintes funcionalidades:</p>
     <li>Reset automático ao mudar entre pomodoro e os descansos</li>
 </ul>
 
-<h3>TESTE <a href="https://seiler-emerson.github.io/pomodoro/" target="_blank">AQUI</a></h3>
+<h3>TESTE <a href="https://seiler-emerson.github.io/initial_projects/pomodoro/" target="_blank">AQUI</a></h3>
 <img src="github/pomodoro.gif" alt="Demonstração Pomodoro">
 
 <p>Entre em contato por <a href="https://www.linkedin.com/in/seileremerson/" target="_blank">aqui</a>!</p>
