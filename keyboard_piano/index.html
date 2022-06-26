@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Seiler Keyboard</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h1>Seiler Keyboard</h1>
+
+        <div class="keys">
+            <div data-key="digit1" class="keyW">1</br>C</div>
+            <div data-key="digit2" class="keyB">2 C#</div>
+            <div data-key="digit3" class="keyW">3</br>D</div>
+            <div data-key="digit4" class="keyB">4 D#</div>
+            <div data-key="digit5" class="keyW">5</br>E</div>
+            <div data-key="digit6" class="keyW">6</br>F</div>
+            <div data-key="digit7" class="keyB">7 F#</div>
+            <div data-key="digit8" class="keyW">8</br>G</div>
+            <div data-key="digit9" class="keyB">9 G#</div>
+            <div data-key="digit0" class="keyW">0</br>A</div>
+            <div data-key="minus" class="keyB">-</br>A#</div>
+            <div data-key="equal" class="keyW">=</br>B</div>
+        </div>
+
+        <div class="composer">
+            <input type="text" id="input" placeholder="Componha...1356 66 1313 33 1865 55 1356 66" />
+            <button>Tocar</button>
+        </div>
+    </div>
+
+    <audio id="s_digit1" src="sound/key1.wav"></audio>
+    <audio id="s_digit2" src="sound/key2.wav"></audio>
+    <audio id="s_digit3" src="sound/key3.wav"></audio>
+    <audio id="s_digit4" src="sound/key4.wav"></audio>
+    <audio id="s_digit5" src="sound/key5.wav"></audio>
+    <audio id="s_digit6" src="sound/key6.wav"></audio>
+    <audio id="s_digit7" src="sound/key7.wav"></audio>
+    <audio id="s_digit8" src="sound/key8.wav"></audio>
+    <audio id="s_digit9" src="sound/key9.wav"></audio>
+    <audio id="s_digit0" src="sound/key0.wav"></audio>
+    <audio id="s_minus" src="sound/key-.wav"></audio>
+    <audio id="s_equal" src="sound/key=.wav"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+<!-- CRÉDITOS ARQUIVOS DE AUDIO -->
+<!-- Os arquivos de audio foram retirados de https://freesound.org/people/jobro/packs/2489/?page=2#sound -->
