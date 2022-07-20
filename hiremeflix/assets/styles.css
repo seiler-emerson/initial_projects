@@ -1,111 +1,88 @@
-:root{
-    --cor0:#FFFFFF;
-    --cor1:#f2f2f2;
-    --cor2:#1f6feb;
-    --cor3:#2e3a40;
-    --cor4:#A737FF;
-    --cor5:#223037;
-    --cor6:#9e9e9e;
-  }
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', Arial, sans-serif;
+/* ---------- ROOT VARIABLES ---------- */
+:root {
+    --color-primary: #666EFF;
+    --color-secondary: #303473;
+    --color-terciary: #2DC264;
+    --color-fourt: #23222B;
+    --color-white: #FFFFFF;
+    --color-dark: #909aa4;
+    --color-background: #18151D;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
 }
 
 body {
-    background-color: var(--cor1);
-}
-
-.container {
-    max-width: 1140px;
-    margin: auto;
-}
-
-header a img{
-    margin: 20px 0 20px 0px; 
-}
-
-section {
-    margin: auto;
-}
-
-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 50px 0 10px 0;
-}
-footer p {
-    text-align: center;
+    background: var(--color-background);
 }
 
 
-.profile {
-    display: grid;
-    grid-template-columns: repeat(4, 224px);
-    justify-content: space-between;
-    gap: 16px;
+/* ============== STUDENT CARD ============== */
+
+.student-box {
+    width: 32rem;
+    height: 15rem;
+    background-color: var(--color-dark);
 }
 
-.profileBox {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    background-color: var(--cor0);
-    width: 224px;
-    height: 440px;
+.student-box .student-profile {
+    border-radius: 2rem 0 0 2rem;
+    width: auto;
+    height: 100%;
 }
 
-.profileBox .photo img {
-    margin-top: 10px;
-    border-radius: 10px;
-    width: 201px;
-    height: 201px;
+.student-box .student-profile:hover {
+    box-shadow: 1px 1px 20px 1px var(--color-primary);
 }
 
-.profileBox h2,
-.profileBox .infos h2 {
-    font-size: 16px;
-    margin: 8px 0px 5px 0px;
+h2 {
+    color: var(--color-primary);
+    font-size: 28px;
 }
 
-@media (min-width: 720px) and (max-width: 980px) {
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+h5{
+    color: var(--color-dark);
+}
+
+.student-box {
+    box-shadow: 1px 1px 20px 1px var(--color-dark);
+}
+
+.student-box:hover {
+    box-shadow: none;
+}
+
+/* ============== STUDENT CARD CONTACT ============== */
+
+.student-box .student-contact a svg{
+    height: 2.5rem;
+    fill: var(--color-white);
+}
+.student-box .student-contact a svg:hover {
+    box-shadow: 1px 1px 10px 1px var(--color-dark);
+}
+
+
+/* ============== STUDENT CARD INTERESTS ============== */
+.student-box .student-interests a img {
+    height: 2.5rem;
+}
+
+.student-box .student-interests a img:hover {
+    box-shadow: 1px 1px 20px 1px var(--color-dark);
+}
+
+
+
+/* ============== MEDIA QUERIES ============== */
+
+@media screen and (max-width: 576px) {
+    .student-box {
+        width: 90%;
+        height: auto;
     }
-
-    .profile {
-        grid-template-columns: repeat(3, 224px);
-        justify-content: center;
-    }
-
-}
-
-@media (min-width: 500px) and (max-width: 768px) { 
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .profile {
-        grid-template-columns: repeat(2, 224px);
-        justify-content: center;
-    }
-}
-@media (max-width: 499px) { 
-    .container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .profile {
-        grid-template-columns: repeat(1, 224px);
-        justify-content: center;
+    .student-box .student-profile {
+        width: 100%;
+        height: auto;
+        border-radius: 2rem 2rem 0 0;
     }
 }
