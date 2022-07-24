@@ -71,7 +71,14 @@ h5{
     box-shadow: 1px 1px 20px 1px var(--color-dark);
 }
 
+footer {
+    text-align: center;
+    color: #FFF;
+}
 
+footer::after {
+    content: "© Copyright 2022 | Emerson Seiler | seiler-emerson@github.io";
+}  
 
 /* ============== MEDIA QUERIES ============== */
 
