@@ -3,9 +3,9 @@
 $("body").append(
     $("<div>", {class: "card w-100 mt-5 bg-pokedex"}).append(
         $("<div>", {class: "card-body d-flex flex-column justify-content-center align-items-center", id: "card-body"}).append(
-            $("<h1>", {text: "Capture seu Pokemon!", class: "mt-3 text-light "}),
-            $("<h2>", {text: "Preparado para capturar seu Pokemon?", class: "text-light"}),
-            $("<button>", {text: "CAPTURAR POKEMON", class:"btn btn-warning p-3 m-4", id: "search_pokemon", disabled: true})
+            $("<h1>", {text: "Capture seu Pokémon!", class: "mt-3 text-light "}),
+            $("<h2>", {text: "Preparado para capturar seu Pokémon?", class: "text-light"}),
+            $("<button>", {text: "CAPTURAR POKÉMON", class:"btn btn-warning p-3 m-4", id: "search_pokemon", disabled: true})
         )
     ),
 )
