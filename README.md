@@ -3,6 +3,7 @@ Repository for my initial projects
 
 | Projects 💻 | Repositories | Test Here |
 |------|---------|---------|
+|🦖 nbsp; Pokémon Capture|[<div align="center">🗂</div>](https://github.com/seiler-emerson/initial_projects/tree/main/pokemonCapture)|[<div align="center">▶️</div>](https://seiler-emerson.github.io/initial_projects/pokemonCapture/)|
 |🖥️&nbsp; Inside Medical Page|[<div align="center">🗂</div>](https://github.com/seiler-emerson/initial_projects/tree/main/inside_medical)|[<div align="center">▶️</div>](https://seiler-emerson.github.io/initial_projects/inside_medical/index.html)|
 |🎹&nbsp; Conversion Keyboard CTK485 MIDI Controller|[<div align="center">🗂</div>](https://github.com/seiler-emerson/initial_projects/tree/main/CTK485_Arduino_Mega)|[<div align="center">▶️</div>](https://github.com/seiler-emerson/initial_projects/tree/main/CTK485_Arduino_Mega)|
 |👩🏻‍💻&nbsp; Dev Training Programs|[<div align="center">🗂</div>](https://github.com/seiler-emerson/initial_projects/tree/main/Programas_Capacitacao_Dev)|[<div align="center">▶️</div>](https://github.com/seiler-emerson/initial_projects/tree/main/Programas_Capacitacao_Dev)|
