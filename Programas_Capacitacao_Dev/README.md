@@ -9,4 +9,4 @@
 |Capacitação Pública Tecnologia|Pública Tecnologia|Presencial|<div align="center">[▶️](./programs/publicaTecnologia/publicaTecnologia.md)</div>|
 |Ap.coders|Ap.controle|Presencial|<div align="center">[▶️](./programs/apCoders/apCoders.md)</div>|
 |Warren Tech Academy|Warren|Presencial|<div align="center">[▶️](./programs/warrenTechAcademy/warrenTechAcademy.md)</div>|
-|T-Academy|T-Systems|Presencial/Remoto|<div align="center">[▶️](./programsT-Academy/T-Academy.md)</div>|
+|T-Academy|T-Systems|Presencial/EAD|<div align="center">[▶️](./programsT-Academy/T-Academy.md)</div>|
